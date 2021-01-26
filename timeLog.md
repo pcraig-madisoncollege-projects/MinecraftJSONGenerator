@@ -1,8 +1,8 @@
 # Minecraft JSON Generator Time Log
 
 ## About
-This is a time log to keep track of when I make changes to the  
-application. It also shows progress I made while developing the  
+This is a time log to keep track of when I make changes to the
+application. It also shows progress I made while developing the
 program during my enrollment in a Java course.
 ---
 
