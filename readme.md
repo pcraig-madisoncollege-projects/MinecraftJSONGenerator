@@ -25,4 +25,7 @@ editor UI, which only shows a small section of one line of code.
 For these reasons, I would like to build a general purpose  
 Minecraft command generator. Specifically, it will emphasize on  
 the commands that utilize JSON components for the formatting of  
-text in the game.
+text in the game.  
+  
+# Useful Links
+[**Time Log**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/timeLog.md)
