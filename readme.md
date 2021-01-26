@@ -1,5 +1,5 @@
 # Minecraft JSON Generator - Indie Project
----
+
 ## Problem Statement
 Minecraft is a game about creativity and innovation. As such, it  
 offers a wide variety of means to learn and interact with the  
