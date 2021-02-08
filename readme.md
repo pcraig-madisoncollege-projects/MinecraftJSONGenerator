@@ -1,6 +1,7 @@
 # Minecraft JSON Generator - Indie Project
 
 ## Problem Statement
+
 Minecraft is a game about creativity and innovation. As such, it  
 offers a wide variety of means to learn and interact with the  
 game. One aspect in which players might play the game is through  
@@ -28,5 +29,7 @@ the commands that utilize JSON components for the formatting of
 text in the game.  
   
 # Useful Links
+
 [**Time Log**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/timeLog.md)
+
 [**Weekly Reflections**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/weeklyReflections.md)
