@@ -26,9 +26,36 @@ editor UI, which only shows a small section of one line of code.
 For these reasons, I would like to build a general purpose  
 Minecraft command generator. Specifically, it will emphasize on  
 the commands that utilize JSON components for the formatting of  
-text in the game.  
-  
-# Useful Links
+text in the game.
+
+## Project Technologies (more will be added during development)
+
+* Security/Authentication
+    * Tomcat's JDBC Realm Authentication
+* Database
+    * MySQL 8.0.22
+* ORM Framework
+    * Hibernate 5
+* Dependency Management
+    * Maven
+* CSS
+    * Bootstrap
+* Data Validation
+    * Bootstrap Validator for front end
+    * Explore Hibernate's validation (TBD)
+* Logging
+    * Log4J2
+* Hosting
+    * AWS
+* Independent Research Topic/s
+    * TBD
+* Unit Testing
+    * JUnit tests to achieve 80%+ code coverage
+* IDE: IntelliJ IDEA
+
+## Useful Links
+
+[**Project Plan**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/projectPlan.md)
 
 [**Time Log**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/timeLog.md)
 
