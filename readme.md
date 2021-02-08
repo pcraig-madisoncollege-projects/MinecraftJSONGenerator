@@ -28,7 +28,7 @@ Minecraft command generator. Specifically, it will emphasize on
 the commands that utilize JSON components for the formatting of  
 text in the game.
 
-## Project Technologies (more will be added during development)
+## Project Technologies (WIP, more will be added during development)
 
 * Security/Authentication
     * Tomcat's JDBC Realm Authentication
