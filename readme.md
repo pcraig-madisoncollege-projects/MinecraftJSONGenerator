@@ -29,3 +29,4 @@ text in the game.
   
 # Useful Links
 [**Time Log**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/timeLog.md)
+[**Weekly Reflections**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/weeklyReflections.md)
