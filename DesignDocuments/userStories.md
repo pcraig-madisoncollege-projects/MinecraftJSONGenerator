@@ -2,7 +2,7 @@
 
 User stories are written in the following format:
 
-As <user type>, I want to/to be able to <action or feature> so that <reason or purpose except when redundant>.
+As &lt;user type&gt;, I want to/to be able to &lt;action or feature&gt; so that &lt;reason or purpose except when redundant&gt;.
 
 ## Generate Tellraw Command
 
