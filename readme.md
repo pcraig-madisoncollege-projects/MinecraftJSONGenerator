@@ -35,3 +35,5 @@ text in the game.
 [**Weekly Reflections**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/weeklyReflections.md)
 
 [**User Stories**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/DesignDocuments/userStories.md)
+
+[**Application Flow**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/DesignDocuments/applicationFlow.md)
