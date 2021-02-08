@@ -33,3 +33,5 @@ text in the game.
 [**Time Log**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/timeLog.md)
 
 [**Weekly Reflections**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/weeklyReflections.md)
+
+[**User Stories**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/DesignDocuments/userStories.md)
