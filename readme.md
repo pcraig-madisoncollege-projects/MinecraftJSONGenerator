@@ -30,6 +30,8 @@ text in the game.
 
 ## Project Technologies (WIP, more will be added during development)
 
+* Project Design
+    * Figma for screen design / wireframes
 * Security/Authentication
     * Tomcat's JDBC Realm Authentication
 * Database
