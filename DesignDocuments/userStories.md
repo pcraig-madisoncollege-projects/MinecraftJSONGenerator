@@ -10,28 +10,28 @@ As &lt;user type(s)&gt;, I want to/to be able to &lt;action or feature&gt; so th
 
 As any user, I want to generate a tellraw command so that I can display formatted messages in the chat.
 
-### *Generate Title Command
+### Generate Title Command
 
 As any user, I want to generate a title command so that I can display formatted messages in the middle of players' screens.
 
-### *Generate Sign Give Command
+### Generate Sign Give Command
 
 As any user, I want to generate a give command so that I can place a sign with custom formatted text.
 
-### *Generate Give Book Command
+### Generate Give Book Command
 
 As any user, I want to generate a give command so that I can get a written book item in-game that contains formatted text.
 
-### *Generate Give Named Item Command
+### Generate Give Named Item Command
 
 As any user, I want to generate a give command so that I can get an item that has a custom formatted name.
 
-### Register User
+### *Register User
 
 As a new user, I want to be able to create an account so that I can save, share, and edit commands associated with my
 account.
 
-### User Sign-in
+### *User Sign-in
 
 As a registered user or admin, I want to be able to sign in to my account so that I can continue to use the services.
 
@@ -39,11 +39,15 @@ As a registered user or admin, I want to be able to sign in to my account so tha
 
 As a registered user or admin, I want to be able to reset my password if I do not remember it.
 
-### Save Command
+### *Save Command
 
 As a registered user, I want to be able to save commands so that I can use or edit them later.
 
-### *Load Command
+### *Edit Command
+
+As a registered user, I want to be able to edit my saved commands.
+
+### Load Command
 
 As any user, I want to load a command from a previously generated command so that I can make changes.
 
@@ -52,7 +56,11 @@ As any user, I want to load a command from a previously generated command so tha
 As a registered user or admin, I want to share or un-share my commands so that other people can or cannot view my
 generated command.
 
-### Remove Saved Command
+### *View Public Commands
+
+As any user, I want to be able to view commands shared by other users in order to learn more about other people's commands.
+
+### *Remove Saved Command
 
 As a registered user or admin, I want to remove my commands so that I can get rid of unwanted commands.
 
@@ -71,4 +79,4 @@ As any user, I want to be able to report inappropriate commands or users to the 
 
 ### Admin Review Reports
 
-As an admin, I want to be able to receive notifications of reports that need to be reviewed.
+As an admin, I want to be able to receive email notifications of reports that need to be reviewed.
