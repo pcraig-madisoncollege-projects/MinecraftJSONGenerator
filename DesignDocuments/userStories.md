@@ -4,7 +4,7 @@ User stories are written in the following format:
 
 As &lt;user type(s)&gt;, I want to/to be able to &lt;action or feature&gt; so that &lt;reason or purpose except when redundant&gt;.
 
-** - Indicates a required feature for Minimum Viable Product (MVP)
+* Indicates a required feature for Minimum Viable Product (MVP)
 
 ### *Generate Tellraw Command
 
