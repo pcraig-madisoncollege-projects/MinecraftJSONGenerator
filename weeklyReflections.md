@@ -47,4 +47,7 @@ Log4J. Aside from that, this week was not particularly busy for me.
 Time Spent: TBD
 
 This week, I started out by completing the requirements for the indie project checkpoint 1 (including creating this
-reflection log).
+reflection log). I completed the wireframe images using [figma](https://figma.com/) and created the screenDesign.md
+culmination of the wireframes. I also created the user stories for the project as well as the application flow document.
+To finish up the project 1 check point requirements that I was missing, I created the project plan document, which
+describes weekly tasks completed for the indie project.
