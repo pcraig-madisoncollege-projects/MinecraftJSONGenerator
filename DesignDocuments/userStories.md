@@ -73,7 +73,7 @@ purposes.
 
 As any user, I want to be able to find out more information about the website, make a donation, or contact the admin.
 
-### Report Command/User
+### *Report Command/User
 
 As any user, I want to be able to report inappropriate commands or users to the admin.
 
