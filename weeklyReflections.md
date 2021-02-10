@@ -51,3 +51,8 @@ reflection log). I completed the wireframe images using [figma](https://figma.co
 culmination of the wireframes. I also created the user stories for the project as well as the application flow document.
 To finish up the project 1 check point requirements that I was missing, I created the project plan document, which
 describes weekly tasks completed for the indie project.
+
+I also completed the project checkpoint 1 review and discussed the state of my project. After reviewing, I fixed the
+MVP user stories and added a couple that were missing. Also, I added the wireframe dialogue for saving commands. On top
+of that, I fixed the project plan to show a **plan** of what tasks I will develop for the project and when
+(who would've guessed that a plan lists your plan?)

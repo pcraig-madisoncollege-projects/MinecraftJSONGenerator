@@ -18,5 +18,9 @@
 - [ ] Add screens/wireframe of project
 - [ ] Add application flow
 - [ ] Add weekly reflection document
+- [ ] Create rough working jsp navigation and servlets
 - [ ] Update time log
 - [ ] Update weekly reflections
+
+### Week 5
+- [ ] 

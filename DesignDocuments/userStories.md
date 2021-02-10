@@ -69,7 +69,7 @@ As a registered user or admin, I want to remove my commands so that I can get ri
 As a registered user, I want to be able to group my commands so that I can organize what commands are used for what
 purposes.
 
-### *About
+### About
 
 As any user, I want to be able to find out more information about the website, make a donation, or contact the admin.
 
