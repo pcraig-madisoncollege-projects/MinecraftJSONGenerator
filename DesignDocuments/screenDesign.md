@@ -51,3 +51,11 @@
 ### Report Issue Page
 
 ![Report Issue Page](wireframes/9-ReportPage.png)
+
+### Load Command Page
+
+![Load Command Page](wireframes/10-LoadCommandPage.png)
+
+### Save Command Dialog/Prompt
+
+![Save Command Dialogue/Prompt](wireframes/11-SaveCommandDialog.png)
