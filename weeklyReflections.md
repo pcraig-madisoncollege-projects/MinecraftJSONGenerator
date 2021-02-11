@@ -56,3 +56,10 @@ I also completed the project checkpoint 1 review and discussed the state of my p
 MVP user stories and added a couple that were missing. Also, I added the wireframe dialogue for saving commands. On top
 of that, I fixed the project plan to show a **plan** of what tasks I will develop for the project and when
 (who would've guessed that a plan lists your plan?)
+
+On Wednesday, I did a lot, but a lot did not happen. I completed exercise 4 after several issues with setting up SSH
+authentication instead of HTTPS authentication for GitHub. Also, my VM began freezing up a lot and had to be hard-reset
+a few times. This ultimately caused it to lose internet connection (must have gotten corrupted). Fortunately, I had a
+backup copy and loaded that up with minimal work required. However, then I ran into dependency issues with IntelliJ and
+Maven, only for it to turn out to be related to a Hibernate facet. After all the trouble, I was able to submit a working
+version of exercise 4. At least now I know what to expect for implementing Hibernate into my indie project.
