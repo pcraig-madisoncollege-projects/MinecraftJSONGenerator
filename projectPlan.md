@@ -27,6 +27,10 @@
 - [ ] Update weekly reflections
 
 ### Week 5
+- [ ] Configure log4j into project and test
+- [ ] Create rough working jsp pages (sign up, login, about/index, view command, rough generate command)
+- [ ] Set up database with tables and dummy data (i.e. user, command, user_command tables)
+- [ ] Set up database access through user registration and login through webpage (dao and hibernate configuration)
 - [ ] Start working on modular JSON generator code with tellraw command in mind
 - [ ] Create user saved commands jsp and servlet
 - [ ] Load user saved commands into new saved commands jsp through dao

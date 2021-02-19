@@ -44,7 +44,7 @@ Log4J. Aside from that, this week was not particularly busy for me.
 
 2/8/2021
 
-Time Spent: TBD
+Time Spent: ~22.75 hours
 
 This week, I started out by completing the requirements for the indie project checkpoint 1 (including creating this
 reflection log). I completed the wireframe images using [figma](https://figma.com/) and created the screenDesign.md
@@ -63,3 +63,15 @@ a few times. This ultimately caused it to lose internet connection (must have go
 backup copy and loaded that up with minimal work required. However, then I ran into dependency issues with IntelliJ and
 Maven, only for it to turn out to be related to a Hibernate facet. After all the trouble, I was able to submit a working
 version of exercise 4. At least now I know what to expect for implementing Hibernate into my indie project.
+
+On Sunday night, I started creating the template JSPs for the webpage. I used [Bootstrap version 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+for styling my web pages. There are a few more changes I would like to implement with the styling, but I think it looks
+good overall.
+
+## Week 5
+
+2/15/2021
+
+Time Spend: TBD
+
+
