@@ -32,6 +32,16 @@ public class Command {
      *
      * @param command the command
      * @param owner   the owner
+     */
+    public Command(String command, int owner) {
+        this(command, owner, false);
+    }
+
+    /**
+     * Instantiates a new Command.
+     *
+     * @param command the command
+     * @param owner   the owner
      * @param shared  the shared
      */
     public Command(String command, int owner, boolean shared) {
