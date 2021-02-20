@@ -1,2 +1,4 @@
+DELETE FROM command;
 DELETE FROM user;
 INSERT INTO user VALUES (1,'jsmitty@example.com','password','J. Smitty'),(2,'jdoe@example.com','password1234','Kat'),(3,'almarks@example.com','password4321','Marketh');
+INSERT INTO command VALUES (1,'/tellraw @a [\"Hello, there\"]',1),(2,'/tellraw @a [{\"text\":\"This is a test\",\"color\":\"green\"}]',3),(3,'/title @a title [{\"text\":\"Hello!\"}]',2);
