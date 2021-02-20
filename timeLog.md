@@ -10,4 +10,4 @@
 | 2/9/2021 | Fixed issues per the project checkpoint 1 notes, started exercise 4 | 2 hours |
 | 2/10/2021 | Moved from HTTPS authentication to SSH for GitHub, reverted to backup VM when internet failed on main VM, completed exercise 4 | 10 hours |
 | 2/14/2021 | Started implementing basic JSP layout with bootstrap | 1.25 hours |
-| 2/19/2021 | Created user and command databases, set up UserDao, CommandDao, and JUnit test classes for the DAOs, update DAOs and tests to utilize generics for less duplicate code | 16:15- hours |
+| 2/19/2021 | Created user and command databases, set up User, Command, UserDao, CommandDao, and JUnit test classes for the DAOs, update DAOs and tests to utilize generics for less duplicate code | 4.75 hours |
