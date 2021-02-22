@@ -156,6 +156,15 @@ public class User {
         command.setOwner(null);
     }
 
+    /**
+     * Removes a command from the user from an index.
+     *
+     * @param index the index to remove
+     */
+    public void removeCommand(int index) {
+        removeCommand(commands.get(index));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
