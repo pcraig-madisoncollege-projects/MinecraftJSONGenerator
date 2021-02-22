@@ -18,8 +18,10 @@ public class Command {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
     private String command;
-    private int owner;
     private boolean shared;
+
+    @ManyToOne
+    private User owner;
 
     /**
      * Instantiates a new Command.
@@ -33,7 +35,7 @@ public class Command {
      * @param command the command
      * @param owner   the owner
      */
-    public Command(String command, int owner) {
+    public Command(String command, User owner) {
         this(command, owner, false);
     }
 
@@ -44,7 +46,7 @@ public class Command {
      * @param owner   the owner
      * @param shared  the shared
      */
-    public Command(String command, int owner, boolean shared) {
+    public Command(String command, User owner, boolean shared) {
         this.command = command;
         this.owner = owner;
         this.shared = shared;
@@ -91,7 +93,7 @@ public class Command {
      *
      * @return the owner
      */
-    public int getOwner() {
+    public User getOwner() {
         return owner;
     }
 
@@ -100,7 +102,7 @@ public class Command {
      *
      * @param owner the owner
      */
-    public void setOwner(int owner) {
+    public void setOwner(User owner) {
         this.owner = owner;
     }
 
@@ -127,7 +129,7 @@ public class Command {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Command command = (Command) o;
-        return getId() == command.getId() && getOwner() == command.getOwner()
+        return getId() == command.getId() && getOwner().equals(command.getOwner())
                 && isShared() == command.isShared()
                 && getCommand().equals(command.getCommand());
     }
