@@ -1,6 +1,7 @@
 package com.pjcraig.persistence;
 
 import com.pjcraig.entity.Command;
+import com.pjcraig.entity.User;
 import com.pjcraig.test.util.Database;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CommandDaoTest {
 
     GenericDao dao;
+    GenericDao userDao;
 
     /**
      * Initializes the dao and testing database before any test is run.
@@ -19,6 +21,7 @@ class CommandDaoTest {
     @BeforeEach
     void setUp() {
         dao = new GenericDao(Command.class);
+        userDao = new GenericDao(User.class);
 
         Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
@@ -29,8 +32,9 @@ class CommandDaoTest {
      */
     @Test
     void getByIdSuccess() {
+        User owner = (User) userDao.getById(3);
         Command expectedCommand = new Command("/tellraw @a [{\"text\":\"This is a test\",\"color\":\"green\"}]",
-                3, true);
+                owner, true);
         expectedCommand.setId(2);
         Command retrievedCommand = (Command) dao.getById(2);
         assertNotNull(retrievedCommand);
@@ -58,8 +62,9 @@ class CommandDaoTest {
      */
     @Test
     void insertSuccess() {
+        User owner = (User) userDao.getById(2);
         Command newCommand = new Command("/tellraw @a [\"Why, hello there!\"]",
-                1, true);
+                owner, true);
         int id = dao.insert(newCommand);
         newCommand.setId(id);
         assertNotEquals(1, id);
