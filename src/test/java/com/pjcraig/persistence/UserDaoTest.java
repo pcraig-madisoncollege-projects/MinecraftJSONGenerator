@@ -1,5 +1,6 @@
 package com.pjcraig.persistence;
 
+import com.pjcraig.entity.Command;
 import com.pjcraig.entity.User;
 import com.pjcraig.test.util.Database;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,6 +38,22 @@ class UserDaoTest {
     }
 
     /**
+     * Verifies that user command removal updates in database.
+     */
+    @Test
+    void removeCommandSuccess() {
+        int id = 2;
+        User initialUser = (User) dao.getById(id);
+
+        assertEquals(1, initialUser.getCommands().size());
+        initialUser.removeCommand(0);
+        dao.saveOrUpdate(initialUser);
+
+        User retrievedUser = (User) dao.getById(id);
+        assertEquals(0, retrievedUser.getCommands().size());
+    }
+
+    /**
      * Verifies success of updating users in database.
      */
     @Test
@@ -63,6 +80,26 @@ class UserDaoTest {
         assertNotEquals(1, id);
         User insertedUser = (User) dao.getById(id);
         assertEquals(newUser, insertedUser);
+    }
+
+    /**
+     * Verifies success of user and command insertion into the database.
+     */
+    @Test
+    void insertWithCommandSuccess() {
+        User newUser = new User("jeff@example.com", "longpassword123", "Jeffster");
+
+        String command = "/title @a [\"This is a new command!\"]";
+        Command commandEntity = new Command(command, newUser);
+        newUser.addCommand(commandEntity);
+
+        int id = dao.insert(newUser);
+        newUser.setId(id);
+
+        assertNotEquals(1, id);
+        User insertedUser = (User) dao.getById(id);
+        assertEquals(newUser, insertedUser);
+        assertEquals(1, insertedUser.getCommands().size());
     }
 
     /**
