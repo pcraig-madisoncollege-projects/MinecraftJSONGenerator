@@ -23,7 +23,7 @@ public class User {
     private String password;
     private String nickname;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Command> commands = new ArrayList<>();
 
     /**
@@ -134,6 +134,26 @@ public class User {
      */
     public void setCommands(List<Command> commands) {
         this.commands = commands;
+    }
+
+    /**
+     * Adds a command to the user.
+     *
+     * @param command the command
+     */
+    public void addCommand(Command command) {
+        commands.add(command);
+        command.setOwner(this);
+    }
+
+    /**
+     * Removes a command from the user.
+     *
+     * @param command the command
+     */
+    public void removeCommand(Command command) {
+        commands.remove(command);
+        command.setOwner(null);
     }
 
     @Override
