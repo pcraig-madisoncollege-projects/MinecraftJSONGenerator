@@ -12,15 +12,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CommandDaoTest {
 
-    GenericDao dao;
+    GenericDao commandDao;
     GenericDao userDao;
 
     /**
-     * Initializes the dao and testing database before any test is run.
+     * Initializes the DAOs and testing database before any test is run.
      */
     @BeforeEach
     void setUp() {
-        dao = new GenericDao(Command.class);
+        commandDao = new GenericDao(Command.class);
         userDao = new GenericDao(User.class);
 
         Database database = Database.getInstance();
@@ -36,7 +36,7 @@ class CommandDaoTest {
         Command expectedCommand = new Command("/tellraw @a [{\"text\":\"This is a test\",\"color\":\"green\"}]",
                 owner, true);
         expectedCommand.setId(2);
-        Command retrievedCommand = (Command) dao.getById(2);
+        Command retrievedCommand = (Command) commandDao.getById(2);
         assertNotNull(retrievedCommand);
         assertEquals(expectedCommand, retrievedCommand);
     }
@@ -47,12 +47,12 @@ class CommandDaoTest {
     @Test
     void saveOrUpdateSuccess() {
         int id = 3;
-        Command commandToUpdate = (Command) dao.getById(id);
+        Command commandToUpdate = (Command) commandDao.getById(id);
         String newCommand = "/tellraw @a [\"Hello!\"]";
         String initialCommand = commandToUpdate.getCommand();
         commandToUpdate.setCommand(newCommand);
-        dao.saveOrUpdate(commandToUpdate);
-        Command retrievedCommand = (Command) dao.getById(id);
+        commandDao.saveOrUpdate(commandToUpdate);
+        Command retrievedCommand = (Command) commandDao.getById(id);
         assertNotEquals(initialCommand, retrievedCommand.getCommand());
         assertEquals(newCommand, retrievedCommand.getCommand());
     }
@@ -65,10 +65,10 @@ class CommandDaoTest {
         User owner = (User) userDao.getById(2);
         Command newCommand = new Command("/tellraw @a [\"Why, hello there!\"]",
                 owner, true);
-        int id = dao.insert(newCommand);
+        int id = commandDao.insert(newCommand);
         newCommand.setId(id);
         assertNotEquals(1, id);
-        Command insertedCommand = (Command) dao.getById(id);
+        Command insertedCommand = (Command) commandDao.getById(id);
         assertEquals(newCommand, insertedCommand);
     }
 
@@ -78,10 +78,10 @@ class CommandDaoTest {
     @Test
     void deleteSuccess() {
         int id = 2;
-        Command command = (Command) dao.getById(id);
+        Command command = (Command) commandDao.getById(id);
         assertNotNull(command);
-        dao.delete(command);
-        assertNull(dao.getById(id));
+        commandDao.delete(command);
+        assertNull(commandDao.getById(id));
     }
 
     /**
@@ -89,7 +89,7 @@ class CommandDaoTest {
      */
     @Test
     void getAllSuccess() {
-        List<Command> commands = dao.getAll();
+        List<Command> commands = commandDao.getAll();
         assertEquals(3, commands.size());
     }
 }
