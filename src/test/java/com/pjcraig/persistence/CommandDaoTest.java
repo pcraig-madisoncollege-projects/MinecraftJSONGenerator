@@ -65,11 +65,17 @@ class CommandDaoTest {
         User owner = (User) userDao.getById(2);
         Command newCommand = new Command("/tellraw @a [\"Why, hello there!\"]",
                 owner, true);
+        owner.addCommand(newCommand);
+
         int id = commandDao.insert(newCommand);
         newCommand.setId(id);
+
         assertNotEquals(1, id);
         Command insertedCommand = (Command) commandDao.getById(id);
+
         assertEquals(newCommand, insertedCommand);
+        assertNotNull(insertedCommand.getOwner());
+        assertEquals(owner, insertedCommand.getOwner());
     }
 
     /**
