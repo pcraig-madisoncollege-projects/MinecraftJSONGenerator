@@ -72,6 +72,17 @@ good overall.
 
 2/15/2021
 
-Time Spend: TBD
+Time Spent: ~6.75 hours
 
+I ran into some slight issues with my VM again, but I was able to load a backup, so no harm there. After that, I was
+able to set up the entity, dao, and dao test classes with minimal problems.
 
+On Sunday evening, I updated the entity classes to utilize the one-to-many relationships discussed [here](https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#associations).
+I did run into a minor problem when I forgot to update the fetch type for the User entity to eager (rather than lazy),
+but the error was clear enough to indicate my mistake. Aside from that, everything went smoothly.
+
+## Week 6
+
+2/22/2021
+
+Time Spent: TBD
