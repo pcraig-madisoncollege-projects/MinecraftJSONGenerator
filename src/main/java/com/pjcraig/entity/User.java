@@ -1,6 +1,9 @@
 package com.pjcraig.entity;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.*;
 
@@ -19,6 +22,9 @@ public class User {
     private String email;
     private String password;
     private String nickname;
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Command> commands = new ArrayList<>();
 
     /**
      * Instantiates a new User.
@@ -110,6 +116,24 @@ public class User {
      */
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    /**
+     * Gets this user's saved commands.
+     *
+     * @return the commands
+     */
+    public List<Command> getCommands() {
+        return commands;
+    }
+
+    /**
+     * Sets this user's saved commands.
+     *
+     * @param commands the commands
+     */
+    public void setCommands(List<Command> commands) {
+        this.commands = commands;
     }
 
     @Override
