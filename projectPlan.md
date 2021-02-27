@@ -1,45 +1,52 @@
 # Project Plan
 
 ### Week 2
-- [ ] Create project repository on GitHub
-- [ ] Create project structure in IntelliJ IDEA and push to repository
-- [ ] Link to repository from student repository
-- [ ] Complete problem statement
-- [ ] Create time log
+- [x] Create project repository on GitHub
+- [x] Create project structure in IntelliJ IDEA and push to repository
+- [x] Link to repository from student repository
+- [x] Complete problem statement
+- [x] Create time log
 
 ### Week 3
-- [ ] Consider features of project
-- [ ] Update time log with time spent on classwork
+- [x] Consider features of project
+- [x] Update time log with time spent on classwork
 
 ### Week 4
-- [ ] Consider features of project
-- [ ] Add project plan
-- [ ] Add user stories with MVP indications
-- [ ] Add screens/wireframe of project
-- [ ] Add application flow
-- [ ] Add weekly reflection document
-- [ ] Checkpoint 1 due
-- [ ] Configure log4j into project and test
+- [x] Consider features of project
+- [x] Add project plan
+- [x] Add user stories with MVP indications
+- [x] Add screens/wireframe of project
+- [x] Add application flow
+- [x] Add weekly reflection document
+- [x] Checkpoint 1 due
+- [x] Configure log4j into project and test
 - [ ] Create rough working jsp pages (sign up, login, about/index, view command, rough generate command)
-- [ ] Set up database with tables and dummy data (i.e. user, command, user_command tables)
+- [x] Set up database with tables and dummy data (i.e. user, command, user_command tables)
 - [ ] Set up database access through user registration and login through webpage (dao and hibernate configuration)
-- [ ] Update time log
-- [ ] Update weekly reflections
+- [x] Update time log
+- [x] Update weekly reflections
 
 ### Week 5
-- [ ] Configure log4j into project and test
+- [x] Configure log4j into project and test
 - [ ] Create rough working jsp pages (sign up, login, about/index, view command, rough generate command)
-- [ ] Set up database with tables and dummy data (i.e. user, command, user_command tables)
+- [x] Set up database with tables and dummy data (i.e. user, command, user_command tables)
 - [ ] Set up database access through user registration and login through webpage (dao and hibernate configuration)
 - [ ] Start working on modular JSON generator code with tellraw command in mind
 - [ ] Create user saved commands jsp and servlet
 - [ ] Load user saved commands into new saved commands jsp through dao
 - [ ] Implement logout feature (clearing user session data?)
 - [ ] Update unit testing for current dao, Enterprise JavaBeans/entities, etc.
-- [ ] Update time log
-- [ ] Update weekly reflections
+- [x] Update time log
+- [x] Update weekly reflections
 
 ### Week 6
+- [ ] Create rough working jsp pages (sign up, login, about/index, view command, rough generate command)
+- [ ] Set up database access through user registration and login through webpage (dao and hibernate configuration)
+- [ ] Start working on modular JSON generator code with tellraw command in mind
+- [ ] Create user saved commands jsp and servlet
+- [ ] Load user saved commands into new saved commands jsp through dao
+- [ ] Implement logout feature (clearing user session data?)
+- [ ] Update unit testing for current dao, Enterprise JavaBeans/entities, etc.
 - [ ] Continue working on JSON generator for tellraw
 - [ ] Begin work with loading JSON from raw command (possibly using GSON?)
 - [ ] Begin work with saving commands to account
