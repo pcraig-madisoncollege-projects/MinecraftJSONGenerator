@@ -47,6 +47,26 @@ public class GenericDao<T> {
     }
 
     /**
+     * Gets a list of entities based on the value of a given property.
+     *
+     * @param property The entity property to search under.
+     * @param value The specific value of the property to search for.
+     * @return A list of entities that match the value for that property.
+     */
+    public List<T> getByPropertyEqual(String property, T value) {
+        Session session = getSession();
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root = query.from(type);
+        query.select(root).where(builder.equal(root.get(property), value));
+        List<T> entities = session.createQuery( query ).getResultList();
+
+        session.close();
+        return entities;
+    }
+
+    /**
      * Updates or saves a given entity in the database.
      * @param entity The entity to add or update.
      */
