@@ -12,14 +12,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserDaoTest {
 
-    GenericDao dao;
+    GenericDao userDao;
+    GenericDao commandDao;
 
     /**
-     * Initializes the dao and testing database before any test is run.
+     * Initializes the DAOs and testing database before any test is run.
      */
     @BeforeEach
     void setUp() {
-        dao = new GenericDao(User.class);
+        userDao = new GenericDao(User.class);
+        commandDao = new GenericDao(Command.class);
 
         Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
@@ -32,7 +34,7 @@ class UserDaoTest {
     void getByIdSuccess() {
         User expectedUser = new User("jdoe@example.com", "password1234", "Kat");
         expectedUser.setId(2);
-        User retrievedUser = (User) dao.getById(2);
+        User retrievedUser = (User) userDao.getById(2);
         assertNotNull(retrievedUser);
         assertEquals(expectedUser, retrievedUser);
     }
@@ -43,13 +45,13 @@ class UserDaoTest {
     @Test
     void removeCommandSuccess() {
         int id = 2;
-        User initialUser = (User) dao.getById(id);
+        User initialUser = (User) userDao.getById(id);
 
         assertEquals(1, initialUser.getCommands().size());
         initialUser.removeCommand(0);
-        dao.saveOrUpdate(initialUser);
+        userDao.saveOrUpdate(initialUser);
 
-        User retrievedUser = (User) dao.getById(id);
+        User retrievedUser = (User) userDao.getById(id);
         assertEquals(0, retrievedUser.getCommands().size());
     }
 
@@ -59,12 +61,12 @@ class UserDaoTest {
     @Test
     void saveOrUpdateSuccess() {
         int id = 3;
-        User userToUpdate = (User) dao.getById(id);
+        User userToUpdate = (User) userDao.getById(id);
         String newNickname = "supersecretstuff123";
         String initialNickname = userToUpdate.getNickname();
         userToUpdate.setNickname(newNickname);
-        dao.saveOrUpdate(userToUpdate);
-        User retrievedUser = (User) dao.getById(id);
+        userDao.saveOrUpdate(userToUpdate);
+        User retrievedUser = (User) userDao.getById(id);
         assertNotEquals(initialNickname, retrievedUser.getNickname());
         assertEquals(newNickname, retrievedUser.getNickname());
     }
@@ -75,10 +77,10 @@ class UserDaoTest {
     @Test
     void insertSuccess() {
         User newUser = new User("jeff@example.com", "longpassword123", "Jeffster");
-        int id = dao.insert(newUser);
+        int id = userDao.insert(newUser);
         newUser.setId(id);
         assertNotEquals(1, id);
-        User insertedUser = (User) dao.getById(id);
+        User insertedUser = (User) userDao.getById(id);
         assertEquals(newUser, insertedUser);
     }
 
@@ -93,25 +95,31 @@ class UserDaoTest {
         Command commandEntity = new Command(command, newUser);
         newUser.addCommand(commandEntity);
 
-        int id = dao.insert(newUser);
+        int id = userDao.insert(newUser);
         newUser.setId(id);
 
         assertNotEquals(1, id);
-        User insertedUser = (User) dao.getById(id);
+        User insertedUser = (User) userDao.getById(id);
         assertEquals(newUser, insertedUser);
         assertEquals(1, insertedUser.getCommands().size());
     }
 
     /**
-     * Verifies success of user deletion from the database.
+     * Verifies success of user deletion along with that user's commands from the database.
      */
     @Test
     void deleteSuccess() {
         int id = 2;
-        User user = (User) dao.getById(id);
+        User user = (User) userDao.getById(id);
         assertNotNull(user);
-        dao.delete(user);
-        assertNull(dao.getById(id));
+        List<Command> commands = commandDao.getByPropertyEqual("owner", user);
+        assertEquals(1, commands.size());
+
+        userDao.delete(user);
+
+        commands = commandDao.getByPropertyEqual("owner", user);
+        assertNull(userDao.getById(id));
+        assertEquals(0, commands.size());
     }
 
     /**
@@ -119,7 +127,7 @@ class UserDaoTest {
      */
     @Test
     void getAllSuccess() {
-        List<User> users = dao.getAll();
+        List<User> users = userDao.getAll();
         assertEquals(3, users.size());
     }
 }
