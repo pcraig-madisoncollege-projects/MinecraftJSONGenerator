@@ -40,6 +40,20 @@ class UserDaoTest {
     }
 
     /**
+     * Verifies retrieving users by a given property from database succeeds.
+     */
+    @Test
+    void getByPropertyEqualsSuccess() {
+        User expectedUser = (User) userDao.getById(1);
+
+        List<User> users = userDao.getByPropertyEqual("nickname", expectedUser.getNickname());
+
+        assertEquals(1, users.size());
+        User actualUser = users.get(0);
+        assertEquals(expectedUser, actualUser);
+    }
+
+    /**
      * Verifies that user command removal updates in database.
      */
     @Test

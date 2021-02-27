@@ -42,6 +42,20 @@ class CommandDaoTest {
     }
 
     /**
+     * Verifies retrieving command by a given property from database succeeds.
+     */
+    @Test
+    void getByPropertyEqualsSuccess() {
+        Command expectedCommand = (Command) commandDao.getById(2);
+
+        List<Command> commands = commandDao.getByPropertyEqual("shared", expectedCommand.isShared());
+
+        assertEquals(1, commands.size());
+        Command actualCommand = commands.get(0);
+        assertEquals(expectedCommand, actualCommand);
+    }
+
+    /**
      * Verifies success of updating commands in database.
      */
     @Test
