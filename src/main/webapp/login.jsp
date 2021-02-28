@@ -21,7 +21,7 @@
                 <label for="password">*Password</label>
                 <input type="password" id="password" name="password" class="form-control" required>
             </div>
-            <input type="submit" value="Register" class="btn btn-primary">
+            <input type="submit" value="Login" class="btn btn-primary">
             <input type="reset" value="Clear" class="btn btn-primary">
             <br>
             <div class="mt-2"><a href="#">Forgot your password?</a></div>
