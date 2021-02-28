@@ -12,4 +12,4 @@
 | 2/14/2021 | Started implementing basic JSP layout with bootstrap | 1.25 hours |
 | 2/19/2021 | Created user and command databases, set up User, Command, UserDao, CommandDao, and JUnit test classes for the DAOs, update DAOs and tests to utilize generics for less duplicate code | 4.75 hours |
 | 2/21/2021 | Updated entity classes to utilize one-to-many associations, updated tests to work with associations | 2 hours |
-| 2/27/2021 | Removed javadoc from test Database class per code review, updated DAO unit tests to verify database cascading behavior and test property value querying, | 11:45- hours |
+| 2/27/2021 | Removed javadoc from test Database class per code review, updated DAO unit tests to verify database cascading behavior and test property value querying, update project to use Gradle build tool | 5 hours |
