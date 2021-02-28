@@ -48,7 +48,10 @@
             <input type="button" value="Save Command" class="btn btn-primary">
             <input type="button" value="Load Command" class="btn btn-primary">
 
-            <textarea id="commandOutput" cols="30" rows="10" readonly>Generated Command Goes Here</textarea>
+            <div class="form-group">
+                <label for="commandOutput">Command</label>
+                <textarea id="commandOutput" cols="30" rows="10" readonly class="form-control">Generated Command Goes Here</textarea>
+            </div>
         </form>
     </main>
 
