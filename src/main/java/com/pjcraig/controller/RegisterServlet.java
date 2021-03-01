@@ -50,7 +50,7 @@ public class RegisterServlet extends HttpServlet {
         String nickname = request.getParameter(PARAMETER_NICKNAME);
         String password = request.getParameter(PARAMETER_PASSWORD);
 
-        User user = new User(email, nickname, password);
+        User user = new User(email, password, nickname);
 
         dao.insert(user);
 
