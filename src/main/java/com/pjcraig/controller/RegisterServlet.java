@@ -16,6 +16,7 @@ import java.io.IOException;
  * @author pjcraig
  */
 @WebServlet(
+        name = "RegisterServlet",
         urlPatterns = {"/register"}
 )
 public class RegisterServlet extends HttpServlet {
