@@ -85,4 +85,20 @@ but the error was clear enough to indicate my mistake. Aside from that, everythi
 
 2/22/2021
 
-Time Spent: TBD
+Time Spent: ~11.5
+
+This week, I spent a good chunk of time cleaning up problems identified by the design/code review. There were a couple
+of things pointed out that I changed, but there are a few more tasks I would like to get done. Overall, there were
+little changes to the project that needed to be changed, but nothing too major. I also converted the project from
+Maven to Gradle, which did cause a couple of hiccups that I have yet to fix.
+
+On Sunday night, I worked further into developing JSPs for the web application as well as basic servlets, but I ran into
+problems with the Java classes not deploying properly. While the servlets should have valid code, I need to figure out
+why the classes are not being deployed into the target web application directory. Since I could not get the servlets
+up and running, I had to deploy the user display exercise instead for this week's AWS exercise.
+
+During the "vampire hours" of Sunday night, I managed to resolve application deployment problems by eliminating various
+Maven files from an older version of the project as well as modeling the build.gradle file more closely to what I
+experimented with for the Professional Development Activity assignment in class. While there does still appear to be
+some remnants of Maven still associated with the project, I was able to get the deployment to work along with the
+servlet access, so that's great. Now I need to go to bed.
