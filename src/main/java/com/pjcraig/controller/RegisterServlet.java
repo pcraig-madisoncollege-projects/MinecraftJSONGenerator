@@ -46,6 +46,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         GenericDao dao = new GenericDao(User.class);
 
+        // TODO: Implement input processing for safety and display feedback to users
         String email = request.getParameter(PARAMETER_EMAIL);
         String nickname = request.getParameter(PARAMETER_NICKNAME);
         String password = request.getParameter(PARAMETER_PASSWORD);
