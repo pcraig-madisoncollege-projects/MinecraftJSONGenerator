@@ -96,6 +96,26 @@ public class Role {
         this.users = users;
     }
 
+    /**
+     * Add user to role.
+     *
+     * @param user the user
+     */
+    public void addUser(User user) {
+        users.add(user);
+        user.setRole(this);
+    }
+
+    /**
+     * Remove user from role.
+     *
+     * @param user the user
+     */
+    public void removeUser(User user) {
+        users.remove(user);
+        user.setRole(null);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
