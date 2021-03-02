@@ -38,8 +38,8 @@ text in the game.
     * MySQL 8.0.22
 * ORM Framework
     * Hibernate 5
-* Dependency Management
-    * Maven
+* Build Tool & Dependency Management
+    * Gradle
 * CSS
     * Bootstrap
 * Data Validation
@@ -50,7 +50,9 @@ text in the game.
 * Hosting
     * AWS
 * Independent Research Topic/s
-    * TBD
+    * Gradle
+    * GSON API
+    * JavaMail API
 * Unit Testing
     * JUnit tests to achieve 80%+ code coverage
 * IDE: IntelliJ IDEA
@@ -66,3 +68,5 @@ text in the game.
 [**User Stories**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/DesignDocuments/userStories.md)
 
 [**Application Flow**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/DesignDocuments/applicationFlow.md)
+
+[**Database Design**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/DesignDocuments/databaseDesign.png)
