@@ -116,6 +116,15 @@ public class Role {
         user.setRole(null);
     }
 
+    /**
+     * Remove user from role by index.
+     *
+     * @param index the index
+     */
+    public void removeUser(int index) {
+        removeUser(users.get(index));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
