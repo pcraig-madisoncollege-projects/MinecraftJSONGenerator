@@ -18,6 +18,7 @@
 
         <mapping class="com.pjcraig.entity.User" />
         <mapping class="com.pjcraig.entity.Command" />
+        <mapping class="com.pjcraig.entity.Role" />
 
     </session-factory>
 
