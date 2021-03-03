@@ -102,3 +102,14 @@ Maven files from an older version of the project as well as modeling the build.g
 experimented with for the Professional Development Activity assignment in class. While there does still appear to be
 some remnants of Maven still associated with the project, I was able to get the deployment to work along with the
 servlet access, so that's great. Now I need to go to bed.
+
+
+## Week 7
+
+3/1/2021
+
+Time Spend: TBD
+
+This week, I have spent time working out issues identified in the code review. I also started implementing user roles
+so that there can be admin permissions associated with the web application. There were quite a few issues to work out
+with the set up, but nothing caught me up for very long.
