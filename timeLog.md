@@ -14,3 +14,4 @@
 | 2/21/2021 | Updated entity classes to utilize one-to-many associations, updated tests to work with associations | 2 hours |
 | 2/27/2021 | Removed javadoc from test Database class per code review, updated DAO unit tests to verify database cascading behavior and test property value querying, update project to use Gradle build tool | 5 hours |
 | 2/28/2021 | Fleshed out basic JSP pages, begun setting up database connections | 6.5 hours |
+| 3/2/2021 | Completed readings and watched overview for week, updated cleandb.sql, added role table and entity to associate with user permissions | 13:30- hours |
