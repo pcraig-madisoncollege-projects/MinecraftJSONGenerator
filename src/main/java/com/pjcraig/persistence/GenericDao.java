@@ -59,7 +59,12 @@ public class GenericDao<T> {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);
         Root<T> root = query.from(type);
-        query.select(root).where(builder.equal(root.get(property), value));
+        if (value != null) {
+            query.select(root).where(builder.equal(root.get(property), value));
+        } else {
+            logger.debug("SEARCHING FOR NULL VALUES");
+            query.select(root).where(builder.isNull(root.get(property)));
+        }
         List<T> entities = session.createQuery( query ).getResultList();
 
         session.close();
