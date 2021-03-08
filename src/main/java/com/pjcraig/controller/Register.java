@@ -16,10 +16,10 @@ import java.io.IOException;
  * @author pjcraig
  */
 @WebServlet(
-        name = "RegisterServlet",
+        name = "Register",
         urlPatterns = {"/register"}
 )
-public class RegisterServlet extends HttpServlet {
+public class Register extends HttpServlet {
     public static final String PARAMETER_EMAIL = "email";
     public static final String PARAMETER_NICKNAME = "nickname";
     public static final String PARAMETER_PASSWORD = "password";
