@@ -1,6 +1,7 @@
 package com.pjcraig.persistence;
 
 import com.pjcraig.entity.Command;
+import com.pjcraig.entity.Role;
 import com.pjcraig.entity.User;
 import com.pjcraig.test.util.Database;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +15,7 @@ class UserDaoTest {
 
     GenericDao userDao;
     GenericDao commandDao;
+    GenericDao roleDao;
 
     /**
      * Initializes the DAOs and testing database before any test is run.
@@ -22,6 +24,7 @@ class UserDaoTest {
     void setUp() {
         userDao = new GenericDao(User.class);
         commandDao = new GenericDao(Command.class);
+        roleDao = new GenericDao(Role.class);
 
         Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
@@ -60,7 +63,8 @@ class UserDaoTest {
     void removeCommandSuccess() {
         int id = 2;
         User initialUser = (User) userDao.getById(id);
-        Command commandToBeRemoved = (Command) commandDao.getById(3);
+        Command commandToBeRemoved = new Command("/title @a title [{\"text\":\"Hello!\"}]", initialUser);
+        commandToBeRemoved.setId(3);
 
         assertEquals(1, initialUser.getCommands().size());
         initialUser.removeCommand(commandToBeRemoved);
@@ -68,6 +72,59 @@ class UserDaoTest {
 
         User retrievedUser = (User) userDao.getById(id);
         assertEquals(0, retrievedUser.getCommands().size());
+    }
+
+    /**
+     * Verifies that user command addition updates in database.
+     */
+    @Test
+    void addCommandSuccess() {
+        int id = 2;
+        User initialUser = (User) userDao.getById(id);
+        Command commandToBeAdded = new Command("/tellraw @a [\"This is a new command\"]",
+                initialUser);
+
+        assertEquals(1, initialUser.getCommands().size());
+        initialUser.addCommand(commandToBeAdded);
+        userDao.saveOrUpdate(initialUser);
+
+        User retrievedUser = (User) userDao.getById(id);
+        assertEquals(2, retrievedUser.getCommands().size());
+    }
+
+    /**
+     * Verifies that user role removal updates in database.
+     */
+    @Test
+    void removeRoleSuccess() {
+        int id = 1;
+        User initialUser = (User) userDao.getById(id);
+        Role roleToBeRemoved = new Role("admin", initialUser);
+        roleToBeRemoved.setId(1);
+
+        assertEquals(1, initialUser.getRoles().size());
+        initialUser.removeRole(roleToBeRemoved);
+        userDao.saveOrUpdate(initialUser);
+
+        User retrievedUser = (User) userDao.getById(id);
+        assertEquals(0, retrievedUser.getRoles().size());
+    }
+
+    /**
+     * Verifies that user role addition updates in database.
+     */
+    @Test
+    void addRoleSuccess() {
+        int id = 2;
+        User initialUser = (User) userDao.getById(id);
+        Role roleToBeAdded = new Role("admin", initialUser);
+
+        assertEquals(0, initialUser.getRoles().size());
+        initialUser.addRole(roleToBeAdded);
+        userDao.saveOrUpdate(initialUser);
+
+        User retrievedUser = (User) userDao.getById(id);
+        assertEquals(1, retrievedUser.getRoles().size());
     }
 
     /**
