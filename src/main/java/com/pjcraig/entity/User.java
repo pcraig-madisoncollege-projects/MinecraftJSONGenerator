@@ -178,12 +178,41 @@ public class User {
     }
 
     /**
-     * Removes a command from the user from an index.
+     * Removes a command from the user using an index in the list.
      *
      * @param index the index to remove
      */
     public void removeCommand(int index) {
         removeCommand(commands.get(index));
+    }
+
+    /**
+     * Adds a role to the user.
+     *
+     * @param role the role
+     */
+    public void addRole(Role role) {
+        roles.add(role);
+        role.setUser(this);
+    }
+
+    /**
+     * Removes a role from the user.
+     *
+     * @param role the command
+     */
+    public void removeRole(Role role) {
+        roles.remove(role);
+        role.setUser(null);
+    }
+
+    /**
+     * Removes a role from the user using an index in the list.
+     *
+     * @param index the index to remove
+     */
+    public void removeRole(int index) {
+        removeRole(roles.get(index));
     }
 
     @Override
