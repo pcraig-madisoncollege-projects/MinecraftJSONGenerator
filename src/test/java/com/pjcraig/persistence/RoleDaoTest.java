@@ -33,7 +33,8 @@ class RoleDaoTest {
     @Test
     void getByIdSuccess() {
         int id = 1;
-        Role expectedRole = new Role("admin");
+        User user = (User) userDao.getById(1);
+        Role expectedRole = new Role("admin", user);
         expectedRole.setId(id);
         Role retrievedRole = (Role) roleDao.getById(id);
         assertNotNull(retrievedRole);
@@ -52,22 +53,6 @@ class RoleDaoTest {
         assertEquals(1, roles.size());
         Role actualRole = roles.get(0);
         assertEquals(expectedRole, actualRole);
-    }
-
-    /**
-     * Verifies that role command removal updates in database.
-     */
-    @Test
-    void removeUserSuccess() {
-        int id = 1;
-        Role initialRole = (Role) roleDao.getById(id);
-
-        assertEquals(1, initialRole.getUsers().size());
-        initialRole.removeUser(0);
-        roleDao.saveOrUpdate(initialRole);
-
-        Role retrievedRole = (Role) roleDao.getById(id);
-        assertEquals(0, retrievedRole.getUsers().size());
     }
 
     /**
@@ -91,31 +76,13 @@ class RoleDaoTest {
      */
     @Test
     void insertSuccess() {
-        Role newRole = new Role("moderator");
+        User user = (User) userDao.getById(2);
+        Role newRole = new Role("admin", user);
         int id = roleDao.insert(newRole);
         newRole.setId(id);
         assertNotEquals(1, id);
         Role insertedRole = (Role) roleDao.getById(id);
         assertEquals(newRole, insertedRole);
-    }
-
-    /**
-     * Verifies success of role and user insertion into the database.
-     */
-    @Test
-    void insertWithUserSuccess() {
-        Role newRole = new Role("moderator");
-
-        User user = (User) userDao.getById(1);
-        newRole.addUser(user);
-
-        int id = roleDao.insert(newRole);
-        newRole.setId(id);
-
-        assertNotEquals(1, id);
-        Role insertedRole = (Role) roleDao.getById(id);
-        assertEquals(newRole, insertedRole);
-        assertEquals(1, insertedRole.getUsers().size());
     }
 
     /**
@@ -124,19 +91,13 @@ class RoleDaoTest {
     @Test
     void deleteSuccess() {
         int id = 1;
-        Role role = (Role) roleDao.getById(id);
-        assertNotNull(role);
-        List<User> users = userDao.getByPropertyEqual("role", role);
-        assertEquals(1, users.size());
+        Role initialRole = (Role) roleDao.getById(id);
+        assertNotNull(initialRole);
 
-        roleDao.delete(role);
+        roleDao.delete(initialRole);
 
-        users = userDao.getByPropertyEqual("role", role);
-        assertNull(roleDao.getById(id));
-        assertEquals(0, users.size());
-
-        users = userDao.getByPropertyEqual("role", null);
-        assertEquals(3, users.size());
+        Role deletedRole = (Role) roleDao.getById(id);
+        assertNull(deletedRole);
     }
 
     /**

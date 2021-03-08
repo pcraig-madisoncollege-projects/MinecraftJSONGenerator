@@ -1,9 +1,11 @@
 package com.pjcraig.entity;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 import javax.persistence.*;
 
@@ -15,6 +17,9 @@ import javax.persistence.*;
 @Entity(name="User")
 @Table(name="user")
 public class User {
+    @Transient
+    private final Logger logger = LogManager.getLogger();
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -23,11 +28,11 @@ public class User {
     private String password;
     private String nickname;
 
-    @ManyToOne
-    private Role role;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Role> roles = new HashSet<>();
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<Command> commands = new ArrayList<>();
+    private Set<Command> commands = new HashSet<>();
 
     /**
      * Instantiates a new User.
@@ -126,7 +131,7 @@ public class User {
      *
      * @return the commands
      */
-    public List<Command> getCommands() {
+    public Set<Command> getCommands() {
         return commands;
     }
 
@@ -135,26 +140,26 @@ public class User {
      *
      * @param commands the commands
      */
-    public void setCommands(List<Command> commands) {
+    public void setCommands(Set<Command> commands) {
         this.commands = commands;
     }
 
     /**
-     * Gets the user's role.
+     * Gets the user's roles.
      *
-     * @return the role
+     * @return the list of roles
      */
-    public Role getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
     /**
-     * Sets the user's role.
+     * Sets the user's roles.
      *
-     * @param role the role
+     * @param roles the list of roles
      */
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRole(Set<Role> roles) {
+        this.roles = roles;
     }
 
     /**
@@ -178,12 +183,23 @@ public class User {
     }
 
     /**
-     * Removes a command from the user from an index.
+     * Adds a role to the user.
      *
-     * @param index the index to remove
+     * @param role the role
      */
-    public void removeCommand(int index) {
-        removeCommand(commands.get(index));
+    public void addRole(Role role) {
+        roles.add(role);
+        role.setUser(this);
+    }
+
+    /**
+     * Removes a role from the user.
+     *
+     * @param role the command
+     */
+    public void removeRole(Role role) {
+        roles.remove(role);
+        role.setUser(null);
     }
 
     @Override

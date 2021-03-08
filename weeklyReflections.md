@@ -108,7 +108,7 @@ servlet access, so that's great. Now I need to go to bed.
 
 3/1/2021
 
-Time Spend: 9.9 hours
+Time Spent: 12 hours
 
 This week, I have spent time working out issues identified in the code review. I also started implementing user roles
 so that there can be admin permissions associated with the web application. There were quite a few issues to work out
@@ -117,3 +117,6 @@ with the set up, but nothing caught me up for very long.
 On Sunday evening, I also completed the exercise for the week. Set up for Tomcat's form authorization went smoothly
 with no major problems. There was one small issue I had with deploying my application to Tomcat, but I think I managed
 to update my run configuration to fix the issue.
+
+Finally, I updated the entity and test classes after having updated the user and role tables. With these changes, I am
+now able to run tests with 100% completion (for now) and test coverage of 86%+ in the GenericDao and entity classes.

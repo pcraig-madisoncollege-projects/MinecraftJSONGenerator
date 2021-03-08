@@ -22,9 +22,10 @@ public class Role {
     private int id;
 
     private String name;
+    private String email;
 
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<User> users = new ArrayList<>();
+    @ManyToOne
+    private User user;
 
     /**
      * Instantiates a new Role.
@@ -38,8 +39,12 @@ public class Role {
      *
      * @param name the name
      */
-    public Role(String name) {
+    public Role(String name, User user) {
         this.name = name;
+        if (user != null) {
+            this.email = user.getEmail();
+        }
+        this.user = user;
     }
 
     /**
@@ -79,50 +84,39 @@ public class Role {
     }
 
     /**
-     * Gets users.
+     * Gets email.
      *
-     * @return the users
+     * @return the email
      */
-    public List<User> getUsers() {
-        return users;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * Sets users.
+     * Sets email.
      *
-     * @param users the users
+     * @param email the email
      */
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
-     * Add user to role.
+     * Gets user.
+     *
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * Sets user.
      *
      * @param user the user
      */
-    public void addUser(User user) {
-        users.add(user);
-        user.setRole(this);
-    }
-
-    /**
-     * Remove user from role.
-     *
-     * @param user the user
-     */
-    public void removeUser(User user) {
-        users.remove(user);
-        user.setRole(null);
-    }
-
-    /**
-     * Remove user from role by index.
-     *
-     * @param index the index
-     */
-    public void removeUser(int index) {
-        removeUser(users.get(index));
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -130,11 +124,12 @@ public class Role {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Role role = (Role) o;
-        return id == role.getId() && name.equals(role.getName());
+        return id == role.getId() && name.equals(role.getName())
+                && email.equals(role.getEmail()) && user.equals(role.getUser());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, name, email, user);
     }
 }
