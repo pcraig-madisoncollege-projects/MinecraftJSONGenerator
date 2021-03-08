@@ -4,8 +4,8 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 import javax.persistence.*;
 
@@ -25,13 +25,11 @@ public class User {
     private String password;
     private String nickname;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Fetch(value = FetchMode.SUBSELECT)
-    private List<Role> roles = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Fetch(value = FetchMode.SUBSELECT)
-    private List<Command> commands = new ArrayList<>();
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Command> commands = new HashSet<>();
 
     /**
      * Instantiates a new User.
@@ -130,7 +128,7 @@ public class User {
      *
      * @return the commands
      */
-    public List<Command> getCommands() {
+    public Set<Command> getCommands() {
         return commands;
     }
 
@@ -139,7 +137,7 @@ public class User {
      *
      * @param commands the commands
      */
-    public void setCommands(List<Command> commands) {
+    public void setCommands(Set<Command> commands) {
         this.commands = commands;
     }
 
@@ -148,7 +146,7 @@ public class User {
      *
      * @return the list of roles
      */
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
@@ -157,7 +155,7 @@ public class User {
      *
      * @param roles the list of roles
      */
-    public void setRole(List<Role> roles) {
+    public void setRole(Set<Role> roles) {
         this.roles = roles;
     }
 
@@ -182,15 +180,6 @@ public class User {
     }
 
     /**
-     * Removes a command from the user using an index in the list.
-     *
-     * @param index the index to remove
-     */
-    public void removeCommand(int index) {
-        removeCommand(commands.get(index));
-    }
-
-    /**
      * Adds a role to the user.
      *
      * @param role the role
@@ -208,15 +197,6 @@ public class User {
     public void removeRole(Role role) {
         roles.remove(role);
         role.setUser(null);
-    }
-
-    /**
-     * Removes a role from the user using an index in the list.
-     *
-     * @param index the index to remove
-     */
-    public void removeRole(int index) {
-        removeRole(roles.get(index));
     }
 
     @Override
