@@ -108,8 +108,12 @@ servlet access, so that's great. Now I need to go to bed.
 
 3/1/2021
 
-Time Spend: TBD
+Time Spend: 9.9 hours
 
 This week, I have spent time working out issues identified in the code review. I also started implementing user roles
 so that there can be admin permissions associated with the web application. There were quite a few issues to work out
 with the set up, but nothing caught me up for very long.
+
+On Sunday evening, I also completed the exercise for the week. Set up for Tomcat's form authorization went smoothly
+with no major problems. There was one small issue I had with deploying my application to Tomcat, but I think I managed
+to update my run configuration to fix the issue.
