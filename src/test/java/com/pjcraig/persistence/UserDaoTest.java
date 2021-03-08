@@ -60,9 +60,10 @@ class UserDaoTest {
     void removeCommandSuccess() {
         int id = 2;
         User initialUser = (User) userDao.getById(id);
+        Command commandToBeRemoved = (Command) commandDao.getById(3);
 
         assertEquals(1, initialUser.getCommands().size());
-        initialUser.removeCommand(0);
+        initialUser.removeCommand(commandToBeRemoved);
         userDao.saveOrUpdate(initialUser);
 
         User retrievedUser = (User) userDao.getById(id);
