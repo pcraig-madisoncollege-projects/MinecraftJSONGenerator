@@ -9,6 +9,9 @@
         <c:import url="includes/header.jsp"></c:import>
 
         <main class="p-3">
+            <c:if test="${pageContext.request.isUserInRole('user') || pageContext.request.isUserInRole('admin')}">
+                <p class="text-success">You are signed in as ${pageContext.request.remoteUser}.</p>
+            </c:if>
             <section id="about">
                 <h2>About the JSON Generator</h2>
                 <p>This service makes creating JSON components for Minecraft commands easy! With a versatile and

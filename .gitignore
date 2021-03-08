@@ -18,5 +18,8 @@ bin/
 # Logs
 logs/
 
+# Tomcat Authorization Files
+src/main/webapp/META-INF/
+
 # Other
 target/

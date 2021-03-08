@@ -12,14 +12,14 @@
         <h2>Login to an Account</h2>
         <p>* Indicates required field</p>
         <p>Enter your login information below.</p>
-        <form action="#" method="post">
+        <form action="j_security_check" method="post">
             <div class="form-group">
                 <label for="email">*Email Address</label>
-                <input type="email" id="email" name="email" class="form-control" required>
+                <input type="email" id="email" name="j_username" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="password">*Password</label>
-                <input type="password" id="password" name="password" class="form-control" required>
+                <input type="password" id="password" name="j_password" class="form-control" required>
             </div>
             <input type="submit" value="Login" class="btn btn-primary">
             <input type="reset" value="Clear" class="btn btn-primary">
