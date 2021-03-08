@@ -1,5 +1,7 @@
 package com.pjcraig.entity;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.HashSet;
@@ -15,6 +17,9 @@ import javax.persistence.*;
 @Entity(name="User")
 @Table(name="user")
 public class User {
+    @Transient
+    private final Logger logger = LogManager.getLogger();
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
