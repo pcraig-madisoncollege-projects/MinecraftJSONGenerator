@@ -23,9 +23,6 @@ public class User {
     private String password;
     private String nickname;
 
-    @ManyToOne
-    private Role role;
-
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Command> commands = new ArrayList<>();
 
@@ -137,24 +134,6 @@ public class User {
      */
     public void setCommands(List<Command> commands) {
         this.commands = commands;
-    }
-
-    /**
-     * Gets the user's role.
-     *
-     * @return the role
-     */
-    public Role getRole() {
-        return role;
-    }
-
-    /**
-     * Sets the user's role.
-     *
-     * @param role the role
-     */
-    public void setRole(Role role) {
-        this.role = role;
     }
 
     /**
