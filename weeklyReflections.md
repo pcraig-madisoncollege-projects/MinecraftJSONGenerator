@@ -117,3 +117,6 @@ with the set up, but nothing caught me up for very long.
 On Sunday evening, I also completed the exercise for the week. Set up for Tomcat's form authorization went smoothly
 with no major problems. There was one small issue I had with deploying my application to Tomcat, but I think I managed
 to update my run configuration to fix the issue.
+
+Finally, I updated the entity and test classes after having updated the user and role tables. With these changes, I am
+now able to run tests with 100% completion (for now) and test coverage of 86%+ in the GenericDao and entity classes.

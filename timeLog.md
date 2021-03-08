@@ -15,4 +15,4 @@
 | 2/27/2021 | Removed javadoc from test Database class per code review, updated DAO unit tests to verify database cascading behavior and test property value querying, update project to use Gradle build tool | 5 hours |
 | 2/28/2021 | Fleshed out basic JSP pages, begun setting up database connections | 6.5 hours |
 | 3/2/2021 | Completed readings and watched overview for week, updated cleandb.sql, added role table and entity to associate with user permissions | 6 hours |
-| 3/7/2021 | Updated user and role table to be compatible with form-based authentication via Tomcat and JDBC Realms, added new servlets and JSPs to experiment with form authentication for users | 3.9 hours |
+| 3/7/2021 | Updated user and role table to be compatible with form-based authentication via Tomcat and JDBC Realms, added new servlets and JSPs to experiment with form authentication for users, updated entity and test dao classes with new table structure | 6 hours |
