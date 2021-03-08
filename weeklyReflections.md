@@ -108,7 +108,7 @@ servlet access, so that's great. Now I need to go to bed.
 
 3/1/2021
 
-Time Spend: 9.9 hours
+Time Spent: 12 hours
 
 This week, I have spent time working out issues identified in the code review. I also started implementing user roles
 so that there can be admin permissions associated with the web application. There were quite a few issues to work out
