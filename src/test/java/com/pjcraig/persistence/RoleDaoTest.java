@@ -91,19 +91,13 @@ class RoleDaoTest {
     @Test
     void deleteSuccess() {
         int id = 1;
-        Role role = (Role) roleDao.getById(id);
-        assertNotNull(role);
-        List<User> users = userDao.getByPropertyEqual("role", role);
-        assertEquals(1, users.size());
+        Role initialRole = (Role) roleDao.getById(id);
+        assertNotNull(initialRole);
 
-        roleDao.delete(role);
+        roleDao.delete(initialRole);
 
-        users = userDao.getByPropertyEqual("role", role);
-        assertNull(roleDao.getById(id));
-        assertEquals(0, users.size());
-
-        users = userDao.getByPropertyEqual("role", null);
-        assertEquals(3, users.size());
+        Role deletedRole = (Role) roleDao.getById(id);
+        assertNull(deletedRole);
     }
 
     /**
