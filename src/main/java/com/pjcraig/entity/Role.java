@@ -39,8 +39,12 @@ public class Role {
      *
      * @param name the name
      */
-    public Role(String name) {
+    public Role(String name, User user) {
         this.name = name;
+        if (user != null) {
+            this.email = user.getEmail();
+        }
+        this.user = user;
     }
 
     /**
