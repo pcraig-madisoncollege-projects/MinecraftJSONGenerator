@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * This servlet handles requests made for the user registration page.
+ * This servlet handles requests made for logging a user or admin into the web application through the login button.
  * @author pjcraig
  */
 @WebServlet(
