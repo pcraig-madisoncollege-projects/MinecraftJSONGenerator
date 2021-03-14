@@ -23,35 +23,35 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '$junit'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:$jupiter'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testCompile group: "junit", name: "junit", version: "$junit"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiter"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
     // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
-    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '$javax'
+    compileOnly group: "javax.servlet", name: "javax.servlet-api", version: "$javax"
     // https://mvnrepository.com/artifact/jstl/jstl
-    implementation group: 'jstl', name: 'jstl', version: '$jstl'
+    implementation group: "jstl", name: "jstl", version: "$jstl"
     // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '$log4j'
+    implementation group: "org.apache.logging.log4j", name: "log4j-api", version: "$log4j"
     // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '$log4j'
+    implementation group: "org.apache.logging.log4j", name: "log4j-core", version: "$log4j"
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '$mysql'
+    implementation group: "mysql", name: "mysql-connector-java", version: "$mysql"
     // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
-    implementation group: 'org.hibernate', name: 'hibernate-core', version: '$hibernate'
+    implementation group: "org.hibernate", name: "hibernate-core", version: "$hibernate"
     // https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0
-    implementation group: 'org.hibernate', name: 'hibernate-c3p0', version: '$hibernate'
+    implementation group: "org.hibernate", name: "hibernate-c3p0", version: "$hibernate"
     // https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client
-    implementation group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '$jersey'
+    implementation group: "org.glassfish.jersey.core", name: "jersey-client", version: "$jersey"
     // https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-common
-    implementation group: 'org.glassfish.jersey.core', name: 'jersey-common', version: '$jersey'
+    implementation group: "org.glassfish.jersey.core", name: "jersey-common", version: "$jersey"
     // https://mvnrepository.com/artifact/org.glassfish.jersey.inject/jersey-hk2
-    implementation group: 'org.glassfish.jersey.inject', name: 'jersey-hk2', version: '$jersey'
+    implementation group: "org.glassfish.jersey.inject", name: "jersey-hk2", version: "$jersey"
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.10.0'
+    implementation group: "com.fasterxml.jackson.core", name: "jackson-core", version: "$jackson"
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '$jackson'
+    implementation group: "com.fasterxml.jackson.core", name: "jackson-annotations", version: "$jackson"
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '$jackson'
+    implementation group: "com.fasterxml.jackson.core", name: "jackson-databind", version: "$jackson"
 }
 
 test {
