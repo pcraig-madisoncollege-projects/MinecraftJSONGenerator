@@ -4,24 +4,18 @@ import com.pjcraig.entity.MinecraftProfile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import com.google.gson.Gson;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * This class tests the Minecraft profile dao for correct account validation.
  * @author pjcraig
  */
 public class MinecraftProfileDaoTest {
-    Gson mapper;
+    MinecraftProfileDao dao;
 
     @BeforeEach
     void setUp() {
-        mapper = new Gson();
+        dao = new MinecraftProfileDao();
     }
 
     /**
@@ -33,13 +27,33 @@ public class MinecraftProfileDaoTest {
         String uuid = "069a79f444e94726a5befca90e38aaf5";
         MinecraftProfile expectedProfile = new MinecraftProfile(profileName, uuid);
 
-        String url = String.format("https://api.mojang.com/users/profiles/minecraft/%s", profileName);
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(url);
-
-        String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
-        MinecraftProfile actualProfile = mapper.fromJson(response, MinecraftProfile.class);
+        MinecraftProfile actualProfile = dao.getProfileByName(profileName);
 
         assertEquals(expectedProfile, actualProfile);
+    }
+
+    /**
+     * Tests an invalid Minecraft profile against the Mojang API profile lookup utility.
+     */
+    @Test
+    void getInvalidProfileSuccess() {
+        String profileName = "user!"; // Invalid profile due to exclamation mark
+
+        MinecraftProfile profile = dao.getProfileByName(profileName);
+
+        assertNull(profile);
+    }
+
+    /**
+     * Tests an invalid Minecraft profile that has too long of a name against
+     * the Mojang API profile lookup utility.
+     */
+    @Test
+    void getInvalidProfileNameLengthSuccess() {
+        String profileName = "ReallyLongUsername"; // Invalid profile due to length (between 3-16 accepted)
+
+        MinecraftProfile profile = dao.getProfileByName(profileName);
+
+        assertNull(profile);
     }
 }
