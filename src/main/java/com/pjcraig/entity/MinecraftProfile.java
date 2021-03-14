@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * This class stores a Minecraft player profile, consisting of a unique name and a universal unique id (uuid).
  * @author pjcraig
  */
-public class MCProfile {
+public class MinecraftProfile {
 
 	@SerializedName("name")
 	private String name;
