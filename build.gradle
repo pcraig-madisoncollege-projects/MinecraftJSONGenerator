@@ -12,7 +12,7 @@ ext {
     mysql = '8.0.16'
     hibernate = '5.4.4.Final'
     jersey = '2.29.1'
-    jackson = '2.10.0'
+    gson = '2.8.6'
 }
 
 group 'com.pjcraig.entjava.jsongenerator'
@@ -46,12 +46,8 @@ dependencies {
     implementation group: "org.glassfish.jersey.core", name: "jersey-common", version: "$jersey"
     // https://mvnrepository.com/artifact/org.glassfish.jersey.inject/jersey-hk2
     implementation group: "org.glassfish.jersey.inject", name: "jersey-hk2", version: "$jersey"
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
-    implementation group: "com.fasterxml.jackson.core", name: "jackson-core", version: "$jackson"
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
-    implementation group: "com.fasterxml.jackson.core", name: "jackson-annotations", version: "$jackson"
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-    implementation group: "com.fasterxml.jackson.core", name: "jackson-databind", version: "$jackson"
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    implementation group: "com.google.code.gson", name: "gson", version: "$gson"
 }
 
 test {
