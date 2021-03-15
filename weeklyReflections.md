@@ -120,3 +120,17 @@ to update my run configuration to fix the issue.
 
 Finally, I updated the entity and test classes after having updated the user and role tables. With these changes, I am
 now able to run tests with 100% completion (for now) and test coverage of 86%+ in the GenericDao and entity classes.
+
+## Week 8
+
+3/8/2021
+
+Time Spent: 8 hours
+
+This week, I completed the lecture readings, videos and activities with minimal issues. I ran into some slight hiccups
+with associating roles to users, but with a little research, I was able to resolve the problems.
+
+On Sunday evening, I  completed the exercise and implemented a basic Minecraft profile lookup feature in my web
+application. My plan here is to give registered users the ability to select their in-game username from a list of
+command targets for convenience. In the process, I also implemented Gson into the application. I had prior experience
+working with Google's Gson API, but it had been a while, so I am glad to have reviewed it.

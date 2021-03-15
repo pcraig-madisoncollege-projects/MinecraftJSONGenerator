@@ -44,13 +44,13 @@ text in the game.
     * Bootstrap
 * Data Validation
     * Bootstrap Validator for front end
-    * Explore Hibernate's validation (TBD)
 * Logging
     * Log4J2
 * Hosting
     * AWS
 * Independent Research Topic/s
     * Gradle
+    * Mojang API (Minecraft profile lookup)
     * GSON API
     * JavaMail API
 * Unit Testing

@@ -16,3 +16,5 @@
 | 2/28/2021 | Fleshed out basic JSP pages, begun setting up database connections | 6.5 hours |
 | 3/2/2021 | Completed readings and watched overview for week, updated cleandb.sql, added role table and entity to associate with user permissions | 6 hours |
 | 3/7/2021 | Updated user and role table to be compatible with form-based authentication via Tomcat and JDBC Realms, added new servlets and JSPs to experiment with form authentication for users, updated entity and test dao classes with new table structure | 6 hours |
+| 3/8/2021 | Completed week 8 readings and activities, set up demo SWAPI (Star Wars API) Gradle project | 5 hours |
+| 3/14/2021 | Added basic dao and test class for retrieving Minecraft profiles using the Mojang API | 3 hours |
