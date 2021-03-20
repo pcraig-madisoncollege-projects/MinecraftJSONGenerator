@@ -134,3 +134,19 @@ On Sunday evening, I  completed the exercise and implemented a basic Minecraft p
 application. My plan here is to give registered users the ability to select their in-game username from a list of
 command targets for convenience. In the process, I also implemented Gson into the application. I had prior experience
 working with Google's Gson API, but it had been a while, so I am glad to have reviewed it.
+
+## Spring Break
+
+3/13/2021 - 3/21/2021
+
+Time Spent: 3.5 hours
+
+Over spring break, I tried to limit how much time I spent on classes, but I did meet with my team for the team project
+and discussed a topic. We decided upon [this StateFarm Coding Competition Challenge](https://github.com/StateFarmInsCodingCompetition/2020-StateFarm-CodingCompetitionProblem),
+but we need to verify that the project topic is okay. However, we were not concerned about its relevancy, so we began
+developing a basic starting point for the team project using the State Farm Competition as a reference. We also assigned
+tasks for each team member.
+
+On the team, I was tasked with developing the view portion of the MVC web application. Since there is a lot to discuss
+for the development and design yet, I created a basic index JSP page that includes a JQuery DataTable. We had discussed
+using DataTables in the project as a means to neatly output results.
