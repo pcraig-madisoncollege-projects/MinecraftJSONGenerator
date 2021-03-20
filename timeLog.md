@@ -18,3 +18,4 @@
 | 3/7/2021 | Updated user and role table to be compatible with form-based authentication via Tomcat and JDBC Realms, added new servlets and JSPs to experiment with form authentication for users, updated entity and test dao classes with new table structure | 6 hours |
 | 3/8/2021 | Completed week 8 readings and activities, set up demo SWAPI (Star Wars API) Gradle project | 5 hours |
 | 3/14/2021 | Added basic dao and test class for retrieving Minecraft profiles using the Mojang API | 3 hours |
+| 3/20/2021 | Set up basic JSPs for team project (2020 State Farm Coding Competition problem) | TBD hours |
