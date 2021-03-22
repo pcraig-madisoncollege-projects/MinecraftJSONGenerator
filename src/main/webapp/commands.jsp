@@ -26,12 +26,12 @@
                         <tbody>
                             <c:forEach var="command" items="${user.commands}">
                                 <tr>
-                                    <td>Empty</td>
-                                    <td>Empty</td>
-                                    <td>Empty</td>
+                                    <td>${command.name}</td>
+                                    <td>${command.group}</td>
+                                    <td>${command.dateModified}</td>
                                     <td>${command.shared}</td>
-                                    <td>Edit</td>
-                                    <td>Delete</td>
+                                    <td><a href="#">Edit</a></td>
+                                    <td><a href="#">Delete</a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
