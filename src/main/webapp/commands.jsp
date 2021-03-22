@@ -10,6 +10,38 @@
 
         <main class="p-3">
             <h2>${user.nickname}'s Saved Commands</h2>
+            <c:choose>
+                <c:when test="${user.commands.size() > 0}">
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Group</th>
+                                <th>Last Modified</th>
+                                <th>Public</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="command" items="${user.commands}">
+                                <tr>
+                                    <td>${command.name}</td>
+                                    <td>Empty</td>
+                                    <td>Empty</td>
+                                    <td>${command.shared}</td>
+                                    <td>Edit</td>
+                                    <td>Delete</td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </c:when>
+
+                <c:otherwise>
+                    <p>You have not saved any commands yet.</p>
+                </c:otherwise>
+            </c:choose>
         </main>
 
         <c:import url="includes/footer.jsp"></c:import>
