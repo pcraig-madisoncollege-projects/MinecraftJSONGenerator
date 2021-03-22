@@ -38,24 +38,30 @@ public class Command {
     /**
      * Instantiates a new Command.
      *
-     * @param command the command
      * @param owner   the owner
+     * @param command the command
      */
-    public Command(String command, User owner) {
-        this(command, owner, false);
+    public Command(User owner, String command) {
+        this(owner, "Untitled", "None", LocalDate.now(), false, command);
     }
 
     /**
      * Instantiates a new Command.
      *
-     * @param command the command
-     * @param owner   the owner
-     * @param shared  the shared
+     * @param owner        the owner
+     * @param name         the name
+     * @param group        the group
+     * @param dateModified the date modified
+     * @param shared       the shared
+     * @param command      the command
      */
-    public Command(String command, User owner, boolean shared) {
+    public Command(User owner, String name, String group, LocalDate dateModified, boolean shared, String command) {
+        this.name = name;
+        this.group = group;
+        this.dateModified = dateModified;
         this.command = command;
-        this.owner = owner;
         this.shared = shared;
+        this.owner = owner;
     }
 
     /**
