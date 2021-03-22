@@ -12,7 +12,7 @@
             <h2>${user.nickname}'s Saved Commands</h2>
             <c:choose>
                 <c:when test="${user.commands.size() > 0}">
-                    <table class="table data-table">
+                    <table id="dataTable" class="table">
                         <thead>
                             <tr>
                                 <th>Name</th>
