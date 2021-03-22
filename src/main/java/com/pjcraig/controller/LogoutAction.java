@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,6 +32,10 @@ public class LogoutAction extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user = request.getRemoteUser();
+
+        ServletContext session = getServletContext();
+        session.removeAttribute("user");
+
         logger.info("Logging {} user out of application", user);
         // TODO: Pass logout feedback as attribute rather than letting index page handle logic
         request.logout();
