@@ -6,6 +6,7 @@ import com.pjcraig.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,13 +36,12 @@ public class ViewCommands extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) getServletContext().getAttribute("user");
 
+        // Verify that user is logged in
         if (user != null) {
-            Set<Command> commands = user.getCommands();
-
-            request.setAttribute("commands", commands);
-
-            response.sendRedirect("commands.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/commands.jsp");
+            dispatcher.forward(request, response);
         } else {
+            // TODO: Forward user to error page with message stating sign-in required
             response.sendRedirect("index.jsp");
         }
     }
