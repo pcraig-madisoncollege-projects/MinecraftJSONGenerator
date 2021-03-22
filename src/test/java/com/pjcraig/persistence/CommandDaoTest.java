@@ -34,7 +34,8 @@ class CommandDaoTest {
     @Test
     void getByIdSuccess() {
         User owner = (User) userDao.getById(3);
-        Command expectedCommand = new Command(owner,
+        Command expectedCommand = new Command(owner, "Untitled", "None",
+                LocalDate.now(), true,
                 "/tellraw @a [{\"text\":\"This is a test\",\"color\":\"green\"}]");
         expectedCommand.setId(2);
         Command retrievedCommand = (Command) commandDao.getById(2);
