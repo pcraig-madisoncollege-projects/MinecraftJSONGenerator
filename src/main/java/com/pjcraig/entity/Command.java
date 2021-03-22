@@ -24,7 +24,8 @@ public class Command {
     private String group;
     @Column(name="date_modified")
     private LocalDate dateModified;
-    private String command;
+    @Column(name="command")
+    private String value;
     private boolean shared;
 
     @ManyToOne
@@ -40,10 +41,10 @@ public class Command {
      * Instantiates a new Command.
      *
      * @param owner   the owner
-     * @param command the command
+     * @param value the command
      */
-    public Command(User owner, String command) {
-        this(owner, "Untitled", "None", LocalDate.now(), false, command);
+    public Command(User owner, String value) {
+        this(owner, "Untitled", "None", LocalDate.now(), false, value);
     }
 
     /**
@@ -54,13 +55,13 @@ public class Command {
      * @param group        the group
      * @param dateModified the date modified
      * @param shared       the shared
-     * @param command      the command
+     * @param value      the command
      */
-    public Command(User owner, String name, String group, LocalDate dateModified, boolean shared, String command) {
+    public Command(User owner, String name, String group, LocalDate dateModified, boolean shared, String value) {
         this.name = name;
         this.group = group;
         this.dateModified = dateModified;
-        this.command = command;
+        this.value = value;
         this.shared = shared;
         this.owner = owner;
     }
@@ -84,21 +85,21 @@ public class Command {
     }
 
     /**
-     * Gets command.
+     * Gets the value.
      *
-     * @return the command
+     * @return the value
      */
-    public String getCommand() {
-        return command;
+    public String getValue() {
+        return value;
     }
 
     /**
-     * Sets command.
+     * Sets value.
      *
-     * @param command the command
+     * @param value the value
      */
-    public void setCommand(String command) {
-        this.command = command;
+    public void setValue(String value) {
+        this.value = value;
     }
 
     /**
@@ -196,14 +197,14 @@ public class Command {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Command command1 = (Command) o;
-        return getId() == command1.getId() && isShared() == command1.isShared() && getName().equals(command1.getName())
-                && getGroup().equals(command1.getGroup()) && getDateModified().equals(command1.getDateModified())
-                && getCommand().equals(command1.getCommand());
+        Command command = (Command) o;
+        return getId() == command.getId() && isShared() == command.isShared() && getName().equals(command.getName())
+                && getGroup().equals(command.getGroup()) && getDateModified().equals(command.getDateModified())
+                && getValue().equals(command.getValue());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getGroup(), getDateModified(), getCommand(), isShared());
+        return Objects.hash(getId(), getName(), getGroup(), getDateModified(), getValue(), isShared());
     }
 }
