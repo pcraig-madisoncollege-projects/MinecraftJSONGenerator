@@ -20,6 +20,7 @@ public class Command {
     private int id;
 
     private String name;
+    @Column(name="folder")
     private String group;
     @Column(name="date_modified")
     private LocalDate dateModified;
