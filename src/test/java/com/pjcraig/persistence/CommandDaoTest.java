@@ -65,12 +65,12 @@ class CommandDaoTest {
         int id = 3;
         Command commandToUpdate = (Command) commandDao.getById(id);
         String newCommand = "/tellraw @a [\"Hello!\"]";
-        String initialCommand = commandToUpdate.getCommand();
-        commandToUpdate.setCommand(newCommand);
+        String initialCommand = commandToUpdate.getValue();
+        commandToUpdate.setValue(newCommand);
         commandDao.saveOrUpdate(commandToUpdate);
         Command retrievedCommand = (Command) commandDao.getById(id);
-        assertNotEquals(initialCommand, retrievedCommand.getCommand());
-        assertEquals(newCommand, retrievedCommand.getCommand());
+        assertNotEquals(initialCommand, retrievedCommand.getValue());
+        assertEquals(newCommand, retrievedCommand.getValue());
     }
 
     /**
