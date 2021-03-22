@@ -12,7 +12,7 @@
             <h2>${user.nickname}'s Saved Commands</h2>
             <c:choose>
                 <c:when test="${user.commands.size() > 0}">
-                    <table class="table datatable">
+                    <table class="table data-table">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -26,7 +26,7 @@
                         <tbody>
                             <c:forEach var="command" items="${user.commands}">
                                 <tr>
-                                    <td>${command.name}</td>
+                                    <td>Empty</td>
                                     <td>Empty</td>
                                     <td>Empty</td>
                                     <td>${command.shared}</td>
