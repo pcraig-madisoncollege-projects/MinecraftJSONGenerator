@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * This servlet handles requests made to view a user's saved commands.
+ * This servlet handles requests made to view a user's publicly shared command.
  * @author pjcraig
  */
 @WebServlet(
