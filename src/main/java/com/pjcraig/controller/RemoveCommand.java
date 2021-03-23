@@ -28,7 +28,7 @@ public class RemoveCommand extends HttpServlet {
 
     public static final String URL_UNKNOWN_COMMAND = "/unknownCommand.jsp";
     public static final String URL_VALID_COMMAND = "/removeCommand.jsp";
-    public static final String URL_REMOVE_SUCCESS = "/removeSuccess.jsp";
+    public static final String URL_REMOVE_SUCCESS = "/removeCommandSuccess.jsp";
 
     /**
      * Forwards the user to the remove command page if user can be authorized.
