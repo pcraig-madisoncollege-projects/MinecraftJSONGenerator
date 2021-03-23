@@ -172,4 +172,6 @@ However, I had more time available and was focused, so I also ended up creating 
 view, and remove command pages. I also added a couple success/failure JSPs to correspond to certain actions in the
 web application. Overall, this process went smoothly with minimal issues.
 
-In order to reach checkpoint 3, I also had to deploy the project up to AWS.
+In order to reach checkpoint 3, I also had to deploy the project up to AWS. Despite being review, I had run into some
+issues when trying to access the database through the web application. After much struggling, however, I realized I had
+not updated all database login information. After that, the rest of the process to deploy the project was good.
