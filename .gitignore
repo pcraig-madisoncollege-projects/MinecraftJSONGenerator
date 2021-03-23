@@ -18,8 +18,11 @@ bin/
 # Logs
 logs/
 
-# Tomcat Authorization Files
+# Sensitive Files
 src/main/webapp/META-INF/
+src/main/java/resources/hibernate.cfg.xml
+src/test/java/resources/hibernate.cfg.xml
+src/test/java/resources/database.properties
 
 # Other
 target/
