@@ -44,6 +44,17 @@
             <role-name>user</role-name>
         </auth-constraint>
     </security-constraint>
+    <!-- Authorize users via remove command servlet when attempting to remove a user's command -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>removeCommand</web-resource-name>
+            <url-pattern>/delete</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
 
     <security-role>
         <role-name>admin</role-name>
