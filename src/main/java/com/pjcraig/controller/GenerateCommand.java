@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * This servlet handles requests made to view a user's saved commands.
+ * This servlet handles requests made to navigate to the generate command page with or without a loaded command.
  * @author pjcraig
  */
 @WebServlet(
@@ -31,6 +31,8 @@ public class GenerateCommand extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/generate.jsp");
+
+        // TODO: Pass command as request attribute if command is being edited
 
         dispatcher.forward(request, response);
     }
