@@ -31,7 +31,7 @@
                                     <td>${command.dateModified}</td>
                                     <td>${command.shared}</td>
                                     <td><a href="#">Edit</a></td>
-                                    <td><a href="#">Delete</a></td>
+                                    <td><a href="delete?id=${command.id}">Delete</a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
