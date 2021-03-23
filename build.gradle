@@ -55,5 +55,5 @@ test {
 }
 
 war {
-    archiveFileName = "jsongenerator"
+    archiveFileName = "jsongenerator.war"
 }

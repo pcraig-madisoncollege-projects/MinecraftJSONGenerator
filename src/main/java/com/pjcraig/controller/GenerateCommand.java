@@ -9,36 +9,31 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * This servlet handles requests made for logging a user or admin into the web application through the login button.
+ * This servlet handles requests made to navigate to the generate command page with or without a loaded command.
  * @author pjcraig
  */
 @WebServlet(
-        name = "LogoutAction",
-        urlPatterns = {"/logout"}
+        name = "GenerateCommand",
+        urlPatterns = {"/generate"}
 )
-public class LogoutAction extends HttpServlet {
-    private final Logger logger = LogManager.getLogger();
+public class GenerateCommand extends HttpServlet {
+    private Logger logger = LogManager.getLogger();
 
     /**
-     * Forwards the user to the index page.
+     * Redirects the user to the index page.
      * @param request The HttpServletRequest object.
      * @param response The HttpServletResponse object.
      * @throws ServletException Whether or not the servlet encounters an error.
      * @throws IOException Whether or not an IO exception occurs.
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String user = request.getRemoteUser();
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/generate.jsp");
 
-        HttpSession session = request.getSession();
-        session.removeAttribute("user");
+        // TODO: Pass command as request attribute if command is being edited
 
-        logger.info("Logging {} user out of application", user);
-        // TODO: Pass logout feedback as attribute rather than letting index page handle logic
-        request.logout();
-        response.sendRedirect("index.jsp");
+        dispatcher.forward(request, response);
     }
 }

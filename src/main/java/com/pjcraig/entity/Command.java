@@ -3,6 +3,7 @@ package com.pjcraig.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -17,7 +18,14 @@ public class Command {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
-    private String command;
+
+    private String name;
+    @Column(name="folder")
+    private String group;
+    @Column(name="date_modified")
+    private LocalDate dateModified;
+    @Column(name="command")
+    private String value;
     private boolean shared;
 
     @ManyToOne
@@ -32,24 +40,30 @@ public class Command {
     /**
      * Instantiates a new Command.
      *
-     * @param command the command
      * @param owner   the owner
+     * @param value the command
      */
-    public Command(String command, User owner) {
-        this(command, owner, false);
+    public Command(User owner, String value) {
+        this(owner, "Untitled", "None", LocalDate.now(), false, value);
     }
 
     /**
      * Instantiates a new Command.
      *
-     * @param command the command
-     * @param owner   the owner
-     * @param shared  the shared
+     * @param owner        the owner
+     * @param name         the name
+     * @param group        the group
+     * @param dateModified the date modified
+     * @param shared       the shared
+     * @param value      the command
      */
-    public Command(String command, User owner, boolean shared) {
-        this.command = command;
-        this.owner = owner;
+    public Command(User owner, String name, String group, LocalDate dateModified, boolean shared, String value) {
+        this.name = name;
+        this.group = group;
+        this.dateModified = dateModified;
+        this.value = value;
         this.shared = shared;
+        this.owner = owner;
     }
 
     /**
@@ -71,21 +85,21 @@ public class Command {
     }
 
     /**
-     * Gets command.
+     * Gets the value.
      *
-     * @return the command
+     * @return the value
      */
-    public String getCommand() {
-        return command;
+    public String getValue() {
+        return value;
     }
 
     /**
-     * Sets command.
+     * Sets value.
      *
-     * @param command the command
+     * @param value the value
      */
-    public void setCommand(String command) {
-        this.command = command;
+    public void setValue(String value) {
+        this.value = value;
     }
 
     /**
@@ -124,18 +138,73 @@ public class Command {
         this.shared = shared;
     }
 
+
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Gets group.
+     *
+     * @return the group
+     */
+    public String getGroup() {
+        return group;
+    }
+
+    /**
+     * Sets group.
+     *
+     * @param group the group
+     */
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    /**
+     * Gets date modified.
+     *
+     * @return the date modified
+     */
+    public LocalDate getDateModified() {
+        return dateModified;
+    }
+
+    /**
+     * Sets date modified.
+     *
+     * @param dateModified the date modified
+     */
+    public void setDateModified(LocalDate dateModified) {
+        this.dateModified = dateModified;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Command command = (Command) o;
-        return getId() == command.getId() && getOwner().equals(command.getOwner())
-                && isShared() == command.isShared()
-                && getCommand().equals(command.getCommand());
+        return getId() == command.getId() && isShared() == command.isShared() && getName().equals(command.getName())
+                && getGroup().equals(command.getGroup()) && getDateModified().equals(command.getDateModified())
+                && getValue().equals(command.getValue());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getCommand(), getOwner(), isShared());
+        return Objects.hash(getId(), getName(), getGroup(), getDateModified(), getValue(), isShared());
     }
 }

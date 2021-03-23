@@ -20,3 +20,4 @@
 | 3/14/2021 | Added basic dao and test class for retrieving Minecraft profiles using the Mojang API | 3 hours |
 | 3/16/2021 | Set up communications with team for team project, discussed project topic and individual tasks, selected tasks | 1 hour |
 | 3/20/2021 | Set up basic JSPs for team project (2020 State Farm Coding Competition problem) | 2.5 hours |
+| 3/22/2021 | Developed user commands page and linked to user, updated project plan, deployed project to AWS for checkpoint 3 | 9 hours |

@@ -150,3 +150,28 @@ tasks for each team member.
 On the team, I was tasked with developing the view portion of the MVC web application. Since there is a lot to discuss
 for the development and design yet, I created a basic index JSP page that includes a JQuery DataTable. We had discussed
 using DataTables in the project as a means to neatly output results.
+
+## Week 9
+
+3/22/2021
+
+Time Spent: TBD
+
+This week, I started by preparing my project for checkpoint 3. This meant that I had to create a jsp page that can
+display user data loaded from the database. In my case, I wanted to set up the user saved commands page, so I began
+work with loading a list of commands from the Command DAO. This went smoothly, and I was able to display the results in
+a jQuery DataTable. I noticed, however, that I did not have all the required columns associated with a command in my
+database and Command entity, so I set out to add the missing columns and fields. For the most part, I was able to add
+the missing data with ease, up until I encountered issues with my UserDao and CommandDao test classes. With a good chunk
+of time and (eventually) scanning through the Hibernate log files. The problem I ran into here is that I had named a
+column 'group', which was not a problem if the column was explicitly referenced in SQL, but Hibernate does not handle
+the column names that way, resulting in SQL exceptions. Once this was fixed, however, I was ready to go for the database
+output requirement for checkpoint 3.
+
+However, I had more time available and was focused, so I also ended up creating servlets and/or JSPs for the generate,
+view, and remove command pages. I also added a couple success/failure JSPs to correspond to certain actions in the
+web application. Overall, this process went smoothly with minimal issues.
+
+In order to reach checkpoint 3, I also had to deploy the project up to AWS. Despite being review, I had run into some
+issues when trying to access the database through the web application. After much struggling, however, I realized I had
+not updated all database login information. After that, the rest of the process to deploy the project was good.

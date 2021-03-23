@@ -6,6 +6,7 @@ import com.pjcraig.test.util.Database;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,8 +34,9 @@ class CommandDaoTest {
     @Test
     void getByIdSuccess() {
         User owner = (User) userDao.getById(3);
-        Command expectedCommand = new Command("/tellraw @a [{\"text\":\"This is a test\",\"color\":\"green\"}]",
-                owner, true);
+        Command expectedCommand = new Command(owner, "Untitled", "None",
+                LocalDate.now(), true,
+                "/tellraw @a [{\"text\":\"This is a test\",\"color\":\"green\"}]");
         expectedCommand.setId(2);
         Command retrievedCommand = (Command) commandDao.getById(2);
         assertNotNull(retrievedCommand);
@@ -63,12 +65,12 @@ class CommandDaoTest {
         int id = 3;
         Command commandToUpdate = (Command) commandDao.getById(id);
         String newCommand = "/tellraw @a [\"Hello!\"]";
-        String initialCommand = commandToUpdate.getCommand();
-        commandToUpdate.setCommand(newCommand);
+        String initialCommand = commandToUpdate.getValue();
+        commandToUpdate.setValue(newCommand);
         commandDao.saveOrUpdate(commandToUpdate);
         Command retrievedCommand = (Command) commandDao.getById(id);
-        assertNotEquals(initialCommand, retrievedCommand.getCommand());
-        assertEquals(newCommand, retrievedCommand.getCommand());
+        assertNotEquals(initialCommand, retrievedCommand.getValue());
+        assertEquals(newCommand, retrievedCommand.getValue());
     }
 
     /**
@@ -77,8 +79,7 @@ class CommandDaoTest {
     @Test
     void insertSuccess() {
         User owner = (User) userDao.getById(2);
-        Command newCommand = new Command("/tellraw @a [\"Why, hello there!\"]",
-                owner, true);
+        Command newCommand = new Command(owner, "/tellraw @a [\"Why, hello there!\"]");
         owner.addCommand(newCommand);
 
         int id = commandDao.insert(newCommand);

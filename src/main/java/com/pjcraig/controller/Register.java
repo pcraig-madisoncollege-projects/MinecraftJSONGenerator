@@ -1,5 +1,6 @@
 package com.pjcraig.controller;
 
+import com.pjcraig.entity.Role;
 import com.pjcraig.entity.User;
 import com.pjcraig.persistence.GenericDao;
 
@@ -52,10 +53,12 @@ public class Register extends HttpServlet {
         String password = request.getParameter(PARAMETER_PASSWORD);
 
         User user = new User(email, password, nickname);
+        Role role = new Role("user", user);
+        user.addRole(role);
 
         dao.insert(user);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/register.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/registerSuccess.jsp");
         dispatcher.forward(request, response);
     }
 }

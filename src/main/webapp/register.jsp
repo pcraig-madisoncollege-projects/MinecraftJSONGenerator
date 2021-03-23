@@ -12,7 +12,7 @@
         <h2>Sign Up for an Account</h2>
         <p>* Indicates required field</p>
         <p>Enter your login information below.</p>
-        <form action="#" method="post">
+        <form action="register" method="post">
             <div class="form-group">
                 <label for="email">*Email Address</label>
                 <input type="email" id="email" name="email" class="form-control" required>

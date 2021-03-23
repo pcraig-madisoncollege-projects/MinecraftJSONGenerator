@@ -1,5 +1,6 @@
 package com.pjcraig.controller;
 
+import com.pjcraig.entity.Command;
 import com.pjcraig.entity.User;
 import com.pjcraig.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
@@ -13,17 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 /**
- * This servlet handles requests made for logging a user or admin into the web application through the login button.
+ * This servlet handles requests made to view a user's saved commands.
  * @author pjcraig
  */
 @WebServlet(
-        name = "LoginAction",
-        urlPatterns = {"/login"}
+        name = "ViewCommands",
+        urlPatterns = {"/commands"}
 )
-public class LoginAction extends HttpServlet {
+public class ViewCommands extends HttpServlet {
     private final Logger logger = LogManager.getLogger();
 
     /**
@@ -34,23 +34,16 @@ public class LoginAction extends HttpServlet {
      * @throws IOException Whether or not an IO exception occurs.
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getRemoteUser();
-        String role = request.isUserInRole("admin") ? "admin" : "user";
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
 
-        GenericDao dao = new GenericDao(User.class);
-        List<User> users = dao.getByPropertyEqual("email", email);
-
-        // Verify that there is exactly 1 user that matches the email
-        if (users.size() == 1) {
-            User user = users.get(0);
-
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-            logger.info("Saved user login to session attribute.");
+        // Verify that user is logged in
+        if (user != null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/commands.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            // TODO: Forward user to error page with message stating sign-in required
+            response.sendRedirect("index.jsp");
         }
-
-        logger.info("Logged in {} user with a role of {}", email, role);
-        // TODO: Pass login feedback as attribute rather than letting index page handle logic
-        response.sendRedirect("index.jsp");
     }
 }

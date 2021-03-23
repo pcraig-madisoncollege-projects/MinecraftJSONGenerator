@@ -63,7 +63,7 @@ class UserDaoTest {
     void removeCommandSuccess() {
         int id = 2;
         User initialUser = (User) userDao.getById(id);
-        Command commandToBeRemoved = new Command("/title @a title [{\"text\":\"Hello!\"}]", initialUser);
+        Command commandToBeRemoved = new Command(initialUser, "/title @a title [{\"text\":\"Hello!\"}]");
         commandToBeRemoved.setId(3);
 
         assertEquals(1, initialUser.getCommands().size());
@@ -81,8 +81,7 @@ class UserDaoTest {
     void addCommandSuccess() {
         int id = 2;
         User initialUser = (User) userDao.getById(id);
-        Command commandToBeAdded = new Command("/tellraw @a [\"This is a new command\"]",
-                initialUser);
+        Command commandToBeAdded = new Command(initialUser, "/tellraw @a [\"This is a new command\"]");
 
         assertEquals(1, initialUser.getCommands().size());
         initialUser.addCommand(commandToBeAdded);
@@ -164,7 +163,7 @@ class UserDaoTest {
         User newUser = new User("jeff@example.com", "longpassword123", "Jeffster");
 
         String command = "/title @a [\"This is a new command!\"]";
-        Command commandEntity = new Command(command, newUser);
+        Command commandEntity = new Command(newUser, command);
         newUser.addCommand(commandEntity);
 
         int id = userDao.insert(newUser);

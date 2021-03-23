@@ -19,68 +19,63 @@
 - [x] Add application flow
 - [x] Add weekly reflection document
 - [x] Checkpoint 1 due
-- [x] Configure log4j into project and test
-- [ ] Create rough working jsp pages (sign up, login, about/index, view command, rough generate command)
-- [x] Set up database with tables and dummy data (i.e. user, command, user_command tables)
-- [ ] Set up database access through user registration and login through webpage (dao and hibernate configuration)
+- [x] Create rough working jsp pages (sign up, login, about/index, view command, rough generate command)
 - [x] Update time log
 - [x] Update weekly reflections
 
 ### Week 5
 - [x] Configure log4j into project and test
-- [ ] Create rough working jsp pages (sign up, login, about/index, view command, rough generate command)
 - [x] Set up database with tables and dummy data (i.e. user, command, user_command tables)
-- [ ] Set up database access through user registration and login through webpage (dao and hibernate configuration)
-- [ ] Start working on modular JSON generator code with tellraw command in mind
-- [ ] Create user saved commands jsp and servlet
-- [ ] Load user saved commands into new saved commands jsp through dao
-- [ ] Implement logout feature (clearing user session data?)
-- [ ] Update unit testing for current dao, Enterprise JavaBeans/entities, etc.
+- [x] Set up database access through user registration and login through webpage (dao and hibernate configuration)
+- [x] Create user saved commands jsp and servlet
+- [x] Load user saved commands into new saved commands jsp through dao
+- [x] Implement logout feature (clearing user session data?)
+- [x] Update unit testing for current dao, Enterprise JavaBeans/entities, etc.
 - [x] Update time log
 - [x] Update weekly reflections
 
 ### Week 6
-- [ ] Create rough working jsp pages (sign up, login, about/index, view command, rough generate command)
-- [ ] Set up database access through user registration and login through webpage (dao and hibernate configuration)
+- [x] Create rough working jsp pages (sign up, login, about/index, view command, rough generate command)
+- [x] Set up database access through user registration and login through webpage (dao and hibernate configuration)
 - [ ] Start working on modular JSON generator code with tellraw command in mind
-- [ ] Create user saved commands jsp and servlet
-- [ ] Load user saved commands into new saved commands jsp through dao
-- [ ] Implement logout feature (clearing user session data?)
-- [ ] Update unit testing for current dao, Enterprise JavaBeans/entities, etc.
+- [x] Create user saved commands jsp and servlet
+- [x] Load user saved commands into new saved commands jsp through dao
+- [x] Implement logout feature (clearing user session data?)
+- [x] Update unit testing for current dao, Enterprise JavaBeans/entities, etc.
 - [ ] Continue working on JSON generator for tellraw
 - [ ] Begin work with loading JSON from raw command (possibly using GSON?)
 - [ ] Begin work with saving commands to account
-- [ ] Update unit testing as needed
-- [ ] Update time log
-- [ ] Update weekly reflections
+- [x] Update unit testing as needed
+- [x] Update time log
+- [x] Update weekly reflections
 
 ### Week 7
 - [ ] Finish working version of tellraw mode for JSON generator
 - [ ] Continue work with loading JSON from raw command (possibly using GSON?)
 - [ ] Finish work with saving commands to account (if not done already)
-- [ ] Create a remove saved command jsp and servlet
-- [ ] Implement command removal feature from user's saved commands page
+- [x] Create a remove saved command jsp and servlet
+- [x] Implement command removal feature from user's saved commands page
 - [ ] Implement command sharing/un-sharing ability from user's saved commands page
-- [ ] Checkpoint 2 due (database, at least 1 dao with full CRUD using hibernate, dao fully unit tested, log4j implemented)
-- [ ] Update unit testing as needed
-- [ ] Update time log
-- [ ] Update weekly reflections
+- [x] Checkpoint 2 due (database, at least 1 dao with full CRUD using hibernate, dao fully unit tested, log4j implemented)
+- [x] Update unit testing as needed
+- [x] Update time log
+- [x] Update weekly reflections
 
 ### Week 8
 - [ ] Start implementing JSON generator for title and book generator modes
 - [ ] Continue work with loading JSON from raw command
 - [ ] Begin implementing report feature (JavaMail api for notifications?)
-- [ ] Deploy to AWS?
-- [ ] Update unit testing as needed
-- [ ] Update time log
-- [ ] Update weekly reflections
+- [x] Update unit testing as needed
+- [x] Update time log
+- [x] Update weekly reflections
 
 ### Week 9
+- [ ] Start working on modular JSON generator code with tellraw command in mind
 - [ ] Refactor JSON generator for additional title and book generator modes
 - [ ] Continue work with loading JSON from raw command
 - [ ] Begin implementing report feature (JavaMail api for email notifications?)
-- [ ] Deploy to AWS
-- [ ] Checkpoint 3 due (deployed to AWS, at least 1 data-displaying jsp, login authentication implemented)
+- [x] Deploy to AWS
+- [x] Checkpoint 3 due (deployed to AWS, at least 1 data-displaying jsp, login authentication implemented)
 - [ ] Update unit testing as needed
 - [ ] Update time log
 - [ ] Update weekly reflections
