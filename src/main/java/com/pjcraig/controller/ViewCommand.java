@@ -57,8 +57,6 @@ public class ViewCommand extends HttpServlet {
                     request.setAttribute("user", owner.getNickname());
 
                     dispatcher = request.getRequestDispatcher(URL_VALID_COMMAND);
-                } else {
-                    logger.error("Invalid or private id '{}' entered to view a command!", parameterId);
                 }
             } catch (NumberFormatException exception) {
                 logger.error("Invalid id '{}' entered to view a command!", parameterId);
