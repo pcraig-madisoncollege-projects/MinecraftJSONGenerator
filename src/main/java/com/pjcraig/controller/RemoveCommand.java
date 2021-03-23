@@ -28,9 +28,10 @@ public class RemoveCommand extends HttpServlet {
 
     public static final String URL_UNKNOWN_COMMAND = "/unknownCommand.jsp";
     public static final String URL_VALID_COMMAND = "/removeCommand.jsp";
+    public static final String URL_REMOVE_SUCCESS = "/removeSuccess.jsp";
 
     /**
-     * Redirects the user to the index page.
+     * Forwards the user to the remove command page if user can be authorized.
      * @param request The HttpServletRequest object.
      * @param response The HttpServletResponse object.
      * @throws ServletException Whether or not the servlet encounters an error.
@@ -57,8 +58,8 @@ public class RemoveCommand extends HttpServlet {
                     HttpSession session = request.getSession();
                     User user = (User) session.getAttribute("user");
 
-                    // Verify that the user is the owner
-                    if (user.equals(owner)) {
+                    // Verify that the user is the owner. TODO: Admin removal functionality?
+                    if (user != null && user.equals(owner)) {
                         request.setAttribute("command", command);
 
                         dispatcher = request.getRequestDispatcher(URL_VALID_COMMAND);
@@ -67,7 +68,57 @@ public class RemoveCommand extends HttpServlet {
             } catch (NumberFormatException exception) {
                 logger.error("Invalid id '{}' entered to remove a command!", parameterId);
             } catch (Exception exception) {
-                logger.error("Unknown exception occurred.", exception);
+                logger.error("Unknown exception occurred while removing a command.", exception);
+            }
+        }
+
+        dispatcher.forward(request, response);
+    }
+
+    /**
+     * Confirms the command should be deleted.
+     * @param request The HttpServletRequest object.
+     * @param response The HttpServletResponse object.
+     * @throws ServletException Whether or not the servlet encounters an error.
+     * @throws IOException Whether or not an IO exception occurs.
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher(URL_UNKNOWN_COMMAND);
+
+        String parameterId = request.getParameter("id");
+        // Verify that command parameter exists
+        if (parameterId != null) {
+            // Attempt to load parameter if valid
+            try {
+                int id = Integer.parseInt(parameterId);
+
+                GenericDao commandDao = new GenericDao(Command.class);
+
+                Command command = (Command) commandDao.getById(id);
+
+                // Verify that a valid command exists and is publicly visible
+                if (command != null) {
+                    User owner = command.getOwner();
+
+                    HttpSession session = request.getSession();
+                    User user = (User) session.getAttribute("user");
+
+                    // Verify that the user is the owner. TODO: Admin removal functionality?
+                    if (user != null && user.equals(owner)) {
+                        commandDao.delete(command);
+
+                        // Refresh user attribute with updated user commands
+                        GenericDao userDao = new GenericDao(User.class);
+                        user = (User) userDao.getById(user.getId());
+                        session.setAttribute("user", user);
+
+                        dispatcher = request.getRequestDispatcher(URL_REMOVE_SUCCESS);
+                    }
+                }
+            } catch (NumberFormatException exception) {
+                logger.error("Invalid id '{}' entered to remove a command!", parameterId);
+            } catch (Exception exception) {
+                logger.error("Unknown exception occurred while removing a command.", exception);
             }
         }
 
