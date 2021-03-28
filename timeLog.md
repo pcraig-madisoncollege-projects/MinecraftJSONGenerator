@@ -21,3 +21,4 @@
 | 3/16/2021 | Set up communications with team for team project, discussed project topic and individual tasks, selected tasks | 1 hour |
 | 3/20/2021 | Set up basic JSPs for team project (2020 State Farm Coding Competition problem) | 2.5 hours |
 | 3/22/2021 | Developed user commands page and linked to user, updated project plan, deployed project to AWS for checkpoint 3 | 9 hours |
+| 3/28/2021 | Completed creating RESTful service activity and exercise | 15:00-TBD hours |
