@@ -155,7 +155,7 @@ using DataTables in the project as a means to neatly output results.
 
 3/22/2021
 
-Time Spent: TBD
+Time Spent: 15.75 hours
 
 This week, I started by preparing my project for checkpoint 3. This meant that I had to create a jsp page that can
 display user data loaded from the database. In my case, I wanted to set up the user saved commands page, so I began
@@ -175,3 +175,9 @@ web application. Overall, this process went smoothly with minimal issues.
 In order to reach checkpoint 3, I also had to deploy the project up to AWS. Despite being review, I had run into some
 issues when trying to access the database through the web application. After much struggling, however, I realized I had
 not updated all database login information. After that, the rest of the process to deploy the project was good.
+
+On Sunday evening, I finished the activity for this week and completed exercise 9. I ran into a couple hiccups with Gson
+failing to process my POJOs, but after a little digging, I found a way to exclude unwanted fields from the serialization
+that Gson performs. When I did this, I was able to successfully serialize the objects. While I was doing this, I also
+met with one of my teammates to discuss the plan for this week's exercise. All in all, I spent a lot more time that I
+had been planning (partially due to my poor time management right now), but I feel happy with where I am at right now.

@@ -28,6 +28,8 @@ Minecraft command generator. Specifically, it will emphasize on
 the commands that utilize JSON components for the formatting of  
 text in the game.
 
+[//]: # (TODO: Add images to describe problem)
+
 ## Project Technologies (WIP, more will be added during development)
 
 * Project Design
