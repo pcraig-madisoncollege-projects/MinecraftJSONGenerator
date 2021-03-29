@@ -1,5 +1,6 @@
 package com.pjcraig.entity;
 
+import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -17,18 +18,22 @@ public class Command {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
+    @Expose
     private int id;
 
+    @Expose
     private String name;
     @Column(name="folder")
     private String group;
     @Column(name="date_modified")
     private LocalDate dateModified;
     @Column(name="command")
+    @Expose
     private String value;
     private boolean shared;
 
     @ManyToOne
+    @Expose
     private User owner;
 
     /**
