@@ -181,3 +181,12 @@ failing to process my POJOs, but after a little digging, I found a way to exclud
 that Gson performs. When I did this, I was able to successfully serialize the objects. While I was doing this, I also
 met with one of my teammates to discuss the plan for this week's exercise. All in all, I spent a lot more time that I
 had been planning (partially due to my poor time management right now), but I feel happy with where I am at right now.
+
+## Week 10
+
+3/29/2021
+
+Time Spent: TBD
+
+On Monday, I completed the team merging activity with Lisa. Overall, it went pretty smoothly with the only major problem
+we encountered being a lack of clarity in the instructions.
