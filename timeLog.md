@@ -22,3 +22,4 @@
 | 3/20/2021 | Set up basic JSPs for team project (2020 State Farm Coding Competition problem) | 2.5 hours |
 | 3/22/2021 | Developed user commands page and linked to user, updated project plan, deployed project to AWS for checkpoint 3 | 9 hours |
 | 3/28/2021 | Completed creating RESTful service activity and exercise, unexpected meeting with team about completing exercise 9 | 6.75 hours |
+| 3/29/2021 | Completed merging practice activity with Lisa | 0.75 hours |
