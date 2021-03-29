@@ -15,7 +15,8 @@ public class UserCommandApplication extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         HashSet classes = new HashSet<Class<?>>();
-        classes.add(CommandService.class );
+        classes.add(CommandService.class);
+        classes.add(UserService.class);
         return classes;
     }
 }
