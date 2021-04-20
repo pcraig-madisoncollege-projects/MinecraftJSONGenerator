@@ -2,8 +2,8 @@
 /*
     Changes the visibility of certain input fields based on the current command type.
 */
-const changeCommandType = event => {
-    let commandType = event.target.value;
+const updateCommandType = () => {
+    let commandType = document.querySelector("#command").value;
 
     let commandData = document.querySelector("#hiddenCommandData");
 
@@ -21,8 +21,9 @@ const changeCommandType = event => {
     Initializes elements on the webpage to enable Minecraft command generation features.
 */
 const generateInit = () => {
+    updateCommandType();
     let commandTypeInput = document.querySelector("#command");
-    commandTypeInput.addEventListener("change", changeCommandType);
+    commandTypeInput.addEventListener("change", updateCommandType);
 }
 
 window.addEventListener("load", generateInit);
