@@ -21,7 +21,7 @@
                     <option value="tellraw">Tellraw</option>
                 </select>
             </div>
-            <div id="hiddenCommandData">
+            <div id="hiddenCommandData" hidden>
                 <div class="form-group">
                     <label for="targetSelector">Target Selector</label>
                     <select name="targetSelector" id="targetSelector" class="form-control">
