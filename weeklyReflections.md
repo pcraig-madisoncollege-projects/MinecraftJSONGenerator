@@ -190,3 +190,21 @@ Time Spent: TBD
 
 On Monday, I completed the team merging activity with Lisa. Overall, it went pretty smoothly with the only major problem
 we encountered being a lack of clarity in the instructions.
+
+## Week 11
+
+4/5/2021
+
+This week, I did not do much with this project since I had to focus all efforts towards the team project for completing
+that.
+
+## Week 12
+
+4/12/2021
+
+After much work from finishing up the team project, I took a break from my Java course for a bit. For that reason, I did
+not complete anything substantial on the indie project this week.
+
+## Week 13
+
+4/19/2021
