@@ -23,4 +23,5 @@
 | 3/22/2021 | Developed user commands page and linked to user, updated project plan, deployed project to AWS for checkpoint 3 | 9 hours |
 | 3/28/2021 | Completed creating RESTful service activity and exercise, unexpected meeting with team about completing exercise 9 | 6.75 hours |
 | 3/29/2021 | Completed merging practice activity with Lisa | 0.75 hours |
-| 4/20/2021 | Updated generate jsp page, completed week 13 readings, demo, and exercise | 3 hours |
+| 4/20/2021 | Updated generate jsp page, completed week 13 readings, demo, started final exercise | 3 hours |
+| 4/25/2021 | Completed week 13 exercise (final) | 1.75 hours |

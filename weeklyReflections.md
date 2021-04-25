@@ -208,3 +208,11 @@ not complete anything substantial on the indie project this week.
 ## Week 13
 
 4/19/2021
+
+This week, I completed the week 13 assignments and made some minor changes to this project. There is still a lot more to
+do, so I am hoping to get an early start in week 14 (probably on Monday) so that I can check off a bunch of todos and
+plans for the project.
+
+## Week 14
+
+4/26/2021
