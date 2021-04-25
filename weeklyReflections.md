@@ -186,7 +186,7 @@ had been planning (partially due to my poor time management right now), but I fe
 
 3/29/2021
 
-Time Spent: TBD
+Time Spent: 0.75 hours
 
 On Monday, I completed the team merging activity with Lisa. Overall, it went pretty smoothly with the only major problem
 we encountered being a lack of clarity in the instructions.
@@ -208,6 +208,8 @@ not complete anything substantial on the indie project this week.
 ## Week 13
 
 4/19/2021
+
+Time Spent: 4.75 hours
 
 This week, I completed the week 13 assignments and made some minor changes to this project. There is still a lot more to
 do, so I am hoping to get an early start in week 14 (probably on Monday) so that I can check off a bunch of todos and
