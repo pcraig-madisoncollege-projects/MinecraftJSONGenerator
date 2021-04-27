@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <title>${title}</title>
     <meta content="text/html" charset="utf-8">
@@ -5,5 +6,11 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script src="js/${js}"></script>
+    <c:choose>
+        <c:when test="${js != null}">
+            <c:forEach var="script" items="${js}">
+                <script src="js/${script}"></script>
+            </c:forEach>
+        </c:when>
+    </c:choose>
 </head>
