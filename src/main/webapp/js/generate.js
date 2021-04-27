@@ -204,7 +204,7 @@ const generateCommand = () => {
     let commandOutput = document.querySelector("#commandOutput");
     let commandType = document.querySelector("#command").value;
     let targetSelector = document.querySelector("#targetSelector").value;
-    let targetSelectorTags = document.querySelector("#targetSelectorTags").value.trim();
+    let targetSelectorTags = document.querySelector("#targetSelectorTags").value;
     let elements = [...document.querySelector("#elements").childNodes];
 
     targetSelectorTags = Element.cleanSelectorTags(targetSelectorTags);
@@ -230,13 +230,20 @@ const generateCommand = () => {
         let obfuscated = document.querySelector(`#${"elementObfuscated" + id}`).checked;
 
         // Retrieve text element data
-        if (type == "text") {
-            let text = document.querySelector(`#${"elementText" + id}`).value;
-            component = new TextElement(text, color, bold, italic, underlined, strikethrough, obfuscated);
-        } else if (type == "selector") {
-            let selector = document.querySelector(`#${"elementSelector" + id}`).value;
-            let selectorTags = document.querySelector(`#${"elementSelectorTags" + id}`).value;
-            component = new SelectorElement(selector, selectorTags, color, bold, italic, underlined, strikethrough, obfuscated);
+        switch (type) {
+            case "text":
+                let text = document.querySelector(`#${"elementText" + id}`).value;
+                component = new TextElement(text, color, bold, italic, underlined, strikethrough, obfuscated);
+                break;
+            case "selector":
+                let selector = document.querySelector(`#${"elementSelector" + id}`).value;
+                let selectorTags = document.querySelector(`#${"elementSelectorTags" + id}`).value;
+
+                component = new SelectorElement(selector, selectorTags, color,
+                    bold, italic, underlined, strikethrough, obfuscated);
+                break;
+            default:
+                break;
         }
 
         if (component) {
