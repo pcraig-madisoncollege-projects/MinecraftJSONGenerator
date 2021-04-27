@@ -46,9 +46,9 @@
                 </div>
                 <ul id="elements" class="list-unstyled"></ul>
 
-                <input type="button" value="Generate Command" class="btn btn-primary">
-                <input type="button" value="Save Command" class="btn btn-primary">
-                <input type="button" value="Load Command" class="btn btn-primary">
+                <input type="button" id="generate" value="Generate Command" class="btn btn-primary">
+                <input type="button" id="save" value="Save Command" class="btn btn-primary">
+                <input type="button" id="load" value="Load Command" class="btn btn-primary">
 
                 <div class="form-group">
                     <label for="commandOutput">Command</label>
