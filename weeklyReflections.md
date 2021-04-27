@@ -218,3 +218,9 @@ plans for the project.
 ## Week 14
 
 4/26/2021
+
+On Monday, I spent a good chunk of time fleshing out the text component layout on the website. While it does need more
+styling, I am happy to say that basic functionality is working. I also started work on the generate command function
+too, but there is still more that needs to be done to get that working properly. All of this development is being done
+outside the VM so that I can more quickly and effectively develop the JavaScript code (I don't have to redeploy the
+entire web server this way).

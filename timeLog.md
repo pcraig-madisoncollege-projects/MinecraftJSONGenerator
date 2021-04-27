@@ -25,4 +25,4 @@
 | 3/29/2021 | Completed merging practice activity with Lisa | 0.75 hours |
 | 4/20/2021 | Updated generate jsp page, completed week 13 readings, demo, started final exercise | 3 hours |
 | 4/25/2021 | Completed week 13 exercise (final) | 1.75 hours |
-| 4/26/2021 | Completed more JavaScript code to handle Tellraw command generation | 17:00-TBD hours |
+| 4/26/2021 | Added basic text component editing for generator, begun implementing generate command feature | 6.5 hours |
