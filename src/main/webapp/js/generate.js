@@ -109,6 +109,52 @@ const deleteElement = event => {
 }
 
 /*
+    Generates the generic styling inputs for every JSON element type. These
+    inputs consist of color, bold, italics, underline, strikethrough, and
+    obfuscation. The input elements are all contained within a span element.
+*/
+const createStylingInputs = () => {
+    let span = document.createElement("span");
+
+    let colorInput = createSelectInput(Element.colors, "Color:", "elementColor");
+    span.appendChild(colorInput);
+
+    let lineBreak = document.createElement("br");
+    span.appendChild(lineBreak);
+
+    let boldCheckbox = createCheckbox("Bold", "elementBold");
+    span.appendChild(boldCheckbox);
+
+    let italicCheckbox = createCheckbox("Italic", "elementItalic");
+    span.appendChild(italicCheckbox);
+
+    let underlinedCheckbox = createCheckbox("Underlined", "elementUnderlined");
+    span.appendChild(underlinedCheckbox);
+
+    let strikethroughCheckbox = createCheckbox("Strikethrough", "elementStrikethrough");
+    span.appendChild(strikethroughCheckbox);
+
+    let obfuscatedCheckbox = createCheckbox("Obfuscated", "elementObfuscated");
+    span.appendChild(obfuscatedCheckbox);
+
+    return span;
+}
+
+/*
+    Creates a unique delete button for the current unique element id.
+*/
+const createDeleteButton = () => {
+    let button = document.createElement("button");
+
+    button.setAttribute("type", "button");
+    button.setAttribute("data-delete", uniqueElementId);
+    button.textContent = "Delete";
+    button.addEventListener("click", deleteElement);
+
+    return button;
+}
+
+/*
     Adds a JSON text element to the list of elements to generate.
 */
 const addTextElement = () => {
@@ -119,32 +165,10 @@ const addTextElement = () => {
     let textInput = createTextInput("Text:", "elementText");
     listItem.appendChild(textInput);
 
-    let colorInput = createSelectInput(Element.colors, "Color:", "elementColor");
-    listItem.appendChild(colorInput);
+    let styleInputs = createStylingInputs();
+    listItem.appendChild(styleInputs);
 
-    let lineBreak = document.createElement("br");
-    listItem.appendChild(lineBreak);
-
-    let boldCheckbox = createCheckbox("Bold", "elementBold");
-    listItem.appendChild(boldCheckbox);
-
-    let italicCheckbox = createCheckbox("Italic", "elementItalic");
-    listItem.appendChild(italicCheckbox);
-
-    let underlinedCheckbox = createCheckbox("Underlined", "elementUnderlined");
-    listItem.appendChild(underlinedCheckbox);
-
-    let strikethroughCheckbox = createCheckbox("Strikethrough", "elementStrikethrough");
-    listItem.appendChild(strikethroughCheckbox);
-
-    let obfuscatedCheckbox = createCheckbox("Obfuscated", "elementObfuscated");
-    listItem.appendChild(obfuscatedCheckbox);
-
-    let deleteButton = document.createElement("button");
-    deleteButton.setAttribute("type", "button");
-    deleteButton.setAttribute("data-delete", uniqueElementId);
-    deleteButton.textContent = "Delete";
-    deleteButton.addEventListener("click", deleteElement);
+    let deleteButton = createDeleteButton();
     listItem.appendChild(deleteButton);
 
     appendElement(listItem);
@@ -164,32 +188,10 @@ const addSelectorElement = () => {
     let selectorTagsInput = createTextInput("Selector Tags:", "elementSelectorTags");
     listItem.appendChild(selectorTagsInput);
 
-    let colorInput = createSelectInput(Element.colors, "Color:", "elementColor");
-    listItem.appendChild(colorInput);
+    let styleInputs = createStylingInputs();
+    listItem.appendChild(styleInputs);
 
-    let lineBreak = document.createElement("br");
-    listItem.appendChild(lineBreak);
-
-    let boldCheckbox = createCheckbox("Bold", "elementBold");
-    listItem.appendChild(boldCheckbox);
-
-    let italicCheckbox = createCheckbox("Italic", "elementItalic");
-    listItem.appendChild(italicCheckbox);
-
-    let underlinedCheckbox = createCheckbox("Underlined", "elementUnderlined");
-    listItem.appendChild(underlinedCheckbox);
-
-    let strikethroughCheckbox = createCheckbox("Strikethrough", "elementStrikethrough");
-    listItem.appendChild(strikethroughCheckbox);
-
-    let obfuscatedCheckbox = createCheckbox("Obfuscated", "elementObfuscated");
-    listItem.appendChild(obfuscatedCheckbox);
-
-    let deleteButton = document.createElement("button");
-    deleteButton.setAttribute("type", "button");
-    deleteButton.setAttribute("data-delete", uniqueElementId);
-    deleteButton.textContent = "Delete";
-    deleteButton.addEventListener("click", deleteElement);
+    let deleteButton = createDeleteButton();
     listItem.appendChild(deleteButton);
 
     appendElement(listItem);
