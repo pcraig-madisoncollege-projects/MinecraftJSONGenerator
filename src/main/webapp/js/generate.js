@@ -162,7 +162,7 @@ const addSelectorElement = () => {
     listItem.appendChild(selectorInput);
 
     let selectorTagsInput = createTextInput("Selector Tags:", "elementSelectorTags");
-    listItem.appendChild(selectorInput);
+    listItem.appendChild(selectorTagsInput);
 
     let colorInput = createSelectInput(Element.colors, "Color:", "elementColor");
     listItem.appendChild(colorInput);
