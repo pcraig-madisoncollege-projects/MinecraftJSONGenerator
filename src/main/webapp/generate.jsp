@@ -29,6 +29,7 @@
                         <option value="@p">Nearest Player (@p)</option>
                         <option value="@r">Random Player (@r)</option>
                         <option value="@e">Entity(s) (@e)</option>
+                        <option value="@s">Self (@s)</option>
                     </select>
                 </div>
                 <div class="form-group">
