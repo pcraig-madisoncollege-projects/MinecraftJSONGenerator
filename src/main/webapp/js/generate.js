@@ -114,6 +114,7 @@ const deleteElement = event => {
 const addTextElement = () => {
     let listItem = document.createElement("li");
     listItem.setAttribute("data-id", uniqueElementId);
+    listItem.setAttribute("data-type", "text");
 
     let textInput = createTextInput("Text:", "elementText");
     listItem.appendChild(textInput);
@@ -150,6 +151,37 @@ const addTextElement = () => {
 }
 
 /*
+    Generates a command based on the type of command and the JSON elements provided.
+*/
+const generateCommand = () => {
+    let commandType = document.querySelector("#command").value;
+    let elements = [...document.querySelector("#elements").childNodes];
+    console.log(`Generating ${commandType} command using elements:`);
+    console.log(elements);
+
+    let components = [];
+
+    elements.forEach(element => {
+        let component;
+        let id = element.getAttribute("data-id");
+        let type = element.getAttribute("data-type");
+        if (type == "text") {
+            let text = document.querySelector(`#${"elementText" + id}`).value;
+            let color = document.querySelector(`#${"elementColor" + id}`).value;
+            let bold = document.querySelector(`#${"elementBold" + id}`).checked;
+            component = new TextElement(text, color, bold);
+        }
+
+        if (component) {
+            console.log(component.asJSON());
+            components.push(component.asJSON());
+        }
+    });
+
+    console.log(JSON.stringify(components));
+}
+
+/*
     Initializes elements on the webpage to enable Minecraft command generation
     features.
 */
@@ -160,6 +192,9 @@ const generateInit = () => {
 
     let addTextButton = document.querySelector("#addText");
     addTextButton.addEventListener("click", addTextElement);
+
+    let generateButton = document.querySelector("#generate");
+    generateButton.addEventListener("click", generateCommand);
 }
 
 window.addEventListener("load", generateInit);
