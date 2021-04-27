@@ -46,7 +46,7 @@ class NbtElement extends Element {
     }
 
     /*
-        Converts the selector element to a JSON representation for Minecraft
+        Converts the NBT element to a JSON representation for Minecraft
     */
     asJSON() {
         let root = super.asJSON();
