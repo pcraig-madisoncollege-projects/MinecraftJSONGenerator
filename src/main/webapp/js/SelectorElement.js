@@ -2,7 +2,7 @@ class SelectorElement extends Element {
     constructor(selector, tags, color, bold, italic, underlined, strikethrough, obfuscated) {
         super(color, bold, italic, underlined, strikethrough, obfuscated);
         this._selector = selector;
-        this._tags = tags;
+        this._tags = Element.cleanSelectorTags(tags);
     }
 
     // GETTERS
