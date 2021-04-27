@@ -26,3 +26,4 @@
 | 4/20/2021 | Updated generate jsp page, completed week 13 readings, demo, started final exercise | 3 hours |
 | 4/25/2021 | Completed week 13 exercise (final) | 1.75 hours |
 | 4/26/2021 | Added basic text component editing for generator, begun implementing generate command feature | 6.5 hours |
+| 4/27/2021 | Complete tellraw generation, fix JSON element list item styling | 12:30-TBD hours |
