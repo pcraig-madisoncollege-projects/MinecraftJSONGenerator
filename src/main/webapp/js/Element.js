@@ -83,6 +83,7 @@ class Element {
         Generates square brackets around target selector tags if they are missing.
     */
     static cleanSelectorTags(tags) {
+        tags = tags.trim();
         if (tags != "") {
             if (!tags.startsWith("[")) {
                 tags = "[" + tags;
