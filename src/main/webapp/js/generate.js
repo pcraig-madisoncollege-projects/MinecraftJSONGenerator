@@ -224,6 +224,35 @@ const addScoreElement = () => {
 }
 
 /*
+    Adds a JSON score element to the list of elements to generate.
+*/
+const addNbtElement = () => {
+    let listItem = document.createElement("li");
+    listItem.setAttribute("data-id", uniqueElementId);
+    listItem.setAttribute("data-type", "nbt");
+
+    let nbtTypeInput = createSelectInput(NbtElement.types, "NBT Type:", "elementNbtType");
+    listItem.appendChild(nbtTypeInput);
+
+    let selectorInput = createTextInput("Target:", "elementSelector");
+    listItem.appendChild(selectorInput);
+
+    let selectorTagsInput = createTextInput("Target Tags:", "elementSelectorTags");
+    listItem.appendChild(selectorTagsInput);
+
+    let nbtInput = createTextInput("NBT:", "elementNbt");
+    listItem.appendChild(nbtInput);
+
+    let styleInputs = createStylingInputs();
+    listItem.appendChild(styleInputs);
+
+    let deleteButton = createDeleteButton();
+    listItem.appendChild(deleteButton);
+
+    appendElement(listItem);
+}
+
+/*
     Generates a command based on the type of command and the JSON elements provided.
 */
 const generateCommand = () => {
@@ -277,6 +306,16 @@ const generateCommand = () => {
                     objective, color, bold, italic, underlined, strikethrough,
                     obfuscated);
                 break;
+            case "nbt":
+                let nbtType = document.querySelector(`#${"elementNbtType" + id}`).value;
+                let nbt = document.querySelector(`#${"elementNbt" + id}`).value;
+                let nbtTarget = document.querySelector(`#${"elementSelector" + id}`).value;
+                let nbtTargetTags = document.querySelector(`#${"elementSelectorTags" + id}`).value;
+
+                component = new NbtElement(nbtType, nbt, nbtTarget,
+                    nbtTargetTags, color, bold, italic, underlined,
+                    strikethrough, obfuscated);
+                break;
             default:
                 break;
         }
@@ -316,6 +355,9 @@ const generateInit = () => {
 
     let addScoreButton = document.querySelector("#addScore");
     addScoreButton.addEventListener("click", addScoreElement);
+
+    let addNbtButton = document.querySelector("#addNbt");
+    addNbtButton.addEventListener("click", addNbtElement);
 
     let generateButton = document.querySelector("#generate");
     generateButton.addEventListener("click", generateCommand);
