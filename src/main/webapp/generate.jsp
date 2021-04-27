@@ -37,18 +37,16 @@
                     <input type="text" id="targetSelectorTags" class="form-control">
                 </div>
                 <div id="elementButtons">
-                    <button id="addText" class="btn btn-primary">Add Text</button>
-                    <button id="addSelector" class="btn btn-primary">Add Entity Selector</button>
-                    <button id="addScore" class="btn btn-primary">Add Score Value</button>
-                    <button id="addNbt" class="btn btn-primary">Add NBT Value</button>
-                    <button id="addKeybind" class="btn btn-primary">Add Keybind</button>
-                    <button id="addTranslation" class="btn btn-primary">Add Translation</button>
+                    <button type="button" id="addText" class="btn btn-primary">Add Text</button>
+                    <button type="button" id="addSelector" class="btn btn-primary">Add Entity Selector</button>
+                    <button type="button" id="addScore" class="btn btn-primary">Add Score Value</button>
+                    <button type="button" id="addNbt" class="btn btn-primary">Add NBT Value</button>
+                    <button type="button" id="addKeybind" class="btn btn-primary">Add Keybind</button>
+                    <button type="button" id="addTranslation" class="btn btn-primary">Add Translation</button>
                 </div>
-                <ul id="elements" class="list-unstyled">
-                    <li>JSON Elements Go Here</li>
-                </ul>
+                <ul id="elements" class="list-unstyled"></ul>
 
-                <input type="submit" value="Generate Command" class="btn btn-primary">
+                <input type="button" value="Generate Command" class="btn btn-primary">
                 <input type="button" value="Save Command" class="btn btn-primary">
                 <input type="button" value="Load Command" class="btn btn-primary">
 
