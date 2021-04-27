@@ -14,8 +14,8 @@ class Element {
         "none", "open url", "open file", "run command", "suggest command", "change page", "copy to clipboard"
     ];
 
-    constructor() {
-        this._color = "white";
+    constructor(color) {
+        this._color = color;
     }
 
     get color() {
