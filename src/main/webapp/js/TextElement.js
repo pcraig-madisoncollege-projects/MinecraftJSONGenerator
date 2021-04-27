@@ -1,34 +1,23 @@
 class TextElement extends Element {
-    constructor(text, color, bold) {
-        super(color);
+    constructor(text, color, bold, italic, underlined, strikethrough, obfuscated) {
+        super(color, bold, italic, underlined, strikethrough, obfuscated);
         this._text = text;
-        this._bold = bold;
     }
 
     get text() {
         return this._text;
     }
 
-    get bold() {
-        return this._bold;
-    }
-
     set text(text) {
         this._text = text;
     }
 
-    set bold(bold) {
-        this._bold = bold;
-    }
-
-    // Converts the text element to a JSON representation for Minecraft
+    /*
+        Converts the text element to a JSON representation for Minecraft
+    */
     asJSON() {
-        let object = {
-            "text": this._text,
-            "color": this._color,
-            "bold": this._bold
-        };
-
+        let root = super.asJSON();
+        let object = {"text": this._text, ...root};
         return object;
     }
 }
