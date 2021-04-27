@@ -186,7 +186,48 @@ had been planning (partially due to my poor time management right now), but I fe
 
 3/29/2021
 
-Time Spent: TBD
+Time Spent: 0.75 hours
 
 On Monday, I completed the team merging activity with Lisa. Overall, it went pretty smoothly with the only major problem
 we encountered being a lack of clarity in the instructions.
+
+## Week 11
+
+4/5/2021
+
+This week, I did not do much with this project since I had to focus all efforts towards the team project for completing
+that.
+
+## Week 12
+
+4/12/2021
+
+After much work from finishing up the team project, I took a break from my Java course for a bit. For that reason, I did
+not complete anything substantial on the indie project this week.
+
+## Week 13
+
+4/19/2021
+
+Time Spent: 4.75 hours
+
+This week, I completed the week 13 assignments and made some minor changes to this project. There is still a lot more to
+do, so I am hoping to get an early start in week 14 (probably on Monday) so that I can check off a bunch of todos and
+plans for the project.
+
+## Week 14
+
+4/26/2021
+
+Time Spent: TBD
+
+On Monday, I spent a good chunk of time fleshing out the text component layout on the website. While it does need more
+styling, I am happy to say that basic functionality is working. I also started work on the generate command function
+too, but there is still more that needs to be done to get that working properly. All of this development is being done
+outside the VM so that I can more quickly and effectively develop the JavaScript code (I don't have to redeploy the
+entire web server this way).
+
+On Tuesday, I spent a good chunk of time working out the actual command generation ability for the tellraw command.
+Everything went smoothly and I was able to incorporate JavaScript classes and other modularization techniques so that
+it will be easier to maintain in the future. The next big thing will to add saving and loading of commands as well as to
+fix up the styling of elements on the webpage.
