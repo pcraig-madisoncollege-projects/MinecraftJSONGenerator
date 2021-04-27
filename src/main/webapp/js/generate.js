@@ -151,34 +151,108 @@ const addTextElement = () => {
 }
 
 /*
+    Adds a JSON entity selector element to the list of elements to generate.
+*/
+const addSelectorElement = () => {
+    let listItem = document.createElement("li");
+    listItem.setAttribute("data-id", uniqueElementId);
+    listItem.setAttribute("data-type", "selector");
+
+    let selectorInput = createSelectInput(Element.selectors, "Entity Selector:", "elementSelector");
+    listItem.appendChild(selectorInput);
+
+    let selectorTagsInput = createTextInput("Selector Tags:", "elementSelectorTags");
+    listItem.appendChild(selectorInput);
+
+    let colorInput = createSelectInput(Element.colors, "Color:", "elementColor");
+    listItem.appendChild(colorInput);
+
+    let lineBreak = document.createElement("br");
+    listItem.appendChild(lineBreak);
+
+    let boldCheckbox = createCheckbox("Bold", "elementBold");
+    listItem.appendChild(boldCheckbox);
+
+    let italicCheckbox = createCheckbox("Italic", "elementItalic");
+    listItem.appendChild(italicCheckbox);
+
+    let underlinedCheckbox = createCheckbox("Underlined", "elementUnderlined");
+    listItem.appendChild(underlinedCheckbox);
+
+    let strikethroughCheckbox = createCheckbox("Strikethrough", "elementStrikethrough");
+    listItem.appendChild(strikethroughCheckbox);
+
+    let obfuscatedCheckbox = createCheckbox("Obfuscated", "elementObfuscated");
+    listItem.appendChild(obfuscatedCheckbox);
+
+    let deleteButton = document.createElement("button");
+    deleteButton.setAttribute("type", "button");
+    deleteButton.setAttribute("data-delete", uniqueElementId);
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", deleteElement);
+    listItem.appendChild(deleteButton);
+
+    appendElement(listItem);
+}
+
+/*
     Generates a command based on the type of command and the JSON elements provided.
 */
 const generateCommand = () => {
+    let commandOutput = document.querySelector("#commandOutput");
     let commandType = document.querySelector("#command").value;
+    let targetSelector = document.querySelector("#targetSelector").value;
+    let targetSelectorTags = document.querySelector("#targetSelectorTags").value.trim();
     let elements = [...document.querySelector("#elements").childNodes];
+
+    targetSelectorTags = Element.cleanSelectorTags(targetSelectorTags);
+
+    let command = `/${commandType} ${targetSelector}${targetSelectorTags} `;
+
     console.log(`Generating ${commandType} command using elements:`);
     console.log(elements);
-
     let components = [];
 
+    // Retrieve each JSON element from the document and format using Minecraft JSON format
     elements.forEach(element => {
         let component;
         let id = element.getAttribute("data-id");
         let type = element.getAttribute("data-type");
+
+        // Retrieve generic data for a JSON element
+        let color = document.querySelector(`#${"elementColor" + id}`).value;
+        let bold = document.querySelector(`#${"elementBold" + id}`).checked;
+        let italic = document.querySelector(`#${"elementItalic" + id}`).checked;
+        let underlined = document.querySelector(`#${"elementUnderlined" + id}`).checked;
+        let strikethrough = document.querySelector(`#${"elementStrikethrough" + id}`).checked;
+        let obfuscated = document.querySelector(`#${"elementObfuscated" + id}`).checked;
+
+        // Retrieve text element data
         if (type == "text") {
             let text = document.querySelector(`#${"elementText" + id}`).value;
-            let color = document.querySelector(`#${"elementColor" + id}`).value;
-            let bold = document.querySelector(`#${"elementBold" + id}`).checked;
-            component = new TextElement(text, color, bold);
+            component = new TextElement(text, color, bold, italic, underlined, strikethrough, obfuscated);
+        } else if (type == "selector") {
+            let selector = document.querySelector(`#${"elementSelector" + id}`).value;
+            let selectorTags = document.querySelector(`#${"elementSelectorTags" + id}`).value;
+            component = new SelectorElement(selector, selectorTags, color, bold, italic, underlined, strikethrough, obfuscated);
         }
 
         if (component) {
-            console.log(component.asJSON());
             components.push(component.asJSON());
         }
     });
 
-    console.log(JSON.stringify(components));
+    let data = JSON.stringify(components);
+
+    // Append data to command based on type of command being generated
+    switch (commandType) {
+        case "tellraw":
+        default:
+            command += data;
+            break;
+    }
+
+    commandOutput.textContent = command;
 }
 
 /*
@@ -192,6 +266,9 @@ const generateInit = () => {
 
     let addTextButton = document.querySelector("#addText");
     addTextButton.addEventListener("click", addTextElement);
+
+    let addEntitySelectorButton = document.querySelector("#addSelector");
+    addEntitySelectorButton.addEventListener("click", addSelectorElement);
 
     let generateButton = document.querySelector("#generate");
     generateButton.addEventListener("click", generateCommand);
