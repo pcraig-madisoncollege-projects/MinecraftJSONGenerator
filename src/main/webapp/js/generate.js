@@ -198,6 +198,32 @@ const addSelectorElement = () => {
 }
 
 /*
+    Adds a JSON score element to the list of elements to generate.
+*/
+const addScoreElement = () => {
+    let listItem = document.createElement("li");
+    listItem.setAttribute("data-id", uniqueElementId);
+    listItem.setAttribute("data-type", "score");
+
+    let selectorInput = createSelectInput(Element.selectors, "Entity Selector:", "elementSelector");
+    listItem.appendChild(selectorInput);
+
+    let selectorTagsInput = createTextInput("Selector Tags:", "elementSelectorTags");
+    listItem.appendChild(selectorTagsInput);
+
+    let objectiveInput = createTextInput("Scoreboard Objective:", "elementObjective");
+    listItem.appendChild(objectiveInput);
+
+    let styleInputs = createStylingInputs();
+    listItem.appendChild(styleInputs);
+
+    let deleteButton = createDeleteButton();
+    listItem.appendChild(deleteButton);
+
+    appendElement(listItem);
+}
+
+/*
     Generates a command based on the type of command and the JSON elements provided.
 */
 const generateCommand = () => {
@@ -236,11 +262,20 @@ const generateCommand = () => {
                 component = new TextElement(text, color, bold, italic, underlined, strikethrough, obfuscated);
                 break;
             case "selector":
-                let selector = document.querySelector(`#${"elementSelector" + id}`).value;
-                let selectorTags = document.querySelector(`#${"elementSelectorTags" + id}`).value;
+                let entitySelector = document.querySelector(`#${"elementSelector" + id}`).value;
+                let entitySelectorTags = document.querySelector(`#${"elementSelectorTags" + id}`).value;
 
-                component = new SelectorElement(selector, selectorTags, color,
+                component = new SelectorElement(entitySelector, entitySelectorTags, color,
                     bold, italic, underlined, strikethrough, obfuscated);
+                break;
+            case "score":
+                let scoreSelector = document.querySelector(`#${"elementSelector" + id}`).value;
+                let scoreSelectorTags = document.querySelector(`#${"elementSelectorTags" + id}`).value;
+                let objective = document.querySelector(`#${"elementObjective" + id}`).value;
+
+                component = new ScoreElement(scoreSelector, scoreSelectorTags,
+                    objective, color, bold, italic, underlined, strikethrough,
+                    obfuscated);
                 break;
             default:
                 break;
@@ -278,6 +313,9 @@ const generateInit = () => {
 
     let addEntitySelectorButton = document.querySelector("#addSelector");
     addEntitySelectorButton.addEventListener("click", addSelectorElement);
+
+    let addScoreButton = document.querySelector("#addScore");
+    addScoreButton.addEventListener("click", addScoreElement);
 
     let generateButton = document.querySelector("#generate");
     generateButton.addEventListener("click", generateCommand);

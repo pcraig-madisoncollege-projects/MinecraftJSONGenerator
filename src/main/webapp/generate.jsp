@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <c:set var="title" value="Generate a Command" scope="request" />
-<c:set var="js" value="${['Element.js', 'TextElement.js', 'SelectorElement.js', 'generate.js']}" scope="request" />
+<c:set var="js" value="${['Element.js', 'TextElement.js', 'SelectorElement.js', 'ScoreElement.js', 'generate.js']}" scope="request" />
 <c:import url="includes/head.jsp" />
 
 <body>
