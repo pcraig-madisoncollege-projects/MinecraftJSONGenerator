@@ -253,6 +253,26 @@ const addNbtElement = () => {
 }
 
 /*
+    Adds a JSON keybind element to the list of elements to generate.
+*/
+const addKeybindElement = () => {
+    let listItem = document.createElement("li");
+    listItem.setAttribute("data-id", uniqueElementId);
+    listItem.setAttribute("data-type", "keybind");
+
+    let keybindInput = createTextInput("Keybind:", "elementKeybind");
+    listItem.appendChild(keybindInput);
+
+    let styleInputs = createStylingInputs();
+    listItem.appendChild(styleInputs);
+
+    let deleteButton = createDeleteButton();
+    listItem.appendChild(deleteButton);
+
+    appendElement(listItem);
+}
+
+/*
     Generates a command based on the type of command and the JSON elements provided.
 */
 const generateCommand = () => {
@@ -316,6 +336,12 @@ const generateCommand = () => {
                     nbtTargetTags, color, bold, italic, underlined,
                     strikethrough, obfuscated);
                 break;
+            case "keybind":
+                let keybind = document.querySelector(`#${"elementKeybind" + id}`).value;
+
+                component = new KeybindElement(keybind, color, bold, italic,
+                    underlined, strikethrough, obfuscated);
+                break;
             default:
                 break;
         }
@@ -358,6 +384,9 @@ const generateInit = () => {
 
     let addNbtButton = document.querySelector("#addNbt");
     addNbtButton.addEventListener("click", addNbtElement);
+
+    let addKeybindButton = document.querySelector("#addKeybind");
+    addKeybindButton.addEventListener("click", addKeybindElement);
 
     let generateButton = document.querySelector("#generate");
     generateButton.addEventListener("click", generateCommand);
