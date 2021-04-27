@@ -273,6 +273,26 @@ const addKeybindElement = () => {
 }
 
 /*
+    Adds a JSON translate element to the list of elements to generate.
+*/
+const addTranslateElement = () => {
+    let listItem = document.createElement("li");
+    listItem.setAttribute("data-id", uniqueElementId);
+    listItem.setAttribute("data-type", "translate");
+
+    let translateInput = createTextInput("Translation Key:", "elementTranslate");
+    listItem.appendChild(translateInput);
+
+    let styleInputs = createStylingInputs();
+    listItem.appendChild(styleInputs);
+
+    let deleteButton = createDeleteButton();
+    listItem.appendChild(deleteButton);
+
+    appendElement(listItem);
+}
+
+/*
     Generates a command based on the type of command and the JSON elements provided.
 */
 const generateCommand = () => {
@@ -342,6 +362,13 @@ const generateCommand = () => {
                 component = new KeybindElement(keybind, color, bold, italic,
                     underlined, strikethrough, obfuscated);
                 break;
+            case "translate":
+                let translate = document.querySelector(`#${"elementTranslate" + id}`).value;
+
+                // TODO: Add support for "with" used in translate JSON element
+                component = new TranslationElement(translate, undefined, color, bold, italic,
+                    underlined, strikethrough, obfuscated);
+                break;
             default:
                 break;
         }
@@ -387,6 +414,9 @@ const generateInit = () => {
 
     let addKeybindButton = document.querySelector("#addKeybind");
     addKeybindButton.addEventListener("click", addKeybindElement);
+
+    let addTranslationButton = document.querySelector("#addTranslation");
+    addTranslationButton.addEventListener("click", addTranslateElement);
 
     let generateButton = document.querySelector("#generate");
     generateButton.addEventListener("click", generateCommand);
