@@ -231,3 +231,5 @@ On Tuesday, I spent a good chunk of time working out the actual command generati
 Everything went smoothly and I was able to incorporate JavaScript classes and other modularization techniques so that
 it will be easier to maintain in the future. The next big thing will to add saving and loading of commands as well as to
 fix up the styling of elements on the webpage.
+
+On Wednesday, I went performed the second indie project code review for radagon828.
