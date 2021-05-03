@@ -447,6 +447,9 @@ const confirmSave = () => {
         if (data != "{}") {
             feedback.textContent = "Successfully saved the command!";
             feedback.classList.replace("text-warning", "text-success");
+        } else {
+            feedback.textContent = "Failed to save the command!";
+            feedback.classList.replace("text-warning", "text-danger");
         }
     }).catch(error => {
         feedback.textContent = "Failed to save the command!";

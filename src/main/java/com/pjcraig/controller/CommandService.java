@@ -97,14 +97,13 @@ public class CommandService implements QueryParameterLoader {
                     Command command = new Command(user, name, group, LocalDate.now(), shared, raw);
                     GenericDao<Command> dao = new GenericDao<>(Command.class);
                     dao.insert(command);
-                    session.setAttribute("user", user);
 
                     json = object.getAsString();
                 }
             } catch (JsonSyntaxException exception) {
-                logger.error("Invalid JSON provided while attempting to save command!");
+                logger.error("Invalid JSON provided while attempting to save command!", exception);
             } catch (Exception exception) {
-                logger.error("Unknown exception occurred while attempting to save command!");
+                logger.error("Unknown exception occurred while attempting to save command!", exception);
             }
         }
 
