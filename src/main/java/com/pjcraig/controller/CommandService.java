@@ -5,12 +5,14 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import com.pjcraig.entity.Command;
+import com.pjcraig.entity.User;
 import com.pjcraig.persistence.GenericDao;
 import com.pjcraig.util.QueryParameterLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
@@ -74,19 +76,32 @@ public class CommandService implements QueryParameterLoader {
     @Consumes("application/json")
     @Produces("application/json")
     public Response saveCommand(@Context HttpServletRequest request, String body) {
-        logger.info("Received body data: {}", body);
-        JsonObject object = new JsonObject();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        String json = "{}";
 
-        try {
-            Gson gson = new Gson();
-            object = gson.fromJson(body, JsonObject.class);
-        } catch (JsonSyntaxException exception) {
-            logger.error("Invalid JSON provided while attempting to save command!");
-        } catch (Exception exception) {
-            logger.error("Unknown exception occurred while attempting to save command!");
+        if (user != null) {
+            try {
+                logger.info("Received body: {}", body);
+                Gson gson = new Gson();
+                JsonObject object = gson.fromJson(body, JsonObject.class);
+
+                String raw = object.get("command").getAsString();
+                // TODO: Load additional command properties (name, group, date modified, shared, etc.)
+
+                Command command = new Command(user, raw);
+                GenericDao<Command> dao = new GenericDao<>(Command.class);
+                dao.insert(command);
+                session.setAttribute("user", user);
+
+                json = object.getAsString();
+            } catch (JsonSyntaxException exception) {
+                logger.error("Invalid JSON provided while attempting to save command!");
+            } catch (Exception exception) {
+                logger.error("Unknown exception occurred while attempting to save command!");
+            }
         }
 
-        String json = object.getAsString();
         return Response.ok().entity(json).build();
     }
 }
