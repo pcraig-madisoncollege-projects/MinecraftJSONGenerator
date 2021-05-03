@@ -34,11 +34,17 @@ public class ViewCommands extends HttpServlet {
      * @throws IOException Whether or not an IO exception occurs.
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Retrieve old user from session
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
         // Verify that user is logged in
         if (user != null) {
+            // Refresh session user (in case saved command data has changed)
+            GenericDao<User> dao = new GenericDao<>(User.class);
+            user = dao.getById(user.getId());
+            session.setAttribute("user", user);
+
             RequestDispatcher dispatcher = request.getRequestDispatcher("/commands.jsp");
             dispatcher.forward(request, response);
         } else {
