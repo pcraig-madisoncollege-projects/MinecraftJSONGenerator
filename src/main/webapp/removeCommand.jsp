@@ -11,7 +11,7 @@
     <main class="p-3">
         <c:choose>
             <c:when test="${command != null}">
-                <h2>Are you sure you want to delete ${command.name}?</h2>
+                <h2>Are you sure you want to delete '${command.name}'?</h2>
 
                 <p>Group: ${command.group}</p>
 
