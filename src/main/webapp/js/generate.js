@@ -396,8 +396,11 @@ const openSaveForm = () => {
     generateCommand();
     let saveForm = document.querySelector("#saveForm");
     let saveCommandInput = document.querySelector("#saveCommand");
+    let feedback = document.querySelector("#saveFeedback");
     let command = document.querySelector("#commandOutput").value;
+
     saveCommandInput.textContent = command;
+    feedback.textContent = "";
 
     saveForm.style.display = "block";
 }
@@ -415,6 +418,7 @@ const closeSaveForm = () => {
 */
 const confirmSave = () => {
     let form = document.querySelector("#saveForm");
+    let feedback = document.querySelector("#saveFeedback");
     let name = form.name.value;
     let command = form.command.value;
     let group = form.group.value;
@@ -436,7 +440,18 @@ const confirmSave = () => {
     };
 
     let promise = fetch("http://localhost:8080/jsongenerator/api/commands", initObject);
-    promise.then(response => response.text()).then(data => console.log(data)).catch(error => console.log("Unable to save command"));
+    feedback.textContent = "Saving command. Please wait...";
+    feedback.classList.add("text-warning");
+
+    promise.then(response => response.text()).then(data => {
+        if (data != "{}") {
+            feedback.textContent = "Successfully saved the command!";
+            feedback.classList.replace("text-warning", "text-success");
+        }
+    }).catch(error => {
+        feedback.textContent = "Failed to save the command!";
+        feedback.classList.replace("text-warning", "text-danger");
+    });
 }
 
 /*

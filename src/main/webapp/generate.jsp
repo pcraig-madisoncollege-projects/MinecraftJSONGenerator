@@ -86,6 +86,7 @@
 
             <button type="button" id="confirmSave" class="btn btn-primary">Save Command</button>
             <button type="button" id="closeSaveForm" class="btn btn-danger">Cancel</button>
+            <p id="saveFeedback"></p>
         </form>
 
     </main>
