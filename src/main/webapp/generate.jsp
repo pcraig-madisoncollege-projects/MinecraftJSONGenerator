@@ -58,35 +58,42 @@
 
         </form>
 
-        <form id="saveForm" class="popupDialog border rounded bg-light p-3 shadow" action="">
-            <h2>Save Command</h2>
-            <p><span class="text-danger">*</span> - Required field</p>
-            <div class="form-group">
-                <label for="saveName"><span class="text-danger">*</span>Command Name</label>
-                <input type="text" id="saveName" class="form-control" name="name" required>
+        <form id="saveForm" class="popupDialog shadow" action="">
+            <div class="d-flex bg-dark text-white p-3 rounded-top border-top border-left border-right">
+                <h2>Save Command</h2>
+                <button type="button" id="closeSaveForm" class="btn btn-danger ml-auto">X</button>
             </div>
 
-            <div class="form-group">
-                <label for="saveCommand">Command</label>
-                <textarea id="saveCommand" class="form-control" name="command" readonly></textarea>
+            <div class="bg-light p-3 rounded-bottom border-left border-right border-bottom">
+                <p><span class="text-danger">*</span> - Required field</p>
+                <div class="form-group">
+                    <label for="saveName"><span class="text-danger">*</span>Command Name</label>
+                    <input type="text" id="saveName" class="form-control" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="saveCommand">Command</label>
+                    <textarea id="saveCommand" class="form-control" name="command" readonly></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="saveGroup">Command Group</label>
+                    <select id="saveGroup" class="form-control" name="group">
+                        <option value="None">None</option>
+                        <option value="group.new" class="text-success">New Group</option>
+                    </select>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" id="savePrivate" class="form-check-input" name="shared">
+                    <label for="savePrivate" class="form-check-label">Make Command Public</label>
+                </div>
+
+                <button type="button" id="confirmSave" class="btn btn-primary">Save Command</button>
+                <button type="button" id="cancelSaveForm" class="btn btn-danger">Cancel</button>
+                <p id="saveFeedback" class="mt-3 mb-0"></p>
             </div>
 
-            <div class="form-group">
-                <label for="saveGroup">Command Group</label>
-                <select id="saveGroup" class="form-control" name="group">
-                    <option value="None">None</option>
-                    <option value="group.new" class="text-success">New Group</option>
-                </select>
-            </div>
-
-            <div class="form-group form-check">
-                <input type="checkbox" id="savePrivate" class="form-check-input" name="shared">
-                <label for="savePrivate" class="form-check-label">Make Command Public</label>
-            </div>
-
-            <button type="button" id="confirmSave" class="btn btn-primary">Save Command</button>
-            <button type="button" id="closeSaveForm" class="btn btn-danger">Cancel</button>
-            <p id="saveFeedback"></p>
         </form>
 
     </main>

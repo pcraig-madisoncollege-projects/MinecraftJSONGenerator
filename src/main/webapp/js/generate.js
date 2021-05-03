@@ -490,6 +490,8 @@ const generateInit = () => {
     let openSaveButton = document.querySelector("#openSaveForm");
     openSaveButton.addEventListener("click", openSaveForm);
 
+    let cancelSaveButton = document.querySelector("#cancelSaveForm");
+    cancelSaveButton.addEventListener("click", closeSaveForm);
     let closeSaveButton = document.querySelector("#closeSaveForm");
     closeSaveButton.addEventListener("click", closeSaveForm);
 
