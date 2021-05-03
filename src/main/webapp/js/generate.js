@@ -390,13 +390,42 @@ const generateCommand = () => {
 }
 
 /*
-    Attempts to save the currently generated command to the user's account.
+    Opens the save confirmation form dialog.
 */
-const saveCommand = () => {
+const openSaveForm = () => {
     generateCommand();
-    let object = {};
+    let saveForm = document.querySelector("#saveForm");
+    let saveCommandInput = document.querySelector("#saveCommand");
     let command = document.querySelector("#commandOutput").value;
-    object.command = command;
+    saveCommandInput.textContent = command;
+
+    saveForm.style.display = "block";
+}
+
+/*
+    Closes the save confirmation form dialog.
+*/
+const closeSaveForm = () => {
+    let saveForm = document.querySelector("#saveForm");
+    saveForm.style.display = "none";
+}
+
+/*
+    Attempts to save the generated command to the user's account.
+*/
+const confirmSave = () => {
+    let form = document.querySelector("#saveForm");
+    let name = form.name.value;
+    let command = form.command.value;
+    let group = form.group.value;
+    let shared = form.shared.value;
+
+    let object = {
+        "name": name,
+        "command": command,
+        "group": group,
+        "shared": shared
+    };
 
     let initObject = {
         method: "POST",
@@ -440,8 +469,14 @@ const generateInit = () => {
     let generateButton = document.querySelector("#generate");
     generateButton.addEventListener("click", generateCommand);
 
-    let saveButton = document.querySelector("#save");
-    saveButton.addEventListener("click", saveCommand);
+    let openSaveButton = document.querySelector("#openSaveForm");
+    openSaveButton.addEventListener("click", openSaveForm);
+
+    let closeSaveButton = document.querySelector("#closeSaveForm");
+    closeSaveButton.addEventListener("click", closeSaveForm);
+
+    let saveButton = document.querySelector("#confirmSave");
+    saveButton.addEventListener("click", confirmSave);
 }
 
 window.addEventListener("load", generateInit);
