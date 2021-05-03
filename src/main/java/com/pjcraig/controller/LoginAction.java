@@ -46,10 +46,8 @@ public class LoginAction extends HttpServlet {
 
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            logger.info("Saved user login to session attribute.");
         }
 
-        logger.info("Logged in {} user with a role of {}", email, role);
         // TODO: Pass login feedback as attribute rather than letting index page handle logic
         response.sendRedirect("index.jsp");
     }
