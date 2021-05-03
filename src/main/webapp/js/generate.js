@@ -306,8 +306,6 @@ const generateCommand = () => {
 
     let command = `/${commandType} ${targetSelector}${targetSelectorTags} `;
 
-    console.log(`Generating ${commandType} command using elements:`);
-    console.log(elements);
     let components = [];
 
     // Retrieve each JSON element from the document and format using Minecraft JSON format
@@ -392,6 +390,27 @@ const generateCommand = () => {
 }
 
 /*
+    Attempts to save the currently generated command to the user's account.
+*/
+const saveCommand = () => {
+    generateCommand();
+    let object = {};
+    let command = document.querySelector("#commandOutput").value;
+    object.command = command;
+
+    let initObject = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(object)
+    };
+
+    let promise = fetch("http://localhost:8080/jsongenerator/api/commands", initObject);
+    promise.then(response => response.text()).then(data => console.log(data)).catch(error => console.log("Unable to save command"));
+}
+
+/*
     Initializes elements on the webpage to enable Minecraft command generation
     features.
 */
@@ -420,6 +439,9 @@ const generateInit = () => {
 
     let generateButton = document.querySelector("#generate");
     generateButton.addEventListener("click", generateCommand);
+
+    let saveButton = document.querySelector("#save");
+    saveButton.addEventListener("click", saveCommand);
 }
 
 window.addEventListener("load", generateInit);
