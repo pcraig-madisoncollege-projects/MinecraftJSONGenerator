@@ -17,6 +17,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -86,15 +87,20 @@ public class CommandService implements QueryParameterLoader {
                 Gson gson = new Gson();
                 JsonObject object = gson.fromJson(body, JsonObject.class);
 
-                String raw = object.get("command").getAsString();
-                // TODO: Load additional command properties (name, group, date modified, shared, etc.)
+                if (object.has("name") && object.has("command")
+                        && object.has("group") && object.has("shared")) {
+                    String name = object.get("name").getAsString();
+                    String raw = object.get("command").getAsString();
+                    String group = object.get("group").getAsString();
+                    boolean shared = object.getAsJsonPrimitive("shared").getAsBoolean();
 
-                Command command = new Command(user, raw);
-                GenericDao<Command> dao = new GenericDao<>(Command.class);
-                dao.insert(command);
-                session.setAttribute("user", user);
+                    Command command = new Command(user, name, group, LocalDate.now(), shared, raw);
+                    GenericDao<Command> dao = new GenericDao<>(Command.class);
+                    dao.insert(command);
+                    session.setAttribute("user", user);
 
-                json = object.getAsString();
+                    json = object.getAsString();
+                }
             } catch (JsonSyntaxException exception) {
                 logger.error("Invalid JSON provided while attempting to save command!");
             } catch (Exception exception) {

@@ -418,7 +418,7 @@ const confirmSave = () => {
     let name = form.name.value;
     let command = form.command.value;
     let group = form.group.value;
-    let shared = form.shared.value;
+    let shared = form.shared.checked;
 
     let object = {
         "name": name,
