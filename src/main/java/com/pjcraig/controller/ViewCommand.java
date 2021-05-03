@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -45,16 +46,18 @@ public class ViewCommand extends HttpServlet {
             try {
                 int id = Integer.parseInt(parameterId);
 
-                GenericDao dao = new GenericDao(Command.class);
+                HttpSession session = request.getSession();
+                User user = (User) session.getAttribute("user");
 
+                GenericDao dao = new GenericDao(Command.class);
                 Command command = (Command) dao.getById(id);
 
-                // Verify that a valid command exists and is publicly visible
-                if (command != null && command.isShared()) {
+                // Verify that a valid command exists and is publicly visible or the user's own command
+                if (command != null && (command.isShared() || user.equals(command.getOwner()))) {
                     User owner = command.getOwner();
 
                     request.setAttribute("command", command);
-                    request.setAttribute("user", owner.getNickname());
+                    request.setAttribute("owner", owner.getNickname());
 
                     dispatcher = request.getRequestDispatcher(URL_VALID_COMMAND);
                 }
