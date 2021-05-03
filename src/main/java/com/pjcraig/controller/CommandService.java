@@ -83,7 +83,6 @@ public class CommandService implements QueryParameterLoader {
 
         if (user != null) {
             try {
-                logger.info("Received body: {}", body);
                 Gson gson = new Gson();
                 JsonObject object = gson.fromJson(body, JsonObject.class);
 
@@ -98,7 +97,7 @@ public class CommandService implements QueryParameterLoader {
                     GenericDao<Command> dao = new GenericDao<>(Command.class);
                     dao.insert(command);
 
-                    json = object.getAsString();
+                    json = body;
                 }
             } catch (JsonSyntaxException exception) {
                 logger.error("Invalid JSON provided while attempting to save command!", exception);
