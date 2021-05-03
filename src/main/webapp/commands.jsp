@@ -26,7 +26,7 @@
                         <tbody>
                             <c:forEach var="command" items="${user.commands}">
                                 <tr>
-                                    <td>${command.name}</td>
+                                    <td><a href="command?id=${command.id}">${command.name}</a></td>
                                     <td>${command.group}</td>
                                     <td>${command.dateModified}</td>
                                     <td>${command.shared}</td>
