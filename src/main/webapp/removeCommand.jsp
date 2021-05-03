@@ -15,7 +15,9 @@
 
                 <p>Group: ${command.group}</p>
 
-                <textarea readonly>${command.value}</textarea>
+                <div class="form-group">
+                    <textarea class="form-control" readonly>${command.value}</textarea>
+                </div>
 
                 <form action="delete" method="post">
                     <input type="submit" class="btn btn-primary" value="Delete Command">

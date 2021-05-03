@@ -17,7 +17,9 @@
                     paste it into the chat or into a command block with cheats
                     enabled.</p>
 
-                <textarea readonly>${command.value}</textarea>
+                <div class="form-group">
+                    <textarea class="form-control" readonly>${command.value}</textarea>
+                </div>
 
                 <p>You can generate your own command <a href="generate">here</a>.</p>
 
