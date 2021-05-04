@@ -29,3 +29,4 @@
 | 4/27/2021 | Complete initial tellraw command generation with JSON elements supported | 4.5 hours |
 | 4/28/2021 | Perform code review of radagon828's indie project | 3 hours |
 | 5/3/2021 | Implement saving, loading, and editing | 12.5 hours |
+| 5/4/2021 | Fix saving in deployed application, update project plan, prepare presentation notes | 4 hours |

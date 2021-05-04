@@ -246,3 +246,7 @@ that the generator does not currently generate commands with. Also, a new endpoi
 Finally, I implemented command editing which, aside from the additional code needed to handle auto-loading a command,
 was not that much more difficult. Looking back at everything, some JavaScript could be optimized and refactored to be
 much more efficient, but it is working for now.
+
+The next day, I tested deployment with the application. I was able to test and fix problems relating to saving commands.
+Later that day, I prepared the project for my scheduled presentation today. I also prepared a presentation flow and
+notes for the presentation later on.
