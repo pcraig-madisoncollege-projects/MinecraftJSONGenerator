@@ -50,13 +50,13 @@
                 <c:if test="${user != null}">
                     <input type="button" id="openSaveForm" value="Save Command" class="btn btn-primary">
                 </c:if>
-                <input type="button" id="load" value="Load Command" class="btn btn-primary">
+                <input type="button" id="openLoadForm" value="Load Command" class="btn btn-primary">
 
                 <div class="form-group">
                     <label for="commandOutput">Generated Command</label>
                     <c:choose>
                         <c:when test="${command != null}">
-                            <textarea id="commandOutput" readonly class="form-control">${command}</textarea>
+                            <textarea id="commandOutput" readonly class="form-control">${command.value}</textarea>
                         </c:when>
                         <c:otherwise>
                             <textarea id="commandOutput" readonly class="form-control"></textarea>
@@ -78,7 +78,7 @@
                 <p><span class="text-danger">*</span> Indicates required field</p>
                 <div class="form-group">
                     <label for="saveName"><span class="text-danger">*</span>Command Name</label>
-                    <input type="text" id="saveName" class="form-control" name="name" required>
+                    <input type="text" id="saveName" class="form-control" name="name" value="${command.name}" required>
                 </div>
 
                 <div class="form-group">
@@ -95,7 +95,14 @@
                 </div>
 
                 <div class="form-group form-check">
-                    <input type="checkbox" id="savePrivate" class="form-check-input" name="shared">
+                    <c:choose>
+                        <c:when test="${command.shared}">
+                            <input type="checkbox" id="savePrivate" class="form-check-input" name="shared" checked>
+                        </c:when>
+                        <c:otherwise>
+                            <input type="checkbox" id="savePrivate" class="form-check-input" name="shared">
+                        </c:otherwise>
+                    </c:choose>
                     <label for="savePrivate" class="form-check-label">Make Command Public</label>
                 </div>
 

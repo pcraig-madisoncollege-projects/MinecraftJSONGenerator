@@ -49,7 +49,7 @@ public class GenerateCommand extends HttpServlet {
 
                 // Verify that a valid command exists and is publicly visible or the user's own command
                 if (command != null && (user.equals(command.getOwner()))) {
-                    request.setAttribute("command", command.getValue());
+                    request.setAttribute("command", command);
                 }
             } catch (NumberFormatException exception) {
                 logger.error("Invalid id '{}' entered to edit a command!", parameterId);
