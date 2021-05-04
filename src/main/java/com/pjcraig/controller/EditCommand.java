@@ -57,7 +57,7 @@ public class EditCommand extends HttpServlet {
 
                     request.setAttribute("id", id);
 
-                    url = URL_VALID_COMMAND;
+                    url = URL_VALID_COMMAND + "?id=" + id;
                 }
             } catch (NumberFormatException exception) {
                 logger.error("Invalid id '{}' entered to edit a command!", parameterId);

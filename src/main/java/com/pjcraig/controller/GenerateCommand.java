@@ -34,7 +34,6 @@ public class GenerateCommand extends HttpServlet {
      * @throws IOException Whether or not an IO exception occurs.
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String parameterId = request.getParameter("id");
         // Verify that command parameter exists
         if (parameterId != null) {
