@@ -27,7 +27,7 @@ public class EditCommand extends HttpServlet {
     private Logger logger = LogManager.getLogger();
 
     public static final String URL_UNKNOWN_COMMAND = "/unknownCommand.jsp";
-    public static final String URL_VALID_COMMAND = "/generate";
+    public static final String URL_VALID_COMMAND = "generate";
 
     /**
      * Redirects the user to the generate servlet

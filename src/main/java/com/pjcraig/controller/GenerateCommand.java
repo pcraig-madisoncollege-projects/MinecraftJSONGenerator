@@ -1,5 +1,8 @@
 package com.pjcraig.controller;
 
+import com.pjcraig.entity.Command;
+import com.pjcraig.entity.User;
+import com.pjcraig.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -30,10 +34,32 @@ public class GenerateCommand extends HttpServlet {
      * @throws IOException Whether or not an IO exception occurs.
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String parameterId = request.getParameter("id");
+        // Verify that command parameter exists
+        if (parameterId != null) {
+            // Attempt to load parameter if valid
+            try {
+                int id = Integer.parseInt(parameterId);
+
+                HttpSession session = request.getSession();
+                User user = (User) session.getAttribute("user");
+
+                GenericDao dao = new GenericDao(Command.class);
+                Command command = (Command) dao.getById(id);
+
+                // Verify that a valid command exists and is publicly visible or the user's own command
+                if (command != null && (user.equals(command.getOwner()))) {
+                    request.setAttribute("command", command.getValue());
+                }
+            } catch (NumberFormatException exception) {
+                logger.error("Invalid id '{}' entered to edit a command!", parameterId);
+            } catch (Exception exception) {
+                logger.error("Unknown exception occurred while attempting to edit command.", exception);
+            }
+        }
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/generate.jsp");
-
-        // TODO: Pass command as request attribute if command is being edited
-
         dispatcher.forward(request, response);
     }
 }
