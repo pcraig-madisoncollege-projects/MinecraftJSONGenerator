@@ -54,7 +54,6 @@ text in the game.
     * Gradle
     * Mojang API (Minecraft profile lookup)
     * GSON API
-    * JavaMail API
 * Unit Testing
     * JUnit tests to achieve 80%+ code coverage
 * IDE: IntelliJ IDEA
@@ -72,3 +71,11 @@ text in the game.
 [**Application Flow**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/DesignDocuments/applicationFlow.md)
 
 [**Database Design**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/DesignDocuments/databaseDesign.png)
+
+## Key Resources
+
+[Mojang API](https://wiki.vg/Mojang_API)
+
+[Gson Documentation](https://javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/module-summary.html)
+
+[Minecraft: Java Edition JSON format wiki](https://minecraft.fandom.com/wiki/Raw_JSON_text_format#Java_Edition)
