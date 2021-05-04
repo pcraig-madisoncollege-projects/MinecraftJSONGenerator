@@ -53,8 +53,15 @@
                 <input type="button" id="load" value="Load Command" class="btn btn-primary">
 
                 <div class="form-group">
-                    <label for="commandOutput">Command</label>
-                    <textarea id="commandOutput" readonly class="form-control">Generated Command Goes Here</textarea>
+                    <label for="commandOutput">Generated Command</label>
+                    <c:choose>
+                        <c:when test="${command != null}">
+                            <textarea id="commandOutput" readonly class="form-control">${command}</textarea>
+                        </c:when>
+                        <c:otherwise>
+                            <textarea id="commandOutput" readonly class="form-control"></textarea>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
 
