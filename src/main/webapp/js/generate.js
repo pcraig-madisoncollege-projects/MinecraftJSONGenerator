@@ -464,39 +464,39 @@ const confirmSave = () => {
 const generateInit = () => {
     updateCommandType();
     let commandTypeInput = document.querySelector("#command");
-    commandTypeInput.addEventListener("change", updateCommandType);
+    if (commandTypeInput) commandTypeInput.addEventListener("change", updateCommandType);
 
     let addTextButton = document.querySelector("#addText");
-    addTextButton.addEventListener("click", addTextElement);
+    if (addTextButton) addTextButton.addEventListener("click", addTextElement);
 
     let addEntitySelectorButton = document.querySelector("#addSelector");
-    addEntitySelectorButton.addEventListener("click", addSelectorElement);
+    if (addEntitySelectorButton) addEntitySelectorButton.addEventListener("click", addSelectorElement);
 
     let addScoreButton = document.querySelector("#addScore");
-    addScoreButton.addEventListener("click", addScoreElement);
+    if (addScoreButton) addScoreButton.addEventListener("click", addScoreElement);
 
     let addNbtButton = document.querySelector("#addNbt");
-    addNbtButton.addEventListener("click", addNbtElement);
+    if (addNbtButton) addNbtButton.addEventListener("click", addNbtElement);
 
     let addKeybindButton = document.querySelector("#addKeybind");
-    addKeybindButton.addEventListener("click", addKeybindElement);
+    if (addKeybindButton) addKeybindButton.addEventListener("click", addKeybindElement);
 
     let addTranslationButton = document.querySelector("#addTranslation");
-    addTranslationButton.addEventListener("click", addTranslateElement);
+    if (addTranslationButton) addTranslationButton.addEventListener("click", addTranslateElement);
 
     let generateButton = document.querySelector("#generate");
-    generateButton.addEventListener("click", generateCommand);
+    if (generateButton) generateButton.addEventListener("click", generateCommand);
 
     let openSaveButton = document.querySelector("#openSaveForm");
-    openSaveButton.addEventListener("click", openSaveForm);
+    if (openSaveButton) openSaveButton.addEventListener("click", openSaveForm);
 
     let cancelSaveButton = document.querySelector("#cancelSaveForm");
-    cancelSaveButton.addEventListener("click", closeSaveForm);
+    if (cancelSaveButton) cancelSaveButton.addEventListener("click", closeSaveForm);
     let closeSaveButton = document.querySelector("#closeSaveForm");
-    closeSaveButton.addEventListener("click", closeSaveForm);
+    if (closeSaveButton) closeSaveButton.addEventListener("click", closeSaveForm);
 
     let saveButton = document.querySelector("#confirmSave");
-    saveButton.addEventListener("click", confirmSave);
+    if (saveButton) saveButton.addEventListener("click", confirmSave);
 }
 
 window.addEventListener("load", generateInit);
