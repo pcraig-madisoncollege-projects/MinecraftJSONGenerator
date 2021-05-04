@@ -47,7 +47,9 @@
                 <ul id="elements" class="list-unstyled"></ul>
 
                 <input type="button" id="generate" value="Generate Command" class="btn btn-primary">
-                <input type="button" id="openSaveForm" value="Save Command" class="btn btn-primary">
+                <c:if test="${user != null}">
+                    <input type="button" id="openSaveForm" value="Save Command" class="btn btn-primary">
+                </c:if>
                 <input type="button" id="load" value="Load Command" class="btn btn-primary">
 
                 <div class="form-group">
