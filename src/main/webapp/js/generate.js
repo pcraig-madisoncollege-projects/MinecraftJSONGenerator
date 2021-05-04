@@ -443,6 +443,9 @@ const confirmSave = () => {
         "shared": shared
     };
 
+    // Update saved command using command id
+    if (form.commandId) object.id = form.commandId.value;
+
     let initObject = {
         method: "POST",
         headers: {

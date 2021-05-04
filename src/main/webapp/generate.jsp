@@ -106,6 +106,10 @@
                     <label for="savePrivate" class="form-check-label">Make Command Public</label>
                 </div>
 
+                <c:if test="${command != null}">
+                    <input type="hidden" name="commandId" value="${command.id}">
+                </c:if>
+
                 <button type="button" id="confirmSave" class="btn btn-primary">Save Command</button>
                 <button type="button" id="cancelSaveForm" class="btn btn-danger">Cancel</button>
                 <p id="saveFeedback" class="mt-3 mb-0"></p>

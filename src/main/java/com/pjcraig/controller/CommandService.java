@@ -8,6 +8,7 @@ import com.pjcraig.entity.Command;
 import com.pjcraig.entity.User;
 import com.pjcraig.persistence.GenericDao;
 import com.pjcraig.util.QueryParameterLoader;
+import net.bytebuddy.asm.Advice;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -86,16 +87,30 @@ public class CommandService implements QueryParameterLoader {
                 Gson gson = new Gson();
                 JsonObject object = gson.fromJson(body, JsonObject.class);
 
-                if (object.has("name") && object.has("command")
-                        && object.has("group") && object.has("shared")) {
+                if (object.has("name")
+                        && object.has("command") && object.has("group")
+                        && object.has("shared")) {
                     String name = object.get("name").getAsString();
                     String raw = object.get("command").getAsString();
                     String group = object.get("group").getAsString();
                     boolean shared = object.getAsJsonPrimitive("shared").getAsBoolean();
 
-                    Command command = new Command(user, name, group, LocalDate.now(), shared, raw);
-                    GenericDao<Command> dao = new GenericDao<>(Command.class);
-                    dao.insert(command);
+                    GenericDao dao = new GenericDao<>(Command.class);
+
+                    Command command;
+                    if (object.has("id")) {
+                        int id = object.get("id").getAsInt();
+                        command = (Command) dao.getById(id);
+                        command.setName(name);
+                        command.setGroup(group);
+                        command.setDateModified(LocalDate.now());
+                        command.setShared(shared);
+                        command.setValue(raw);
+                    } else {
+                        command = new Command(user, name, group, LocalDate.now(), shared, raw);
+                    }
+
+                    dao.saveOrUpdate(command);
 
                     json = body;
                 }
