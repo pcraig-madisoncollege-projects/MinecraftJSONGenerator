@@ -74,7 +74,8 @@
             </div>
 
             <div class="bg-light p-3 rounded-bottom border-left border-right border-bottom">
-                <p><span class="text-danger">*</span> - Required field</p>
+                <p>To save your command, enter the following information about your command below.</p>
+                <p><span class="text-danger">*</span> Indicates required field</p>
                 <div class="form-group">
                     <label for="saveName"><span class="text-danger">*</span>Command Name</label>
                     <input type="text" id="saveName" class="form-control" name="name" required>
@@ -101,6 +102,28 @@
                 <button type="button" id="confirmSave" class="btn btn-primary">Save Command</button>
                 <button type="button" id="cancelSaveForm" class="btn btn-danger">Cancel</button>
                 <p id="saveFeedback" class="mt-3 mb-0"></p>
+            </div>
+
+        </form>
+
+        <form id="loadForm" class="popupDialog shadow" action="">
+            <div class="d-flex bg-dark text-white p-3 rounded-top border-top border-left border-right">
+                <h2>Load Command</h2>
+                <button type="button" id="closeLoadForm" class="btn btn-danger ml-auto">X</button>
+            </div>
+
+            <div class="bg-light p-3 rounded-bottom border-left border-right border-bottom">
+                <p>To load a command, paste the command below then click the load button. <span class="text-danger">Note</span> that this will clear the command you are currently generating.</p>
+                <p><span class="text-danger">*</span> Indicates required field</p>
+
+                <div class="form-group">
+                    <label for="loadCommand"><span class="text-danger">*</span>Paste Command Below</label>
+                    <textarea id="loadCommand" class="form-control" name="command" required></textarea>
+                </div>
+
+                <button type="button" id="confirmLoad" class="btn btn-primary">Load Command</button>
+                <button type="button" id="cancelLoadForm" class="btn btn-danger">Cancel</button>
+                <p id="loadFeedback" class="mt-3 mb-0"></p>
             </div>
 
         </form>
