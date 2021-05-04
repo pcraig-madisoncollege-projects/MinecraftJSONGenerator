@@ -429,6 +429,7 @@ const closeSaveForm = () => {
     Attempts to save the generated command to the user's account.
 */
 const confirmSave = () => {
+    let url = window.location.origin + "/jsongenerator/api/commands";
     let form = document.querySelector("#saveForm");
     let feedback = document.querySelector("#saveFeedback");
     let name = form.name.value;
@@ -454,7 +455,7 @@ const confirmSave = () => {
         body: JSON.stringify(object)
     };
 
-    let promise = fetch("http://localhost:8080/jsongenerator/api/commands", initObject);
+    let promise = fetch(url, initObject);
     feedback.textContent = "Saving command. Please wait...";
     feedback.classList.add("text-warning");
 
