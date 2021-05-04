@@ -17,13 +17,11 @@
                     paste it into the chat or into a command block with cheats
                     enabled.</p>
 
-                <c:choose>
-                    <c:when test="${!command.shared}">
-                        <p class="text-danger">This command is not shared, so
-                            only you can view it. Make it public if you want to
-                            share the command with others.</p>
-                    </c:when>
-                </c:choose>
+                <c:if test="${!command.shared}">
+                    <p class="text-danger">This command is not shared, so
+                        only you can view it. Make it public if you want to
+                        share the command with others.</p>
+                </c:if>
 
                 <div class="form-group">
                     <textarea class="form-control" readonly>${command.value}</textarea>
