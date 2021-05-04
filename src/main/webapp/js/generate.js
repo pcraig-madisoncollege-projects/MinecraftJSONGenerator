@@ -575,6 +575,8 @@ const loadCommand = initialCommand => {
             let targetInput = document.querySelector("#targetSelector");
             let targetTagsInput = document.querySelector("#targetSelectorTags");
 
+            commandInput.value = commandType;
+            updateCommandType();
             targetInput.value = target;
             targetTagsInput.value = tags;
             elements.forEach(element => {
