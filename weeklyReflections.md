@@ -239,3 +239,10 @@ On Wednesday, I went performed the second indie project code review for radagon8
 5/3/2021
 
 Time Spent: TBD
+
+On Monday, I put a large chunk of time working out command saving and loading. While I did run into slight issues for
+both major features, I was never held up for long periods of time. Commands currently can be loaded in optimized formats
+that the generator does not currently generate commands with. Also, a new endpoint exists to handle saving commands.
+Finally, I implemented command editing which, aside from the additional code needed to handle auto-loading a command,
+was not that much more difficult. Looking back at everything, some JavaScript could be optimized and refactored to be
+much more efficient, but it is working for now.
