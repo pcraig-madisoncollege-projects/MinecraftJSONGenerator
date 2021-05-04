@@ -47,13 +47,94 @@
                 <ul id="elements" class="list-unstyled"></ul>
 
                 <input type="button" id="generate" value="Generate Command" class="btn btn-primary">
-                <input type="button" id="save" value="Save Command" class="btn btn-primary">
-                <input type="button" id="load" value="Load Command" class="btn btn-primary">
+                <c:if test="${user != null}">
+                    <input type="button" id="openSaveForm" value="Save Command" class="btn btn-primary">
+                </c:if>
+                <input type="button" id="openLoadForm" value="Load Command" class="btn btn-primary">
 
                 <div class="form-group">
-                    <label for="commandOutput">Command</label>
-                    <textarea id="commandOutput" cols="30" rows="10" readonly class="form-control">Generated Command Goes Here</textarea>
+                    <label for="commandOutput">Generated Command</label>
+                    <c:choose>
+                        <c:when test="${command != null}">
+                            <textarea id="commandOutput" readonly class="form-control">${command.value}</textarea>
+                        </c:when>
+                        <c:otherwise>
+                            <textarea id="commandOutput" readonly class="form-control"></textarea>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
+            </div>
+
+        </form>
+
+        <form id="saveForm" class="popupDialog shadow" action="">
+            <div class="d-flex bg-dark text-white p-3 rounded-top border-top border-left border-right">
+                <h2>Save Command</h2>
+                <button type="button" id="closeSaveForm" class="btn btn-danger ml-auto">X</button>
+            </div>
+
+            <div class="bg-light p-3 rounded-bottom border-left border-right border-bottom">
+                <p>To save your command, enter the following information about your command below.</p>
+                <p><span class="text-danger">*</span> Indicates required field</p>
+                <div class="form-group">
+                    <label for="saveName"><span class="text-danger">*</span>Command Name</label>
+                    <input type="text" id="saveName" class="form-control" name="name" value="${command.name}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="saveCommand">Command</label>
+                    <textarea id="saveCommand" class="form-control" name="command" readonly></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="saveGroup">Command Group</label>
+                    <select id="saveGroup" class="form-control" name="group">
+                        <option value="None">None</option>
+                        <option value="group.new" class="text-success">New Group</option>
+                    </select>
+                </div>
+
+                <div class="form-group form-check">
+                    <c:choose>
+                        <c:when test="${command.shared}">
+                            <input type="checkbox" id="savePrivate" class="form-check-input" name="shared" checked>
+                        </c:when>
+                        <c:otherwise>
+                            <input type="checkbox" id="savePrivate" class="form-check-input" name="shared">
+                        </c:otherwise>
+                    </c:choose>
+                    <label for="savePrivate" class="form-check-label">Make Command Public</label>
+                </div>
+
+                <c:if test="${command != null}">
+                    <input type="hidden" name="commandId" value="${command.id}">
+                </c:if>
+
+                <button type="button" id="confirmSave" class="btn btn-primary">Save Command</button>
+                <button type="button" id="cancelSaveForm" class="btn btn-danger">Cancel</button>
+                <p id="saveFeedback" class="mt-3 mb-0"></p>
+            </div>
+
+        </form>
+
+        <form id="loadForm" class="popupDialog shadow" action="">
+            <div class="d-flex bg-dark text-white p-3 rounded-top border-top border-left border-right">
+                <h2>Load Command</h2>
+                <button type="button" id="closeLoadForm" class="btn btn-danger ml-auto">X</button>
+            </div>
+
+            <div class="bg-light p-3 rounded-bottom border-left border-right border-bottom">
+                <p>To load a command, paste the command below then click the load button. <span class="text-danger">Note</span> that this will clear the command you are currently generating.</p>
+                <p><span class="text-danger">*</span> Indicates required field</p>
+
+                <div class="form-group">
+                    <label for="loadCommand"><span class="text-danger">*</span>Paste Command Below</label>
+                    <textarea id="loadCommand" class="form-control" name="command" required></textarea>
+                </div>
+
+                <button type="button" id="confirmLoad" class="btn btn-primary">Load Command</button>
+                <button type="button" id="cancelLoadForm" class="btn btn-danger">Cancel</button>
+                <p id="loadFeedback" class="mt-3 mb-0"></p>
             </div>
 
         </form>

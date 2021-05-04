@@ -16,28 +16,28 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * This servlet handles requests made to view a user's publicly shared command.
+ * This servlet handles requests made to edit a user's command.
  * @author pjcraig
  */
 @WebServlet(
-        name = "ViewCommand",
-        urlPatterns = {"/command"}
+        name = "EditCommand",
+        urlPatterns = {"/edit"}
 )
-public class ViewCommand extends HttpServlet {
+public class EditCommand extends HttpServlet {
     private Logger logger = LogManager.getLogger();
 
     public static final String URL_UNKNOWN_COMMAND = "/unknownCommand.jsp";
-    public static final String URL_VALID_COMMAND = "/viewCommand.jsp";
+    public static final String URL_VALID_COMMAND = "generate";
 
     /**
-     * Redirects the user to the index page.
+     * Redirects the user to the generate servlet
      * @param request The HttpServletRequest object.
      * @param response The HttpServletResponse object.
      * @throws ServletException Whether or not the servlet encounters an error.
      * @throws IOException Whether or not an IO exception occurs.
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher(URL_UNKNOWN_COMMAND);
+        String url = URL_UNKNOWN_COMMAND;
 
         String parameterId = request.getParameter("id");
         // Verify that command parameter exists
@@ -53,21 +53,19 @@ public class ViewCommand extends HttpServlet {
                 Command command = (Command) dao.getById(id);
 
                 // Verify that a valid command exists and is publicly visible or the user's own command
-                if (command != null && (command.isShared() || user.equals(command.getOwner()))) {
-                    User owner = command.getOwner();
+                if (command != null && (user.equals(command.getOwner()))) {
 
-                    request.setAttribute("command", command);
-                    request.setAttribute("owner", owner.getNickname());
+                    request.setAttribute("id", id);
 
-                    dispatcher = request.getRequestDispatcher(URL_VALID_COMMAND);
+                    url = URL_VALID_COMMAND + "?id=" + id;
                 }
             } catch (NumberFormatException exception) {
-                logger.error("Invalid id '{}' entered to view a command!", parameterId);
+                logger.error("Invalid id '{}' entered to edit a command!", parameterId);
             } catch (Exception exception) {
-                logger.error("Unknown exception occurred.", exception);
+                logger.error("Unknown exception occurred while attempting to edit command.", exception);
             }
         }
 
-        dispatcher.forward(request, response);
+        response.sendRedirect(url);
     }
 }

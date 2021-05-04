@@ -27,3 +27,5 @@
 | 4/25/2021 | Completed week 13 exercise (final) | 1.75 hours |
 | 4/26/2021 | Added basic text component editing for generator, begun implementing generate command feature | 6.5 hours |
 | 4/27/2021 | Complete initial tellraw command generation with JSON elements supported | 4.5 hours |
+| 4/28/2021 | Perform code review of radagon828's indie project | 3 hours |
+| 5/3/2021 | Implement basic saving and loading | 12:00-TBD hours |

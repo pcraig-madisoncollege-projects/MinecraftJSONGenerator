@@ -219,7 +219,7 @@ plans for the project.
 
 4/26/2021
 
-Time Spent: TBD
+Time Spent: 14 hours
 
 On Monday, I spent a good chunk of time fleshing out the text component layout on the website. While it does need more
 styling, I am happy to say that basic functionality is working. I also started work on the generate command function
@@ -231,3 +231,11 @@ On Tuesday, I spent a good chunk of time working out the actual command generati
 Everything went smoothly and I was able to incorporate JavaScript classes and other modularization techniques so that
 it will be easier to maintain in the future. The next big thing will to add saving and loading of commands as well as to
 fix up the styling of elements on the webpage.
+
+On Wednesday, I went performed the second indie project code review for radagon828.
+
+## Week 15
+
+5/3/2021
+
+Time Spent: TBD
