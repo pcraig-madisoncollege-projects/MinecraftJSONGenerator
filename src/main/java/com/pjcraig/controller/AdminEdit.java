@@ -63,8 +63,8 @@ public class AdminEdit extends HttpServlet {
             // Retrieve raw parameters
             String mode = request.getParameter(PARAMETER_MODE);
             String reason = request.getParameter(PARAMETER_REASON);
-            String userIdParameter = request.getParameter(PARAMETER_COMMAND_ID);
-            String commandIdParameter = request.getParameter(PARAMETER_USER_ID);
+            String userIdParameter = request.getParameter(PARAMETER_USER_ID);
+            String commandIdParameter = request.getParameter(PARAMETER_COMMAND_ID);
 
             // Verify inputs were received
             if (mode != null && reason != null
@@ -82,10 +82,28 @@ public class AdminEdit extends HttpServlet {
                     switch (mode) {
                         case "unshare":
                             dao = new GenericDao(Command.class);
-                            Command command = (Command) dao.getById(commandId);
-                            command.setShared(false);
-                            dao.saveOrUpdate(command);
+                            Command unshareCommand = (Command) dao.getById(commandId);
+                            unshareCommand.setShared(false);
+                            dao.saveOrUpdate(unshareCommand);
                             feedback = "Successfully unshared the command!";
+                            break;
+                        case "deletepost":
+                            dao = new GenericDao(Command.class);
+                            Command deleteCommand = (Command) dao.getById(commandId);
+                            if (deleteCommand != null) {
+                                dao.delete(deleteCommand);
+                                feedback = "Successfully deleted the command!";
+                            }
+                            break;
+                        case "deleteprofile":
+                            dao = new GenericDao(User.class);
+                            User deleteUser = (User) dao.getById(userId);
+                            logger.debug("Deleting user id {}", userId);
+                            logger.debug("Deleting user {}", deleteUser);
+                            if (deleteUser != null) {
+                                dao.delete(deleteUser);
+                                feedback = "Successfully deleted the user!";
+                            }
                             break;
                         default:
                             break;

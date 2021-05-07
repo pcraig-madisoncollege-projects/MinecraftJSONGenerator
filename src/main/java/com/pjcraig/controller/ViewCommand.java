@@ -63,6 +63,7 @@ public class ViewCommand extends HttpServlet {
 
                     request.setAttribute("command", command);
                     request.setAttribute("owner", owner.getNickname());
+                    request.setAttribute("ownerId", owner.getId());
                     request.setAttribute("isAdmin", isAdmin);
 
                     dispatcher = request.getRequestDispatcher(URL_VALID_COMMAND);
