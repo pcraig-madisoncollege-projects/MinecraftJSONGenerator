@@ -92,8 +92,7 @@ public class AdminEdit extends HttpServlet {
                     }
 
                     request.setAttribute("feedback", feedback);
-                    String url = String.format("/command?id=%d", commandId);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/adminEditResults.jsp");
                     dispatcher.forward(request, response);
                     return;
                 } catch (NumberFormatException exception) {

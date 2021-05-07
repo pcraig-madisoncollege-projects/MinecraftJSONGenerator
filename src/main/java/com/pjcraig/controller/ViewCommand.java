@@ -76,15 +76,4 @@ public class ViewCommand extends HttpServlet {
 
         dispatcher.forward(request, response);
     }
-
-    /**
-     * Forwards the user to the doGet method.
-     * @param request The HttpServletRequest object.
-     * @param response The HttpServletResponse object.
-     * @throws ServletException Whether or not the servlet encounters an error.
-     * @throws IOException Whether or not an IO exception occurs.
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
-    }
 }
