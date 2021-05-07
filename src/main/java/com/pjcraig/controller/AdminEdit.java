@@ -6,6 +6,7 @@ import com.pjcraig.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,10 +23,26 @@ import java.util.Locale;
  */
 @WebServlet(
         name = "AdminEdit",
-        urlPatterns = {"/adminEdit"}
+        urlPatterns = {"/adminedit"}
 )
 public class AdminEdit extends HttpServlet {
     private final Logger logger = LogManager.getLogger();
+
+    public static final String PARAMETER_MODE = "mode";
+    public static final String PARAMETER_REASON = "reason";
+    public static final String PARAMETER_COMMAND_ID = "commandId";
+    public static final String PARAMETER_USER_ID = "userId";
+
+    /**
+     * Redirects the user to the index page.
+     * @param request The HttpServletRequest object.
+     * @param response The HttpServletResponse object.
+     * @throws ServletException Whether or not the servlet encounters an error.
+     * @throws IOException Whether or not an IO exception occurs.
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect("index.jsp");
+    }
 
     /**
      * Handles admin edit submissions for command unsharing or deleting as well as user removal.
@@ -44,10 +61,10 @@ public class AdminEdit extends HttpServlet {
             String feedback = "Failed to perform requested admin action";
 
             // Retrieve raw parameters
-            String mode = request.getParameter("mode");
-            String reason = request.getParameter("reason");
-            String userIdParameter = request.getParameter("commandId");
-            String commandIdParameter = request.getParameter("commandId");
+            String mode = request.getParameter(PARAMETER_MODE);
+            String reason = request.getParameter(PARAMETER_REASON);
+            String userIdParameter = request.getParameter(PARAMETER_COMMAND_ID);
+            String commandIdParameter = request.getParameter(PARAMETER_USER_ID);
 
             // Verify inputs were received
             if (mode != null && reason != null
@@ -73,29 +90,20 @@ public class AdminEdit extends HttpServlet {
                         default:
                             break;
                     }
+
+                    request.setAttribute("feedback", feedback);
+                    String url = String.format("/command?id=%d", commandId);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+                    dispatcher.forward(request, response);
+                    return;
                 } catch (NumberFormatException exception) {
                     logger.info("Unable to parse provided ids for admin editing functionality.", exception);
                 } catch (Exception exception) {
                     logger.error("Unknown exception occurred while performing admin functionality.", exception);
                 }
             }
-
-            request.setAttribute("feedback", feedback);
         }
 
         response.sendRedirect("index.jsp");
     }
-
-    /**
-     * Redirects the user to the index page.
-     * @param request The HttpServletRequest object.
-     * @param response The HttpServletResponse object.
-     * @throws ServletException Whether or not the servlet encounters an error.
-     * @throws IOException Whether or not an IO exception occurs.
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
-    }
-
-
 }
