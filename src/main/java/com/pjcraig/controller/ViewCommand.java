@@ -52,18 +52,7 @@ public class ViewCommand extends HttpServlet {
 
                 HttpSession session = request.getSession();
                 User user = (User) session.getAttribute("user");
-
-                boolean isAdmin = false;
-                // Check if user has admin privileges
-                if (user != null) {
-                    Set<Role> roles = user.getRoles();
-                    for (Role role : roles) {
-                        if (role.getName().equalsIgnoreCase("admin")) {
-                            isAdmin = true;
-                            break;
-                        }
-                    }
-                }
+                boolean isAdmin = request.isUserInRole("admin");
 
                 GenericDao dao = new GenericDao(Command.class);
                 Command command = (Command) dao.getById(id);
