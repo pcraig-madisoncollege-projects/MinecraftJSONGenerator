@@ -65,6 +65,9 @@
                             <textarea id="reason" class="form-control" name="reason"></textarea>
                         </div>
 
+                        <input type="hidden" name="userId" value="${user.id}">
+                        <input type="hidden" name="commandId" value="${command.id}">
+
                         <input type="submit" class="btn btn-primary" value="Submit Action">
 
                     </form>
