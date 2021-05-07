@@ -250,3 +250,8 @@ much more efficient, but it is working for now.
 The next day, I tested deployment with the application. I was able to test and fix problems relating to saving commands.
 Later that day, I prepared the project for my scheduled presentation today. I also prepared a presentation flow and
 notes for the presentation later on.
+
+On Friday, I set up basic functionality for admins to remove or unshare commands as well as to remove users as needed.
+There were a couple hiccups with setting up database access, but nothing huge prevented the development. This admin
+functionality can be accessed on the view command JSP page. I will probably add similar behavior to a view user page,
+but I will need to think about that for a bit.
