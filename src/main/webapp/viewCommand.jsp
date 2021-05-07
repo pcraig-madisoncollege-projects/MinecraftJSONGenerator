@@ -43,10 +43,12 @@
                     <form method="POST" action="adminEdit">
                         <h3>Admin Report</h3>
 
-                        <p>Select the action to take on this command post.</p>
+                        <p><span class="text-danger">*</span> Indicates required field</p>
+
+                        <p><span class="text-danger">*</span>Select the action to take on this command post.</p>
 
                         <div class="form-group form-check">
-                            <input type="radio" id="unshare" class="form-check-input" name="mode" value="unshare" checked>
+                            <input type="radio" id="unshare" class="form-check-input" name="mode" value="unshare" required checked>
                             <label for="unshare" class="form-check-label">Unshare Command</label>
                         </div>
 
@@ -61,8 +63,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="reason">Reason for Action</label>
-                            <textarea id="reason" class="form-control" name="reason"></textarea>
+                            <label for="reason"><span class="text-danger">*</span>Reason for Action</label>
+                            <textarea id="reason" class="form-control" name="reason" required></textarea>
                         </div>
 
                         <input type="hidden" name="userId" value="${user.id}">
