@@ -2,11 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <c:set var="title" value="JSON Generator" scope="request" />
-<c:import url="includes/head.jsp"></c:import>
+<c:import url="includes/head.jsp" />
 
 <body>
 <div class="container-fluid px-0">
-    <c:import url="includes/header.jsp"></c:import>
+    <c:import url="includes/header.jsp" />
 
     <main class="p-3">
         <c:choose>
@@ -24,12 +24,52 @@
                 </c:if>
 
                 <div class="form-group">
-                    <textarea class="form-control" readonly>${command.value}</textarea>
+                    <label for="command">Command</label>
+                    <textarea id="command" class="form-control" readonly>${command.value}</textarea>
                 </div>
 
                 <p>You can generate your own command <a href="generate">here</a>.</p>
 
                 <p>See a problem or something inappropriate? Report it <a href="report">here</a>.</p>
+
+                <c:if test="${isAdmin != null && isAdmin}">
+                    <h2>Admin Controls</h2>
+
+                    <p>If the command is not appropriate for all users, be sure to unshare the command. While this
+                        behavior is not encouraged, there is nothing wrong with saving these types of commands to the
+                        system. If, however, the command is spam or otherwise an attempt to harm the system, be sure
+                        to delete it. If the user continues this destructive behavior, you can delete their account.</p>
+
+                    <form method="POST" action="adminEdit">
+                        <h3>Admin Report</h3>
+
+                        <p>Select the action to take on this command post.</p>
+
+                        <div class="form-group form-check">
+                            <input type="radio" id="unshare" class="form-check-input" name="mode" value="unshare" checked>
+                            <label for="unshare" class="form-check-label">Unshare Command</label>
+                        </div>
+
+                        <div class="form-group form-check">
+                            <input type="radio" id="deletePost" class="form-check-input" name="mode" value="deletePost">
+                            <label for="deletePost" class="form-check-label">Delete Post</label>
+                        </div>
+
+                        <div class="form-group form-check">
+                            <input type="radio" id="deleteProfile" class="form-check-input" name="mode" value="deleteProfile">
+                            <label for="deleteProfile" class="form-check-label">Delete Profile</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reason">Reason for Action</label>
+                            <textarea id="reason" class="form-control" name="reason"></textarea>
+                        </div>
+
+                        <input type="submit" class="btn btn-primary" value="Submit Action">
+
+                    </form>
+                </c:if>
+
             </c:when>
 
             <c:otherwise>
@@ -40,10 +80,10 @@
         </c:choose>
     </main>
 
-    <c:import url="includes/footer.jsp"></c:import>
+    <c:import url="includes/footer.jsp" />
 </div>
 </body>
 
-<c:import url="includes/scripts.jsp"></c:import>
+<c:import url="includes/scripts.jsp" />
 
 </html>
