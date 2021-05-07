@@ -5,7 +5,6 @@ import com.pjcraig.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,8 +34,6 @@ public class LoginAction extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getRemoteUser();
-        String role = request.isUserInRole("admin") ? "admin" : "user";
-        String feedback = "Unable to sign in. If this issue persists, be sure to make a report about the problem.";
 
         GenericDao dao = new GenericDao(User.class);
         List<User> users = dao.getByPropertyEqual("email", email);
@@ -47,11 +44,8 @@ public class LoginAction extends HttpServlet {
 
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-
-            feedback = "You are signed in as " + user.getNickname();
         }
 
-        request.setAttribute("feedback", feedback);
         response.sendRedirect("index.jsp");
     }
 }
