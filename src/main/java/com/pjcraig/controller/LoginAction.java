@@ -36,6 +36,7 @@ public class LoginAction extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getRemoteUser();
         String role = request.isUserInRole("admin") ? "admin" : "user";
+        String feedback = "Unable to sign in. If this issue persists, be sure to make a report about the problem.";
 
         GenericDao dao = new GenericDao(User.class);
         List<User> users = dao.getByPropertyEqual("email", email);
@@ -46,9 +47,11 @@ public class LoginAction extends HttpServlet {
 
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
+
+            feedback = "You are signed in as " + user.getNickname();
         }
 
-        // TODO: Pass login feedback as attribute rather than letting index page handle logic
+        request.setAttribute("feedback", feedback);
         response.sendRedirect("index.jsp");
     }
 }
