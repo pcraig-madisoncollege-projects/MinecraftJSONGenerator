@@ -9,8 +9,8 @@
         <c:import url="includes/header.jsp" />
 
         <main class="p-3">
-            <c:if test="${user != null}">
-                <p class="text-success">You are signed in as ${user.nickname}.</p>
+            <c:if test="${feedback != null}">
+                <p class="text-success">${feedback}</p>
             </c:if>
             <section id="about">
                 <h2>About the JSON Generator</h2>
