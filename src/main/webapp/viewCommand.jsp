@@ -40,7 +40,7 @@
                         system. If, however, the command is spam or otherwise an attempt to harm the system, be sure
                         to delete it. If the user continues this destructive behavior, you can delete their account.</p>
 
-                    <form method="POST" action="adminEdit">
+                    <form method="POST" action="adminedit">
                         <h3>Admin Report</h3>
 
                         <p><span class="text-danger">*</span> Indicates required field</p>
@@ -71,6 +71,10 @@
                         <input type="hidden" name="commandId" value="${command.id}">
 
                         <input type="submit" class="btn btn-primary" value="Submit Action">
+
+                        <c:if test="${feedback != null}">
+                            <p class="text-success">${feedback}</p>
+                        </c:if>
 
                     </form>
                 </c:if>
