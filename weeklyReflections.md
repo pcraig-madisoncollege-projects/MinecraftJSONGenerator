@@ -255,3 +255,10 @@ On Friday, I set up basic functionality for admins to remove or unshare commands
 There were a couple hiccups with setting up database access, but nothing huge prevented the development. This admin
 functionality can be accessed on the view command JSP page. I will probably add similar behavior to a view user page,
 but I will need to think about that for a bit.
+
+On Sunday, I added one last major feature to allow users to edit their account. I also added the ability to view admin
+messages from this page. I also fixed up the input validation for various pages on the server side. Next, I added a
+temporary reports page that can be accessed from the '/report' url. I had wanted to include reporting functionality and
+(while it would definitely be possible), this might be one of those v2.0 features that I just couldn't quite reach for
+the project deadline. Finally, I recorded the demo video for others to view about this project. I will likely include
+the link tomorrow in the readme document.
