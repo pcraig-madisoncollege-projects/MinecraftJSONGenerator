@@ -100,32 +100,31 @@ public class CommandService implements QueryParameterLoader {
                     String group = object.get("group").getAsString();
                     boolean shared = object.getAsJsonPrimitive("shared").getAsBoolean();
 
-                    GenericDao dao = new GenericDao<>(Command.class);
+                    // Verify that the name, group, and command length are valid
+                    if (!name.trim().isEmpty() && name.length() <= MAX_COMMAND_NAME_LENGTH
+                            && !group.trim().isEmpty() && group.length() <= MAX_COMMAND_GROUP_LENGTH
+                            && !raw.trim().isEmpty() && raw.length() <= MAX_COMMAND_LENGTH) {
 
-                    Command command;
-                    if (object.has("id")) {
-                        int id = object.get("id").getAsInt();
-                        command = (Command) dao.getById(id);
+                        GenericDao dao = new GenericDao<>(Command.class);
+                        Command command = new Command(user, name, group, LocalDate.now(), shared, raw);
+                        command.setName(name);
+                        command.setGroup(group);
+                        command.setDateModified(LocalDate.now());
+                        command.setShared(shared);
+                        command.setValue(raw);
 
-                        // Verify that a command exists at that id and that owner
-                        if (command != null && user.equals(command.getOwner())) {
-                            // Verify that the name, group, and command length are valid
-                            if (!name.trim().isEmpty() && name.length() <= MAX_COMMAND_NAME_LENGTH
-                                    && !group.trim().isEmpty() && group.length() <= MAX_COMMAND_GROUP_LENGTH
-                                    && !raw.trim().isEmpty() && raw.length() <= MAX_COMMAND_LENGTH) {
+                        // Check if command is being updated (not saved as a new command)
+                        if (object.has("id")) {
+                            int id = object.get("id").getAsInt();
+                            Command temporaryCommand = (Command) dao.getById(id);
 
-                                command.setName(name);
-                                command.setGroup(group);
-                                command.setDateModified(LocalDate.now());
-                                command.setShared(shared);
-                                command.setValue(raw);
-
-                                dao.saveOrUpdate(command);
-                                json = body;
+                            // Verify that a command exists at that id and that owner
+                            if (temporaryCommand != null && user.equals(temporaryCommand.getOwner())) {
+                                command.setId(id);
+                                command.setOwner(temporaryCommand.getOwner());
                             }
                         }
-                    } else {
-                        command = new Command(user, name, group, LocalDate.now(), shared, raw);
+
                         dao.saveOrUpdate(command);
                         json = body;
                     }
