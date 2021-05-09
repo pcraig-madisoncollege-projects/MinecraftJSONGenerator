@@ -28,7 +28,11 @@ Minecraft command generator. Specifically, it will emphasize on
 the commands that utilize JSON components for the formatting of  
 text in the game.
 
-[//]: # (TODO: Add images to describe problem)
+As a reference, below is a screenshot from Minecraft where a
+tellraw command is run. These commands utilize JSON elements in
+order to format messages in the in-game multiplayer chat.
+
+![Minecraft Tellraw Command with Multiplayer Chat Example](screenshots/tellrawCommandExample.png)
 
 ## Project Technologies (WIP, more will be added during development)
 
