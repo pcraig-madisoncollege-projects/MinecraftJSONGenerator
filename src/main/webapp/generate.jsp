@@ -90,7 +90,7 @@
                     <label for="saveGroup">Command Group</label>
                     <select id="saveGroup" class="form-control" name="group">
                         <option value="None">None</option>
-                        <option value="group.new" class="text-success">New Group</option>
+                        <option value="New Group" class="text-success">New Group</option>
                     </select>
                 </div>
 
@@ -105,6 +105,7 @@
                     </c:choose>
                     <label for="savePrivate" class="form-check-label">Make Command Public</label>
                 </div>
+                <p>* Commands can be unshared or removed entirely if inappropriate content is publicly shared.</p>
 
                 <c:if test="${command != null}">
                     <input type="hidden" name="commandId" value="${command.id}">
