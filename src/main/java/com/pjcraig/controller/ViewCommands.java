@@ -48,7 +48,6 @@ public class ViewCommands extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/commands.jsp");
             dispatcher.forward(request, response);
         } else {
-            // TODO: Forward user to error page with message stating sign-in required
             response.sendRedirect("index.jsp");
         }
     }
