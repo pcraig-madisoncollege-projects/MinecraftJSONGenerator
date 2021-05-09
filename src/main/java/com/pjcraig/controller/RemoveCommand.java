@@ -103,7 +103,6 @@ public class RemoveCommand extends HttpServlet {
                     HttpSession session = request.getSession();
                     User user = (User) session.getAttribute("user");
 
-                    // Verify that the user is the owner. TODO: Admin removal functionality?
                     if (user != null && user.equals(owner)) {
                         commandDao.delete(command);
 
