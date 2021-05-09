@@ -36,7 +36,6 @@ public class LogoutAction extends HttpServlet {
         HttpSession session = request.getSession();
         session.removeAttribute("user");
 
-        // TODO: Pass logout feedback as attribute rather than letting index page handle logic
         request.logout();
         response.sendRedirect("index.jsp");
     }

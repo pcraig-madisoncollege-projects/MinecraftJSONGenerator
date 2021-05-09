@@ -31,6 +31,10 @@
             </div>
             <input type="submit" value="Register" class="btn btn-primary">
             <input type="reset" value="Clear" class="btn btn-primary">
+
+            <c:if test="${feedback != null}">
+                <p class="text-danger">${feedback}</p>
+            </c:if>
         </form>
     </main>
 

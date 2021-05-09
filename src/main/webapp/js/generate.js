@@ -462,7 +462,8 @@ const confirmSave = () => {
     promise.then(response => response.text()).then(data => {
         if (data != "{}") {
             feedback.textContent = "Successfully saved the command!";
-            feedback.classList.replace("text-warning", "text-success");
+            feedback.classList.remove("text-warning");
+            feedback.classList.add("text-success");
         } else {
             feedback.textContent = "Failed to save the command!";
             feedback.classList.replace("text-warning", "text-danger");

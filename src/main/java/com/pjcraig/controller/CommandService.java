@@ -31,6 +31,10 @@ import java.util.Map;
 public class CommandService implements QueryParameterLoader {
     Logger logger = LogManager.getLogger();
 
+    public static final int MAX_COMMAND_NAME_LENGTH = 32;
+    public static final int MAX_COMMAND_GROUP_LENGTH = 32;
+    public static final int MAX_COMMAND_LENGTH = 10000;
+
     /**
      * Attempts to GET the specified command using a URL query parameter id.
      * @param uriInfo The URI info containing the id query parameter.
@@ -87,6 +91,7 @@ public class CommandService implements QueryParameterLoader {
                 Gson gson = new Gson();
                 JsonObject object = gson.fromJson(body, JsonObject.class);
 
+                // Verify that all properties were provided in POST request
                 if (object.has("name")
                         && object.has("command") && object.has("group")
                         && object.has("shared")) {
@@ -95,24 +100,34 @@ public class CommandService implements QueryParameterLoader {
                     String group = object.get("group").getAsString();
                     boolean shared = object.getAsJsonPrimitive("shared").getAsBoolean();
 
-                    GenericDao dao = new GenericDao<>(Command.class);
+                    // Verify that the name, group, and command length are valid
+                    if (!name.trim().isEmpty() && name.length() <= MAX_COMMAND_NAME_LENGTH
+                            && !group.trim().isEmpty() && group.length() <= MAX_COMMAND_GROUP_LENGTH
+                            && !raw.trim().isEmpty() && raw.length() <= MAX_COMMAND_LENGTH) {
 
-                    Command command;
-                    if (object.has("id")) {
-                        int id = object.get("id").getAsInt();
-                        command = (Command) dao.getById(id);
+                        GenericDao dao = new GenericDao<>(Command.class);
+                        Command command = new Command(user, name, group, LocalDate.now(), shared, raw);
                         command.setName(name);
                         command.setGroup(group);
                         command.setDateModified(LocalDate.now());
                         command.setShared(shared);
                         command.setValue(raw);
-                    } else {
-                        command = new Command(user, name, group, LocalDate.now(), shared, raw);
+
+                        // Check if command is being updated (not saved as a new command)
+                        if (object.has("id")) {
+                            int id = object.get("id").getAsInt();
+                            Command temporaryCommand = (Command) dao.getById(id);
+
+                            // Verify that a command exists at that id and that owner
+                            if (temporaryCommand != null && user.equals(temporaryCommand.getOwner())) {
+                                command.setId(id);
+                                command.setOwner(temporaryCommand.getOwner());
+                            }
+                        }
+
+                        dao.saveOrUpdate(command);
+                        json = body;
                     }
-
-                    dao.saveOrUpdate(command);
-
-                    json = body;
                 }
             } catch (JsonSyntaxException exception) {
                 logger.error("Invalid JSON provided while attempting to save command!", exception);

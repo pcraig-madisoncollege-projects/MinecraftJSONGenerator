@@ -28,7 +28,7 @@ class TranslationElement extends Element {
         let root = super.asJSON();
         let object = {"translate": this._translate, ...root};
 
-        // TODO: Implement component into JSON output
+        // TODO: Implement 'with' component into JSON output
 
         return object;
     }
