@@ -32,8 +32,8 @@
 
             <section id="contact">
                 <h2>Contact and Support</h2>
-                <p>Do you need help with something? Feel free to send us an email at support@example.com.</p>
-                <p>Have something to report? You can report it <a href="#">here</a>.</p>
+                <p>Do you need help with something? Feel free to send us an email at classyelm123pmc@gmail.com.</p>
+                <p>Have something to report? You can report it <a href="report">here</a>.</p>
             </section>
         </main>
 
