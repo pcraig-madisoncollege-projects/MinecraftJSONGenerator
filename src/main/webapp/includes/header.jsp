@@ -5,8 +5,9 @@
         <a href="generate" class="text-white text-decoration-none mx-lg-3 my-3 my-lg-0">Generate a Command</a>
         <a href="index.jsp#about" class="text-white text-decoration-none mx-lg-3">About</a>
         <c:choose>
-            <c:when test="${pageContext.request.isUserInRole('user') || pageContext.request.isUserInRole('admin')}">
+            <c:when test="${user != null}">
                 <a href="commands" class="btn btn-primary ml-lg-auto my-3 my-lg-0">My Commands</a>
+                <a href="account" class="btn btn-primary ml-lg-3">Account</a>
                 <a href="logout" class="btn btn-primary ml-lg-3">Logout</a>
             </c:when>
             <c:otherwise>
