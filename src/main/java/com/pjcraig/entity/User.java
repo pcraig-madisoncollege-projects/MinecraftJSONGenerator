@@ -28,8 +28,13 @@ public class User {
     private int id;
     private String email;
     private String password;
+    @Column(name="notification")
+    private String message;
     @Expose
     private String nickname;
+    @Expose
+    @Column(name="mcprofile")
+    private String minecraftProfile;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
@@ -161,8 +166,44 @@ public class User {
      *
      * @param roles the list of roles
      */
-    public void setRole(Set<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    /**
+     * Gets message.
+     *
+     * @return the message
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * Sets message.
+     *
+     * @param message the message
+     */
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    /**
+     * Gets minecraft profile.
+     *
+     * @return the minecraft profile
+     */
+    public String getMinecraftProfile() {
+        return minecraftProfile;
+    }
+
+    /**
+     * Sets minecraft profile.
+     *
+     * @param minecraftProfile the minecraft profile
+     */
+    public void setMinecraftProfile(String minecraftProfile) {
+        this.minecraftProfile = minecraftProfile;
     }
 
     /**

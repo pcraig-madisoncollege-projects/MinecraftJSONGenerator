@@ -30,3 +30,4 @@
 | 4/28/2021 | Perform code review of radagon828's indie project | 3 hours |
 | 5/3/2021 | Implement saving, loading, and editing | 12.5 hours |
 | 5/4/2021 | Fix saving in deployed application, update project plan, prepare presentation notes | 4 hours |
+| 5/7/2021 | Add basic admin controls to unshare and delete inappropriate commands as well as delete profiles as needed | 3.75 hours |

@@ -9,8 +9,8 @@
     <c:import url="includes/header.jsp" />
 
     <main class="p-3">
-        <h2>Unable to Login</h2>
-        <p>Your email or password was incorrect.</p>
+        <h2>Admin Controls</h2>
+        <p>${feedback}</p>
     </main>
 
     <c:import url="includes/footer.jsp" />

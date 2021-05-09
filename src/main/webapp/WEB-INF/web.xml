@@ -55,6 +55,21 @@
             <role-name>user</role-name>
         </auth-constraint>
     </security-constraint>
+    <!-- Require authorized users to access admin edit results page -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>adminEditResults</web-resource-name>
+            <url-pattern>/adminEditResults.jsp</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Display general error page when error occurs -->
+    <error-page>
+        <location>/generalError.jsp</location>
+    </error-page>
 
     <security-role>
         <role-name>admin</role-name>

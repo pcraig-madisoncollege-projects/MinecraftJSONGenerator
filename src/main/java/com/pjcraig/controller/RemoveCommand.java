@@ -57,9 +57,9 @@ public class RemoveCommand extends HttpServlet {
 
                     HttpSession session = request.getSession();
                     User user = (User) session.getAttribute("user");
+                    boolean isAdmin = request.isUserInRole("admin");
 
-                    // Verify that the user is the owner. TODO: Admin removal functionality?
-                    if (user != null && user.equals(owner)) {
+                    if (user != null && (user.equals(owner) || isAdmin)) {
                         request.setAttribute("command", command);
 
                         dispatcher = request.getRequestDispatcher(URL_VALID_COMMAND);

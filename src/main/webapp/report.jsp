@@ -9,8 +9,8 @@
     <c:import url="includes/header.jsp" />
 
     <main class="p-3">
-        <h2>Unable to Login</h2>
-        <p>Your email or password was incorrect.</p>
+        <h2>Report an Issue</h2>
+        <p>Unfortunately, the report system is not currently available. Please contact the developer directly at classyelm123pmc@gmail.com.</p>
     </main>
 
     <c:import url="includes/footer.jsp" />

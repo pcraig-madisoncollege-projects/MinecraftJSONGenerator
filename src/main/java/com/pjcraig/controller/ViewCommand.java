@@ -1,6 +1,7 @@
 package com.pjcraig.controller;
 
 import com.pjcraig.entity.Command;
+import com.pjcraig.entity.Role;
 import com.pjcraig.entity.User;
 import com.pjcraig.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 /**
  * This servlet handles requests made to view a user's publicly shared command.
@@ -30,7 +34,7 @@ public class ViewCommand extends HttpServlet {
     public static final String URL_VALID_COMMAND = "/viewCommand.jsp";
 
     /**
-     * Redirects the user to the index page.
+     * Forwards the user to the view command page.
      * @param request The HttpServletRequest object.
      * @param response The HttpServletResponse object.
      * @throws ServletException Whether or not the servlet encounters an error.
@@ -48,16 +52,19 @@ public class ViewCommand extends HttpServlet {
 
                 HttpSession session = request.getSession();
                 User user = (User) session.getAttribute("user");
+                boolean isAdmin = request.isUserInRole("admin");
 
                 GenericDao dao = new GenericDao(Command.class);
                 Command command = (Command) dao.getById(id);
 
-                // Verify that a valid command exists and is publicly visible or the user's own command
-                if (command != null && (command.isShared() || user.equals(command.getOwner()))) {
+                // Verify command is valid and user has privileges to view it
+                if (command != null && (command.isShared() || user.equals(command.getOwner()) || isAdmin)) {
                     User owner = command.getOwner();
 
                     request.setAttribute("command", command);
                     request.setAttribute("owner", owner.getNickname());
+                    request.setAttribute("ownerId", owner.getId());
+                    request.setAttribute("isAdmin", isAdmin);
 
                     dispatcher = request.getRequestDispatcher(URL_VALID_COMMAND);
                 }
