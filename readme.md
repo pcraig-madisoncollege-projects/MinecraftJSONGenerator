@@ -76,7 +76,9 @@ order to format messages in the in-game multiplayer chat.
 
 [**Database Design**](https://github.com/ClassyElm/MinecraftJSONGenerator/blob/main/DesignDocuments/databaseDesign.png)
 
-[**Video Demo of Basic Functionality**](https://youtu.be/BF0225tAnm4)
+[**Video Demo of Basic Application Functionality**](https://youtu.be/BF0225tAnm4)
+
+[**Video Demo of Basic Admin Functionality**](https://youtu.be/Jw9Qg9T_Ppw)
 
 ## Key Resources
 
