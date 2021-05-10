@@ -123,12 +123,12 @@
 
 ### Week 15
 - [x] Final presentation
-- [ ] Create presentation video and link video in readme
+- [x] Create presentation video and link video in readme
 - [x] Finalize all documentation
 - [x] Update time log
 - [x] Update weekly reflections
 
 ### Week 16
-- [ ] Final changes before code complete
-- [ ] Update time log
-- [ ] Update weekly reflections
+- [x] Final changes before code complete
+- [x] Update time log
+- [x] Update weekly reflections
