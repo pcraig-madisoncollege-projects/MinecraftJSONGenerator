@@ -59,7 +59,7 @@ order to format messages in the in-game multiplayer chat.
     * Mojang API (Minecraft profile lookup)
     * GSON API
 * Unit Testing
-    * JUnit tests to achieve 80%+ code coverage
+    * JUnit tests to achieve 80%+ code coverage in persistence package
 * IDE: IntelliJ IDEA
 
 ## Useful Links
