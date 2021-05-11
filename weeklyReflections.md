@@ -238,7 +238,7 @@ On Wednesday, I went performed the second indie project code review for radagon8
 
 5/3/2021
 
-Time Spent: TBD
+Time Spent: 29.75 hours
 
 On Monday, I put a large chunk of time working out command saving and loading. While I did run into slight issues for
 both major features, I was never held up for long periods of time. Commands currently can be loaded in optimized formats
@@ -262,3 +262,12 @@ temporary reports page that can be accessed from the '/report' url. I had wanted
 (while it would definitely be possible), this might be one of those v2.0 features that I just couldn't quite reach for
 the project deadline. Finally, I recorded the demo video for others to view about this project. I will likely include
 the link tomorrow in the readme document.
+
+## Week 16
+
+5/10/2021
+
+Time Spent: ~1 hour
+
+On Monday, I recorded a brief demonstration of basic admin functionality in the current version of the project. Aside
+from that, minimal changes were needed for the project code itself.

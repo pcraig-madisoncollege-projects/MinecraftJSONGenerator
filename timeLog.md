@@ -32,3 +32,4 @@
 | 5/4/2021 | Fix saving in deployed application, update project plan, prepare presentation notes | 4 hours |
 | 5/7/2021 | Add basic admin controls to unshare and delete inappropriate commands as well as delete profiles as needed | 3.75 hours |
 | 5/9/2021 | Add temporary report page, add account page for signed-in users, add input validation for user registration, account updating, and saving commands, upload video demo of application for users | 7.5 hours |
+| 5/10/2021 | Record admin functionality demo video for project | 1 hour |
